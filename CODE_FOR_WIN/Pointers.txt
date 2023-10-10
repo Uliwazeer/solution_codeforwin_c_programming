@@ -1,0 +1,831 @@
+فهم الذاكرة
+ذاكرة الكمبيوتر (RAM) عبارة عن مجموعة من وحدات البايت المتجاورة. حيث تسمى الكتلة الفردية بالخلية (خلية الذاكرة). تحتوي كل خلية على عنوان رقمي فريد 
+(يُعرف أيضًا باسم عنوان الذاكرة الفعلية) مرتبط بها. تبدأ هذه العناوين من الصفر وتصل إلى الحد الأقصى لحجم الذاكرة (بالبايت).
+
+على سبيل المثال، يبدأ موقع الذاكرة لذاكرة الوصول العشوائي (RAM) سعة 64 كيلو بايت من 0 وينتهي إلى 65536 (أو 0x10000) بايت.
+***************************************************************************************************
+/**
+ * C program to perform all arithmetic operations using pointers
+ */
+
+#include <stdio.h>
+
+int main()
+{
+    float num1, num2;    // Normal variables
+    float *ptr1, *ptr2;  // Pointer variables
+
+    float sum, diff, mult, div;
+
+    ptr1 = &num1; // ptr1 stores the address of num1
+    ptr2 = &num2; // ptr2 stores the address of num2
+
+    /* User input through pointer */
+    printf("Enter any two real numbers: ");
+    scanf("%f%f", ptr1, ptr2);
+
+    /* Perform arithmetic operation */
+    sum  = (*ptr1) + (*ptr2);
+    diff = (*ptr1) - (*ptr2);
+    mult = (*ptr1) * (*ptr2);
+    div  = (*ptr1) / (*ptr2);
+
+    /* Print the results */
+    printf("Sum = %.2f\n", sum);
+    printf("Difference = %.2f\n", diff);
+    printf("Product = %.2f\n", mult);
+    printf("Quotient = %.2f\n", div);
+
+    return 0;
+}
+***************************************************************************************************
+C program to swap two numbers using call by reference
+
+#include <stdlib.h>
+#include <stdio.h>
+
+void swap_2_num(int *num1,int *num2)
+{
+    int temp;
+    temp = *num1;
+    *num1 = *num2;
+    *num2 = temp;
+
+}
+int main()
+{
+    int num1,num2;
+    printf("ENTER YOUR NUM1 : ");
+    scanf(" %d",&num1);
+     printf("ENTER YOUR NUM2 : ");
+    scanf(" %d",&num2);
+
+     /* Print original values of num1 and num2 */
+    printf("\nBefore swapping in main \n");
+    printf("Value of num1 = %d \n", num1);
+    printf("Value of num2 = %d \n\n", num2);
+    swap_2_num(&num1,&num2);
+    printf("After swapping in main \n");
+    printf("Value of num1 = %d \n", num1);
+    printf("Value of num2 = %d \n\n", num2);
+    return 0;
+}
+***************************************************************************************************
+C program to input and print array elements using pointers
+
+#include <stdlib.h>
+#include <stdio.h>
+#define size 50
+int main()
+{
+    int arr[size],i,num;
+    int *ptr = arr;
+
+    printf("ENTER YOUR SIZE ARRAY : ");
+    scanf(" %d",&num);
+    printf("\nELEMENTS OF YOUR ARRAY IS\n");
+    for(i=0;i<num;i++)
+    {
+        scanf(" %d",ptr);
+        ptr++;
+    }
+
+
+    ptr = arr;
+     printf("\nPRINTING ELEMENTS OF YOUR ARRAY IS\n");
+    for(i=0;i<num;i++)
+    {
+        printf(" %d",*ptr);
+        ptr++;
+    }
+
+    return 0;
+}
+***************************************************************************************************
+/**
+ * C program to copy an array to another array using pointers
+ */
+
+#include <stdio.h>
+
+#define MAX_SIZE 100 // Maximum array size
+
+
+/* Function declaration to print array */
+void printArray(int arr[], int size);
+
+
+int main()
+{
+    int source_arr[MAX_SIZE], dest_arr[MAX_SIZE];
+    int size, i;
+
+    int *source_ptr = source_arr;   // Pointer to source_arr
+    int *dest_ptr   = dest_arr;     // Pointer to dest_arr
+
+    int *end_ptr;
+
+
+    /*
+     * Input size and elements in source array
+     */
+    printf("Enter size of array: ");
+    scanf("%d", &size);
+    printf("Enter elements in array: ");
+    for (i = 0; i < size; i++)
+    {
+        scanf("%d", (source_ptr + i));
+    }
+
+
+    // Pointer to last element of source_arr
+    end_ptr = &source_arr[size - 1];
+
+
+    /* Print source and destination array before copying */
+    printf("\nSource array before copying: ");
+    printArray(source_arr, size);
+
+    printf("\nDestination array before copying: ");
+    printArray(dest_arr, size);
+
+
+
+    /*
+     * Run loop till source_ptr exists in source_arr
+     * memory range.
+     */
+    while(source_ptr <= end_ptr)
+    {
+        *dest_ptr = *source_ptr;
+
+        // Increment source_ptr and dest_ptr
+        source_ptr++;
+        dest_ptr++;
+    }
+
+
+    /* Print source and destination array after copying */
+    printf("\n\nSource array after copying: ");
+    printArray(source_arr, size);
+
+    printf("\nDestination array after copying: ");
+    printArray(dest_arr, size);
+
+
+    return 0;
+}
+
+
+/**
+ * Function to print array elements.
+ * 
+ * @arr     Integer array to print.
+ * @size    Size of array.
+ */
+void printArray(int *arr, int size)
+{
+    int i;
+
+    for (i = 0; i < size; i++)
+    {
+        printf("%d, ", *(arr + i));
+    }
+}
+***************************************************************************************************
+/**
+ * C program to swap two arrays using pointers
+ */
+
+#include <stdio.h>
+
+#define MAX_SIZE 100    // Maximum array size
+
+
+/* Function declarations */
+void inputArray(int *arr, int size);
+void printArray(int *arr, int size);
+void swapArray(int *sourceArr, int *destArr, int size);
+
+
+
+
+int main()
+{
+    int sourceArr[MAX_SIZE];
+    int destArr[MAX_SIZE];
+
+    int size;
+
+
+    // Input array size
+    printf("Enter size of array: ");
+    scanf("%d", &size);
+
+    // Input elements of destination array
+    printf("Enter %d elements in source array: ", size);
+    inputArray(sourceArr, size);
+
+
+    // Input element of destination array
+    printf("Enter %d elements in destination array: ", size);
+    inputArray(destArr, size);
+
+
+    /*
+     * Print elements of both arrays before swapping
+     */
+    printf("\n\nSource array before swapping: ");
+    printArray(sourceArr, size);
+
+    printf("\nDestination array before swapping: ");
+    printArray(destArr, size);
+
+
+    /* Swap elements of both arrays. */
+    swapArray(sourceArr, destArr, size);
+
+
+    /*
+     * Print elements of both arrays after swapping
+     */
+    printf("\n\nSource array after swapping: ");
+    printArray(sourceArr, size);
+
+    printf("\nDestination array after swapping: ");
+    printArray(destArr, size);
+
+    
+    return 0;
+}
+
+
+
+/**
+ * Function used to read input from user in an array.
+ *
+ * @arr     Pointer to array to store input
+ * @size    Size of the array
+ */
+void inputArray(int *arr, int size)
+{
+    // Pointer to last element of array.
+    int *arrEnd = (arr + (size - 1));
+
+
+    // Input elements in array using pointer
+    while(arr <= arrEnd)
+        scanf("%d", arr++);
+}
+
+
+
+/**
+ * Function used to print elements of array.
+ * 
+ * @arr     Pointer to array, which is to print.
+ * @size    Size of the array
+ */
+void printArray(int *arr, int size)
+{
+    // Pointer to last element of array.
+    int *arrEnd = (arr + (size - 1));
+
+
+    // Print elements of array one by one
+    while(arr <= arrEnd)
+        printf("%d, ", *(arr++));
+}
+
+
+
+/**
+ * Function to swap elements of two arrays.
+ * 
+ * @sourceArr       Pointer to source array to swap.
+ * @destArr         Pointer to destination array to swap.
+ * @size            Size of array.
+ */
+void swapArray(int * sourceArr, int * destArr, int size)
+{
+    // Pointer to last element of source array
+    int * sourceArrEnd = (sourceArr + (size - 1));
+
+    // Pointer to last element of destination array
+    int * destArrEnd   = (destArr + (size - 1));
+
+
+    /*
+     * Swap individual element of both arrays
+     */
+    while(sourceArr <= sourceArrEnd && destArr <= destArrEnd)
+    {
+        *sourceArr ^= *destArr;
+        *destArr   ^= *sourceArr;
+        *sourceArr ^= *destArr;
+
+        // Increment source array to point to next element
+        sourceArr++;
+
+        // Increment destination array to point to next element
+        destArr++;
+    }
+}
+***************************************************************************************************
+/**
+ * C program to reverse an array using pointers
+ */
+
+#include <stdio.h>
+
+#define MAX_SIZE 100
+
+/* Function declaration */
+void printArr(int *arr, int size);
+
+
+int main()
+{
+    int arr[MAX_SIZE];
+    int size;
+    int *left = arr;  // Pointer to arr[0]
+    int *right;
+
+
+    // Input size of array
+    printf("Enter size of array: ");
+    scanf("%d", &size);
+
+    right = &arr[size - 1];  // Pointer to arr[size - 1]
+
+    /*
+     * Input elements in array
+     */
+    printf("Enter elements in array: ");
+    while(left <= right)
+    {
+        scanf("%d", left++);
+    }
+
+
+    printf("\nArray before reverse: ");
+    printArr(arr, size);
+
+
+    // Make sure that left points to arr[0]
+    left = arr;
+
+
+    // Loop to reverse array
+    while(left < right) 
+    {
+        /*
+         * Swap element from left of array to right of array.
+         */
+        *left    ^= *right;
+        *right   ^= *left;
+        *left    ^= *right;
+
+        // Increment left array pointer and decrement right array pointer
+        left++;
+        right--;
+    }
+
+
+    printf("\nArray after reverse: ");
+    printArr(arr, size);
+
+
+    return 0;
+}
+
+
+
+/**
+ * Function to print array using pointer.
+ *
+ * @arr     Pointer to array.
+ * @size    Size of the array.
+ */
+void printArr(int * arr, int size)
+{
+    // Pointer to arr[size - 1]
+    int * arrEnd = (arr + size - 1);
+
+    /* Loop till last array element */
+    while(arr <= arrEnd)
+    {
+        printf("%d, ", *arr);
+
+        // Move pointer to next array element.
+        arr++;
+    }
+}
+***************************************************************************************************
+/**
+ * C program to search an element in array using pointers
+ */
+
+#include <stdio.h>
+
+#define MAX_SIZE 100
+
+
+/* Function declaration */
+void inputArray(int * arr, int size);
+int search(int * arr, int size, int toSearch);
+
+
+
+int main()
+{
+    int array[MAX_SIZE];
+    int size, toSearch, searchIndex;
+
+
+    /*
+     * Input size and elements in array
+     */
+    printf("Enter size of array: ");
+    scanf("%d", &size);
+
+    printf("Enter elements in array: ");
+    inputArray(array, size);
+
+
+    // Input element to search from user
+    printf("Enter element to search: ");
+    scanf("%d", &toSearch);
+
+
+    // Call search funtion to search element in array
+    searchIndex = search(array, size, toSearch);
+
+
+    // Print search results
+    if(searchIndex == -1)
+        printf("%d does not exists in array.", toSearch);
+    else
+        printf("%d is found at %d position.", toSearch, searchIndex + 1);
+
+
+    return 0;
+}
+
+
+
+
+/**
+ * Function to input elements in array.
+ *
+ * @arr     Pointer to integer array
+ * @size    Size of the array
+ */
+void inputArray(int * arr, int size)
+{
+    // Pointer to last array element arr[0]
+    int * arrEnd = (arr + size - 1);
+
+
+    // Run loop till last array element
+    while(arr <= arrEnd)
+    {
+        scanf("%d", arr++);
+    }
+}
+
+
+
+
+/**
+ * Function to perform linear search in array. The function
+ * returns an integer between 0 to size-1 specifying first 
+ * index of successful searched element in array.
+ *
+ * @arr      Pointer to integer array.
+ * @size     Size of the array.
+ * @toSearch Element to search within array.
+ *
+ * @return   Returns -1 if element does not exists in array, 
+ *           otherwise returns element index.
+ */
+int search(int * arr, int size, int toSearch)
+{
+    int index = 0;
+
+    // Pointer to last array element arr[size - 1]
+    int * arrEnd = (arr + size - 1);
+
+    /*
+     * Run a loop from start of array to last array element (arr <= arrEnd), 
+     * until current array element does not match element to search.
+     */
+    while(arr <= arrEnd && *arr != toSearch) {
+        arr++;
+        index++;
+    }
+
+
+    // If element is found
+    if(arr <= arrEnd)
+        return index;
+    
+    return -1;
+}
+***************************************************************************************************
+How to access two dimensional array using pointers in C programming?
+#include <stdio.h>
+#include <stdlib.h>
+#define row 3
+#define col 3
+void input_matrix(int arr[][col],int Row,int Col)
+{
+    int i,j;
+    for(i=0; i<row;i++)
+    {
+        for(j=0;j<col;j++)
+        {
+            scanf(" %d",(*(arr + i)+j));
+        }
+    }
+}
+void print_matrix(int arr[][col],int Row,int Col)
+{
+    int i,j;
+    for(i=0; i<row;i++)
+    {
+        for(j=0;j<col;j++)
+        {
+            printf(" %d",*(*(arr + i)+j));
+        }
+        printf("\n");
+    }
+}
+int main()
+{
+    int i,j,arr[row][col];
+
+    printf("ENTER YOUR SYSTEM OF YOUR MATRIX %dx%d\n",row,col);
+    input_matrix(arr,row,col);
+    printf("ENTER YOUR SYSTEM OF YOUR MATRIX %dx%d\n",row,col);
+    print_matrix(arr,row,col);
+
+    return 0;
+}
+***************************************************************************************************
+C program to add two matrix using pointers
+#include <stdio.h>
+#include <stdlib.h>
+#define row 3
+#define col 3
+
+void input_arr(int arr[][col])
+{
+    int i,j;
+    for(i=0;i<row;i++)
+    {
+        for(j=0;j<col;j++)
+        {
+            scanf(" %d",(*(arr+i)+j));
+        }
+    }
+}
+void output_arr(int arr[][col])
+{
+    int i,j;
+    for(i=0;i<row;i++)
+    {
+        for(j=0;j<col;j++)
+        {
+            printf(" %d",*(*(arr+i)+j));
+        }
+        printf("\n");
+    }
+}
+void sum_arr(int arr1[][col],int arr2[][col],int add_arr[][col])
+{
+    int i,j;
+    for(i=0;i<row;i++)
+    {
+        for(j=0;j<col;j++)
+        {
+            *(*(add_arr + i)+j) = *(*(arr1 + i)+j) + *(*(arr2 + i)+j);
+        }
+    }
+}
+
+int main(void)
+{
+    int arr1[row][col],arr2[row][col],add_arr[row][col];
+
+    printf("ENTER YOUR FIRST SYSTEM IN ARR1 %dx%d\n",row,col);
+    input_arr(arr1);
+
+     printf("ENTER YOUR SECOND SYSTEM IN ARR1 %dx%d\n",row,col);
+    input_arr(arr2);
+
+     printf("ENTER YOUR FIRST SYSTEM IN ARR1 %dx%d\n",row,col);
+    sum_arr(arr1,arr2,add_arr);
+
+     printf("ENTER YOUR FIRST SYSTEM IN ARR1 %dx%d\n",row,col);
+    output_arr(add_arr);
+}
+***************************************************************************************************
+/**
+ * C program to find length of a string using pointer
+ */
+
+#include <stdio.h>
+#define MAX_SIZE 100 // Maximum size of the string
+
+int main()
+{
+    char text[MAX_SIZE]; /* Declares a string of size 100 */
+    char * str = text; /* Declare pointer that points to text */
+    int count = 0;
+
+    /* Input string from user */
+    printf("Enter any string: ");
+    gets(text);
+
+    /* Iterate though last element of the string */
+    while(*(str++) != '\0') count++;
+
+    printf("Length of '%s' = %d", text, count);
+
+    return 0;
+}
+***************************************************************************************************
+/**
+ * C program to find length of a string using pointer
+ */
+
+#include <stdio.h>
+#define MAX_SIZE 100 // Maximum size of the string
+
+int main()
+{
+    char text[MAX_SIZE]; /* Declares a string of size 100 */
+    char * str = text; /* Declare pointer that points to text */
+    int count = 0;
+
+    /* Input string from user */
+    printf("Enter any string: ");
+    gets(text);
+
+    /* Iterate though last element of the string */
+    while(*(str++)) count++;
+
+    printf("Length of '%s' = %d", text, count);
+
+    return 0;
+}
+***************************************************************************************************
+/**
+ * C program to copy one string to another string using pointer
+ */
+
+#include <stdio.h>
+#define MAX_SIZE 100 // Maximum size of the string
+
+int main()
+{
+    char text1[MAX_SIZE], text2[MAX_SIZE];
+    char * str1 = text1;
+    char * str2 = text2; 
+    
+    /* Input string from user */
+    printf("Enter any string: ");
+    gets(text1);
+    
+    /* Copy text1 to text2 character by character */
+    while(*(str2++) = *(str1++));
+
+    printf("First string = %s\n", text1);
+    printf("Second string = %s\n", text2);
+
+    return 0;
+}
+***************************************************************************************************
+/**
+ * C program to concatenate two strings using pointer
+ */
+
+#include <stdio.h>
+#define MAX_SIZE 100 // Maximum string size
+
+int main()
+{
+    char str1[MAX_SIZE], str2[MAX_SIZE];
+    char * s1 = str1;
+    char * s2 = str2;
+
+    /* Input two strings from user */
+    printf("Enter first string: ");
+    gets(str1);
+    printf("Enter second string: ");
+    gets(str2);
+
+    /* Move till the end of str1 */
+    while(*(++s1));
+
+    /* Copy str2 to str1 */
+    while(*(s1++) = *(s2++));
+
+    printf("Concatenated string = %s", str1);
+
+    return 0;
+}
+***************************************************************************************************
+/**
+ * C program to compare two string without using string library functions
+ */
+
+#include <stdio.h>
+#define MAX_SIZE 100 // Maximum string size
+
+/* Compare function declaration */
+int compare(char * str1, char * str2);
+
+
+int main()
+{
+    char str1[MAX_SIZE], str2[MAX_SIZE];
+    int res;
+
+    /* Input two strings from user */
+    printf("Enter first string: ");
+    gets(str1);
+    printf("Enter second string: ");
+    gets(str2);
+
+
+    /* Call the compare function to compare strings */
+    res = compare(str1, str2);
+
+    if(res == 0)
+    {
+        printf("Both strings are equal.");
+    }
+    else if(res < 0)
+    {
+        printf("First string is lexicographically smaller than second.");
+    }
+    else
+    {
+        printf("First string is lexicographically greater than second.");
+    }
+
+    return 0;
+}
+
+
+/**
+ * Compares two strings lexicographically. 
+ */
+int compare(char * str1, char * str2)
+{
+    while((*str1 && *str2) && (*str1 == *str2)) { str1++; str2++; }
+
+    return *str1 - *str2;
+}
+***************************************************************************************************
+/**
+ * C program to find reverse of a string using pointers
+ */
+
+#include <stdio.h>
+#define MAX_SIZE 100 // Maximum string size
+
+int main()
+{
+    char str[MAX_SIZE], reverse[MAX_SIZE];
+    char *s = str;
+    char *r = reverse;
+    int len = 0;
+
+    /* Input string from user */
+    printf("Enter any string: ");
+    gets(str);
+
+    /* Find length of string */
+    while(*(s++)) len++;
+
+    /* 
+     * Store each character from end of original string 
+     * to reverse string
+     */
+    s--;
+    while(len >= 0)
+    {
+        *(r++) = *(--s);
+        len--;
+    }
+    *r = '\0';
+
+    printf("\nOriginal string = %s\n", str);
+    printf("Reverse string = %s", reverse);
+
+    return 0;
+}
+***************************************************************************************************

@@ -1,0 +1,131 @@
+/**
+ * C program to check even or odd number using macro
+ */
+
+#include <stdio.h>
+
+// Define macro to check odd number
+#define IS_ODD(x) (x & 1)
+
+int main()
+{
+    int num;
+
+    // Input a number from user
+    printf("Enter any number to check even or odd: ");
+    scanf("%d", &num);
+
+    if (IS_ODD(num))
+        printf("%d is ODD\n", num);
+    else
+        printf("%d is EVEN\n", num);
+
+    return 0;
+}
+***************************************************************************************************
+/**
+ * C program to check maximum/minimum using macro
+ */
+
+#include <stdio.h>
+
+// Define macro to check maximum and minimum
+#define MAX(x, y) (x > y ? x : y)
+#define MIN(x, y) (x < y ? x : y)
+
+int main()
+{
+    int num1, num2;
+
+    // Input numbers from user
+    printf("Enter any two number to check max and min: ");
+    scanf("%d%d", &num1, &num2);
+
+    printf("MAX(%d, %d) = %d\n", num1, num2, MAX(num1, num2));
+    printf("MIN(%d, %d) = %d\n", num1, num2, MIN(num1, num2));
+
+    return 0;
+}
+***************************************************************************************************
+/**
+ * C program to check uppercase and lowercase using macro
+ */
+
+#include <stdio.h>
+
+// Macro definitions
+#define IS_UPPER(x) (x >= 'A' && x <= 'Z')
+#define IS_LOWER(x) (x >= 'a' && x <= 'z')
+
+int main()
+{
+    char ch;
+
+    // Input a character from user
+    printf("Enter any character: ");
+    ch = getchar();
+
+    if (IS_UPPER(ch))
+        printf("'%c' is uppercase\n", ch);
+    else if (IS_LOWER(ch))
+        printf("'%c' is lowercase\n", ch);
+    else 
+        printf("Entered character is not alphabet");
+
+    return 0;
+}
+***************************************************************************************************
+/**
+ * C program to swap two numbers using macro
+ */
+
+#include <stdio.h>
+
+// Define macro to swap two numbers
+#define SWAP(x, y) (x ^= y ^= x ^= y)
+
+int main()
+{
+    int num1, num2;
+
+    // Input two numbers from users
+    printf("Enter any two number to swap: ");
+    scanf("%d%d", &num1, &num2);
+
+    printf("Values before swapping\n");
+    printf("num1 = %d, num2 = %d\n\n", num1, num2);
+
+    SWAP(num1, num2);
+
+    printf("Values after swapping\n");
+    printf("num1 = %d, num2 = %d\n", num1, num2);
+
+    return 0;
+}
+***************************************************************************************************
+/**
+ * C program to create multiline macro
+ */
+
+#include <stdio.h>
+
+// Macro to check and print even odd number
+#define EVEN_ODD(num)               \
+    if (num & 1)                    \
+        printf("%d is odd\n", num); \
+    else                            \
+        printf("%d is even\n", num);
+
+int main()
+{
+    int num;
+
+    // Input number from user
+    printf("Enter any number: ");
+    scanf("%d", &num);
+
+    EVEN_ODD(num);
+
+    return 0;
+}
+***************************************************************************************************

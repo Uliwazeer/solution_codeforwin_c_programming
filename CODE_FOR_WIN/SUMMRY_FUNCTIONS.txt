@@ -1,0 +1,60 @@
+There are several ways to write functions in C. Here are the most common approaches:
+
+1-Function Declaration and Definition:
+
+// Function declaration
+int add(int a, int b);
+
+// Function definition
+int add(int a, int b) {
+    return a + b;
+}
+***************************************************************************************
+2-Function Definition with No Declaration
+
+// Function definition
+int add(int a, int b) {
+    return a + b;
+}
+***************************************************************************************
+3-Function Prototypes
+
+// Function prototype
+int add(int a, int b);
+
+int main() {
+    int result = add(3, 4);
+    // Rest of the code
+}
+
+// Function definition
+int add(int a, int b) {
+    return a + b;
+}
+****************************************************************************************
+4-Inline Function (Using Inline Keyword)
+
+// Inline function
+inline int add(int a, int b) {
+    return a + b;
+}
+****************************************************************************************
+5-Function Pointers
+
+// Function declaration
+int add(int a, int b);
+
+int main() {
+    int (*ptr)(int, int);  // Function pointer declaration
+    ptr = &add;  // Assigning function address to pointer
+
+    int result = ptr(3, 4);  // Calling function using pointer
+
+    // Rest of the code
+}
+
+// Function definition
+int add(int a, int b) {
+    return a + b;
+}
+*******************************************************************************************

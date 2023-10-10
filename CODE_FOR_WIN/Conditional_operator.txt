@@ -1,0 +1,73 @@
+C program to find maximum between two numbers using conditional operator
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdio.h>
+
+
+int main(void)
+{
+
+    int num1,num2;
+    printf("ENTER YOUR FIRST NUMBER YA USER: ");
+    scanf(" %d",&num1);
+    printf("ENTER YOUR SECOND NUMBER YA USER: ");
+    scanf(" %d",&num2);
+
+
+    int max = (num1 > num2)?num1 : num2;
+
+    printf("MAX NUMBER IS = %d",max);
+
+
+    return 0;
+}
+**********************************************************************************************************
+max number between 3 numbers
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdio.h>
+
+
+int main(void)
+{
+
+    int num1,num2,num3;
+    printf("ENTER YOUR FIRST NUMBER YA USER: ");
+    scanf(" %d",&num1);
+    printf("ENTER YOUR SECOND NUMBER YA USER: ");
+    scanf(" %d",&num2);
+    printf("ENTER YOUR SECOND NUMBER YA USER: ");
+    scanf(" %d",&num3);
+
+    int max = (num1 > num2 && num1 > num3) ? num1 :
+          (num2 > num3) ? num2 : num3;
+
+    printf("MAX NUMBER BETWEEN 3 NUMBERS IS = %d",max);
+
+
+    return 0;
+}
+*****************************************************************************************************************
+EVEN OR ODD NUMBER
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdio.h>
+
+
+int main(void)
+{
+
+    int num;
+    printf("ENTER YOUR FIRST NUMBER YA USER: ");
+    scanf(" %d",&num);
+
+
+  (num%2==0)? printf("YOUR ENTERED NUMBER %d IS EVEN",num):printf("YOUR ENTERED NUMBER %d IS ODD",num);
+
+
+    return 0;
+}
+******************************************************************************************************

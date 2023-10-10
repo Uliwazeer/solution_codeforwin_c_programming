@@ -1,0 +1,858 @@
+C program to copy one string to another string
+
+#include <stdio.h>
+#include <stdlib.h>
+#define size 300
+
+int main()
+{
+	char str1[size];
+	char str2[size];
+	int i;
+	printf("WRITE YOUR STRING YA USER: ");
+	gets(str1);
+
+	for(i=0;str1[i] != '\0';i++)
+    {
+        str2[i] = str1[i];
+    }
+    str2[i] = '\0';
+
+    printf("YOUR FIRST STRING IN ARRAY IS:>> %s \n",str1);
+    printf("YOUR SECOND STRING IN ARRAY IS:>> %s \n",str2);
+    printf("YOUR FIRST & SECOND STRING ARE COPYIED IN ONE ARRAY STRING IN ARRAY IS:>> %d ",i);
+	return 0;
+}
+***************************************************************************************************
+C program to concatenate two strings
+
+#include <stdio.h>
+#include <stdlib.h>
+#define size 300
+
+int main()
+{
+    char str1[size];
+    char str2[size];
+    int i,j;
+
+    printf("WRITE YOUR FIRST STRING YA USER: ");
+    gets(str1);
+    printf("\n");
+    printf("WRITE YOUR SECOND STRING YA USER: ");
+    gets(str2);
+    printf("\n");
+    i=-1;
+    while(str1[++i] != '\0');
+
+    j=0;
+    while(str1[i++] = str2[j++]);
+
+    printf("CONCATENATE STR1 & STR2 IN ONE ARRAY IS:>> %s \n",str1);
+    return 0;
+}
+***************************************************************************************************
+C program to compare two strings
+
+#include <stdio.h>
+#include <stdlib.h>
+#define size 300
+int compare_2_string(char str1[], char str2[])
+{
+    int i=0;
+    while(str1[i] == str2[i])
+    {
+        if(str1[i] =='\0' && str2[i] == '\0')
+            break;
+        i++;
+    }
+    return str1[i] - str2[i];
+}
+int main()
+{
+    char str1[size];
+    char str2[size];
+    int i,j;
+
+    printf("WRITE YOUR FIRST STRING YA USER: ");
+    gets(str1);
+    printf("\n");
+    printf("WRITE YOUR SECOND STRING YA USER: ");
+    gets(str2);
+
+
+    int result = compare_2_string(str1,str2);
+
+    if(result == 0)
+        printf("YOUR TWO STRING ARE EQUAL");
+    else if(result<0)
+        printf("YOUR FIRST STRING IS LESS THAN SECOND STRING");
+    else
+        printf("YOUR SECOND STRING IS LESS THAN FIRST STRING");
+
+    return 0;
+}
+***************************************************************************************************
+C program to convert lowercase string to uppercase
+
+#include <stdio.h>
+#include <stdlib.h>
+#define size 300
+
+int main()
+{
+    char str1[size];
+    char str2[size];
+    int i,j;
+
+    printf("WRITE YOUR FIRST STRING YA USER: ");
+    gets(str1);
+
+   for(i=0;str1[i] !='\0';i++)
+   {
+       if(str1[i]>='a' && str1[i]<='z')
+       {
+           str1[i] = str1[i]-32;
+       }
+   }
+
+   printf("UPPER STRING ARRAY %s ",str1);
+    return 0;
+}
+***************************************************************************************************
+/** 
+ * C program to convert string to uppercase using pointers
+ */
+
+#include <stdio.h>
+#define MAX_SIZE 100 // Maximum string size
+
+
+int main()
+{
+    char str[MAX_SIZE];
+    char * s = str;
+
+    /* Input string from user */
+    printf("Enter your text : ");
+    gets(str);
+
+    while(*s) 
+    {
+        *s = (*s > 'a' && *s <= 'z') ? *s-32 : *s;
+        s++;
+    }
+
+    printf("Uppercase string : %s",str);
+    return 0;
+}
+***************************************************************************************************
+/**
+ * C program to convert string to lowercase
+ */
+
+#include <stdio.h>
+#define MAX_SIZE 100 // Maximum string size
+
+int main()
+{
+    char str[MAX_SIZE];
+    int i;
+ 
+    /* Input string from user */
+    printf("Enter any string: ");
+    gets(str);
+
+
+    // Iterate loop till last character of string
+    for(i=0; str[i]!='\0'; i++)
+    {
+        if(str[i]>='A' && str[i]<='Z')
+        {
+            str[i] = str[i] + 32;
+        }
+    }
+
+    printf("Lower case string: %s", str);
+
+    return 0;
+}
+***************************************************************************************************
+C program to toggle case of each character in a string
+
+#include <stdio.h>
+#include <stdlib.h>
+#define size 300
+void toggle_case(char str1[])
+{   int i;
+     while(str1[i] !='\0')
+   {
+       if(str1[i]>='a' && str1[i]<='z')
+       {
+           str1[i] = str1[i]-32;
+       }
+       else if(str1[i]>='A' && str1[i]<='Z')
+       {
+           str1[i] = str1[i] + 32;
+       }
+       i++;
+   }
+
+}
+int main()
+{
+    char str1[size];
+
+    printf("WRITE YOUR FIRST STRING YA USER: ");
+    gets(str1);
+
+    printf("STRING BEFORE TOGGLE %s \n",str1);
+    toggle_case(str1);
+   printf("STRING AFTER TOGGLE ARRAY %s \n",str1);
+    return 0;
+}
+***************************************************************************************************
+/**
+ * C program to count total number of alphabets, digits 
+ * and special characters in a string using pointers
+ */
+
+#include <stdio.h>
+#define MAX_SIZE 100 // Maximum string size
+
+
+int main()
+{
+    char str[MAX_SIZE];
+    char * s = str;
+    int alphabets, digits, others;
+
+    alphabets = digits = others = 0;
+
+
+    /* Input string from user */
+    printf("Enter any string : ");
+    gets(str);
+
+    while(*s)
+    {
+        if((*s >= 'a' && *s <= 'z') || (*s >= 'A' && *s <= 'Z'))
+            alphabets++;
+        else if(*s>='0' && *s<='9')
+            digits++;
+        else
+            others++;
+
+        s++;
+    }
+
+    printf("Alphabets = %d\n", alphabets);
+    printf("Digits = %d\n", digits);
+    printf("Special characters = %d", others);
+
+    return 0;
+}
+***************************************************************************************************
+C program to find total number of alphabets, digits or special characters in a string
+
+#include <stdio.h>
+#include <stdlib.h>
+#define size 300
+
+int main()
+{
+    char str1[size];
+
+    printf("WRITE YOUR FIRST STRING YA USER: ");
+    gets(str1);
+    int i,alphapets,special_char,digits;
+
+    i=alphapets=special_char=digits=0;
+     while(str1[i] !='\0')
+   {
+       if((str1[i]>='A' && str1[i]<='Z') || (str1[i]>='a' && str1[i]<='z'))
+       {
+          alphapets++;
+       }
+       else if((str1[i]>='0' && str1[i]<='9'))
+               digits++;
+        else
+            special_char++;
+
+       i++;
+   }
+    printf("Alphabets = %d\n", alphapets);
+    printf("Digits = %d\n", digits);
+    printf("Special characters = %d",special_char);
+
+
+
+    return 0;
+}
+***************************************************************************************************
+C program to count number of words in a string
+/**
+ * C program to count total number of words in a string
+ */
+
+#include <stdio.h>
+#define MAX_SIZE 100 // Maximum string size
+
+int main()
+{
+    char str[MAX_SIZE];
+    int i, words;
+
+    /* Input string from user */
+    printf("Enter any string: ");
+    gets(str);
+
+    i = 0;
+    words = 1;
+
+    /* Runs a loop till end of string */
+    while(str[i] != '\0')
+    {
+        /* If the current character(str[i]) is white space */
+        if(str[i]==' ' || str[i]=='\n' || str[i]=='\t')
+        {
+            words++;
+        }
+
+        i++;
+    }
+
+    printf("Total number of words = %d", words);
+
+    return 0;
+}
+***************************************************************************************************
+REVERSE STRING
+
+#include <stdio.h>
+#include <stdlib.h>
+#define size 300
+
+int main()
+{
+   char str[size],reverse_str[size];
+   int i,index_str,index_reverse;
+
+   printf("ENTER YPUR STRING YA USER: ");
+   gets(str);
+
+    i = 0;
+    while(str[i] !='\0')i++;
+    int len = i;
+    index_reverse = 0;
+    index_str = len - 1;
+    while(index_str >=0)
+    {
+        reverse_str[index_reverse] = str[index_str];
+        index_str--;
+        index_reverse++;
+
+    }
+    reverse_str[index_reverse] = '\0';
+
+    printf("\nOriginal string = %s\n\n", str);
+    printf("Reverse string = %s", reverse_str);
+
+    return 0;
+}
+***************************************************************************************************
+/**
+ * C program to check whether a string is palindrome or not LIKE MADAM IS PLAINDROME
+ */
+
+#include <stdio.h>
+#define MAX_SIZE 100 // Maximum string size
+
+int main()
+{
+    char str[MAX_SIZE];
+    int len, startIndex, endIndex;
+
+    /* Input string from user */
+    printf("Enter any string: ");
+    gets(str);
+
+
+    /* Find length of the string */
+    len = 0;
+    while(str[len] != '\0') len++;
+
+    startIndex = 0;
+    endIndex   = len-1;
+    
+
+    while(startIndex <= endIndex)
+    {
+        if(str[startIndex] != str[endIndex])
+            break;
+
+        startIndex++;
+        endIndex--;
+    }
+
+    if(startIndex >= endIndex)
+    {
+        printf("String is Palindrome.");
+    }
+    else
+    {
+        printf("String is Not Palindrome.");
+    }
+
+    return 0;
+}
+***************************************************************************************************
+// C program to reverse a string C program to reverse order of words in a string
+#include <stdio.h>
+
+// Function to reverse any sequence
+// starting with pointer begin and
+// ending with pointer end
+void reverse(char* begin, char* end)
+{
+	char temp;
+	while (begin < end) {
+		temp = *begin;
+		*begin++ = *end;
+		*end-- = temp;
+	}
+}
+
+// Function to reverse words*/
+void reverseWords(char* s)
+{
+	char* word_begin = s;
+
+	// Word boundary
+	char* temp = s;
+
+	// Reversing individual words as
+	// explained in the first step
+	while (*temp) {
+		temp++;
+		if (*temp == '\0') {
+			reverse(word_begin, temp - 1);
+		}
+		else if (*temp == ' ') {
+			reverse(word_begin, temp - 1);
+			word_begin = temp + 1;
+		}
+	}
+
+	// Reverse the entire string
+	reverse(s, temp - 1);
+}
+
+// Driver Code
+int main()
+{
+	char s[] = "i like this program very much";
+	char* temp = s;
+
+	// Driver code
+	reverseWords(s);
+	printf("%s", s);
+	return 0;
+}
+***************************************************************************************************
+C program to find the first occurrence of a character in a string
+
+#include <stdio.h>
+#include <stdlib.h>
+#define size 300
+int position_of_char(char str[], char position)
+{
+    int i=0;
+    while(str[i] != '\0')
+    {
+        if(str[i] == position)
+            return i;
+        i++;
+    }
+    return -5;
+}
+int main()
+{
+    char str[size],position;
+    printf("ENTER YOUR STRING YA USER: ");
+    gets(str);
+
+
+    printf("ENTER YOUR CHARACTER TO SEARCH IN YOUR STRING: ");
+    position =getchar();
+
+
+    int func = position_of_char(str,position);
+    if(func == 5)
+        printf("'%c' not found.", position);
+    else
+        printf("'%c' is found at index %d.", position, func);
+
+
+    return 0;
+}
+***************************************************************************************************
+/**
+ * C program to find last occurrence of a character in string
+ */
+#include <stdio.h>
+#define MAX_SIZE 100 // Maximum string size
+
+/*  Function declaration */
+int lastIndexOf(const char * str, const char toFind);
+
+
+int main()
+{
+    char str[MAX_SIZE];
+    char toFind;
+    int index;
+
+    printf("Enter any string: ");
+    gets(str);
+
+    printf("Enter any character to find: ");
+    toFind = getchar();
+
+    index = lastIndexOf(str, toFind);
+
+    printf("\nLast index of '%c' is %d", toFind, index);
+
+    return 0;
+}
+
+
+/**
+ * Function to find last index of any character in the given string
+ */
+int lastIndexOf(const char * str, const char toFind)
+{
+    int index = -1;
+    int i = 0;
+
+    while(str[i] != '\0')
+    {
+        // Update index if match is found
+        if(str[i] == toFind)
+        {
+            index = i;
+        }
+        i++;
+    }
+
+    return index;
+}
+***************************************************************************************************
+/**
+ * C program to search all occurrences of a character in a string
+ */
+
+#include <stdio.h>
+#define MAX_SIZE 100 // Maximum string size 
+
+int main()
+{
+    char str[MAX_SIZE];
+    char toSearch;
+    int i;
+
+    /* Input string and character to search from user */
+    printf("Enter any string: ");
+    gets(str);
+    printf("Enter any character to search: ");
+    toSearch = getchar();
+
+    /* Run loop till the last character of string */
+    i=0;
+    while(str[i]!='\0')
+    {
+        /* If character is found in string */
+        if(str[i] == toSearch)
+        {
+            printf("'%c' is found at index %d\n", toSearch, i);
+        }
+
+        i++;
+    }
+
+    return 0;
+}
+***************************************************************************************************
+/**
+ * C program to count all occurrences of a character in a given string
+ */
+
+#include <stdio.h>
+#define MAX_SIZE 100 // Maximum string size
+
+int main()
+{
+    char str[MAX_SIZE];
+    char toSearch;
+    int i, count;
+
+    /* Input string and search character from user */
+    printf("Enter any string: ");
+    gets(str);
+    printf("Enter any character to search: ");
+    toSearch = getchar();
+
+    count = 0;
+    i=0;
+    while(str[i] != '\0')
+    {
+        /*
+         * If character is found in string then
+         * increment count variable
+         */
+        if(str[i] == toSearch)
+        {
+            count++;
+        }
+
+        i++;
+    }
+
+    printf("Total occurrence of '%c' = %d", toSearch, count);
+
+    return 0;
+}
+***************************************************************************************************
+/**
+ * C program to find maximum occurring character in a string
+ */
+
+#include <stdio.h>
+#define MAX_SIZE 100  // Maximum string size
+#define MAX_CHARS 255 // Maximum characters allowed
+
+
+int main()
+{
+    char str[MAX_SIZE];
+    int freq[MAX_CHARS]; // Store frequency of each character
+    int i = 0, max;
+    int ascii;
+
+    printf("Enter any string: ");
+    gets(str);
+
+    /* Initializes frequency of all characters to 0 */
+    for(i=0; i<MAX_CHARS; i++)
+    {
+        freq[i] = 0;
+    }
+
+
+    /* Finds frequency of each characters */
+    i=0;
+    while(str[i] != '\0')
+    {
+        ascii = (int)str[i];
+        freq[ascii] += 1;
+
+        i++;
+    }
+
+
+    /* Finds maximum frequency */
+    max = 0;
+    for(i=0; i<MAX_CHARS; i++)
+    {
+        if(freq[i] > freq[max])
+            max = i;
+    }
+
+
+    printf("Maximum occurring character is '%c' = %d times.", max, freq[max]);
+
+    return 0;
+}
+***************************************************************************************************
+/**
+ * C program to find minimum occurring character in a string
+ */
+
+#include <stdio.h>
+#define MAX_SIZE 100  // Maximum string size
+#define MAX_CHARS 255 // Maximum characters allowed
+
+
+int main()
+{
+    char str[MAX_SIZE];
+    int freq[MAX_CHARS]; //Stores frequency of each character
+    int i = 0, min;
+    int ascii;
+
+    printf("Enter any string: ");
+    gets(str);
+
+    /* Initialize frequency of all characters to 0 */
+    for(i=0; i<MAX_CHARS; i++)
+    {
+        freq[i] = 0;
+    }
+
+
+    /* Finds frequency of each characters */
+    i=0;
+    while(str[i] != '\0')
+    {
+        ascii = (int)str[i];
+        freq[ascii] += 1;
+
+        i++;
+    }
+
+
+    /* Finds minimum frequency */
+    min = 0;
+    for(i=0; i<MAX_CHARS; i++)
+    {
+        if(freq[i] != 0)
+        {
+            if(freq[min] == 0 || freq[i] < freq[min])
+                min = i;
+        }
+    }
+
+
+    printf("Minimum occurring character is '%c' = %d.", min, freq[min]);
+
+    return 0;
+}
+***************************************************************************************************
+/**
+ * C program to count frequency of each character in a string
+ */
+
+#include <stdio.h>
+#include <string.h>
+#define MAX_SIZE 100 // Maximum string size
+
+int main()
+{
+    char str[MAX_SIZE];
+    int i, len;
+    int freq[26];
+
+    /* Input string from user */
+    printf("Enter any string: ");
+    gets(str);
+
+    len = strlen(str);
+
+    /* Initialize frequency of each character to 0 */
+    for(i=0; i<26; i++)
+    {
+        freq[i] = 0;
+    }
+
+
+    /* Find total number of occurrences of each character */
+    for(i=0; i<len; i++)
+    {
+        /* If the current character is lowercase alphabet */
+        if(str[i]>='a' && str[i]<='z')
+        {
+            freq[str[i] - 97]++;
+        }
+        else if(str[i]>='A' && str[i]<='Z')
+        {
+            freq[str[i] - 65]++;
+        }
+    }
+
+    /* Print the frequency of all characters in the string */
+    printf("\nFrequency of all characters in the given string: \n");
+    for(i=0; i<26; i++)
+    {
+        /* If current character exists in given string */
+        if(freq[i] != 0)
+        {
+            printf("'%c' = %d\n", (i + 97), freq[i]);
+        }
+    }
+
+    return 0;
+}
+***************************************************************************************************
+/**
+ * C program to find the first occurrence of a word in a string
+ */
+#include <stdio.h>
+#include <string.h>
+#define MAX_SIZE 100 // Maximum string size
+
+int main()
+{
+    char str[MAX_SIZE], word[MAX_SIZE];
+    int i, index, found = 0;
+
+    /* Input string and word from user */
+    printf("Enter any string: ");
+    gets(str);
+    printf("Enter word to be searched: ");
+    gets(word);
+
+
+    /* Run loop from start to end of string */
+    index = 0;
+    while(str[index] != '\0')
+    {
+
+        /* If first character of word matches with the given string */
+        if(str[index] == word[0])
+        {
+            /* Match entire word with current found index */
+            i=0;
+            found = 1;
+            while(word[i] != '\0')
+            {
+                if(str[index + i] != word[i])
+                {
+                    found = 0;
+                    break;
+                }
+
+                i++;
+            }
+        }
+        
+        /* If the word is found then get out of loop */
+        if(found == 1)
+        {
+            break;
+        }
+
+        index++;
+    }
+    
+    /*  Print success message if the word is found */
+    if(found == 1)
+    {
+        printf("\n'%s' is found at index %d.", word, index);
+    }
+    else
+    {
+        printf("\n'%s' is not found.", word);
+    }
+
+    return 0;
+}
+***************************************************************************************************
+
+
+
+
+
+
+
+
+

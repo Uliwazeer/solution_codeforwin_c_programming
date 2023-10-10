@@ -1,0 +1,682 @@
+https://codeforwin.org/c-programming/for-do-while-loop-programming-exercises
+************************************************************************************************
+
+Write a program in C to swap two numbers using a function.without using pointers
+
+#include <stdio.h>
+
+int swap(int a, int b) {
+    int temp = a;
+    a = b;
+    b = temp;
+    return a;
+}
+
+int main() {
+    int num1, num2;
+
+    printf("Enter the first number: ");
+    scanf("%d", &num1);
+
+    printf("Enter the second number: ");
+    scanf("%d", &num2);
+
+    printf("Before swapping: num1 = %d, num2 = %d\n", num1, num2);
+
+    num1 = swap(num1, num2);
+
+    printf("After swapping: num1 = %d, num2 = %d\n", num1, num2);
+
+    return 0;
+}
+
+******************************************************************************
+
+4. Write a program in C to check if a given number is even or odd using the function.
+#include <stdio.h>
+ 
+//if the least significant bit is 1 the number is odd and 0 the number is even 
+int checkOddEven(int n1)
+{   
+    return (n1 & 1);//The & operator does a bitwise and,
+}
+
+int main()
+{
+    int n1;
+	printf("\n\n Function : check the number is even or odd:\n");
+	printf("------------------------------------------------\n");	     
+    printf("Input any number : ");
+    scanf("%d", &n1);
+
+    // If checkOddEven() function returns 1 then the number is odd 
+    if(checkOddEven(n1))
+    {
+        printf("The entered number is odd.\n\n");
+    }
+    else
+    {
+        printf("The entered number is even.\n\n");
+    }
+    return 0;
+}
+**********************************************************************************************************
+Write a program in C to convert a decimal number to a binary number using the function.
+
+#include <string.h>
+#include <math.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include<stdio.h>
+
+long toBin(int dno)
+{
+    long bno=0,remainder,f=1;
+    while(dno != 0)
+    {
+         remainder = dno % 2;
+         bno = bno + remainder * f;
+         f = f * 10;
+         dno = dno / 2;
+    }
+    return bno;
+}
+int main()
+{
+    long bno;
+    int dno;
+    printf(" Input any decimal number : ");
+    scanf("%d",&dno);
+    bno = toBin(dno);
+    printf("\n The Binary value is : %ld\n\n",bno);
+
+    return 0;
+}
+*******************************************************************************
+function prime number or not
+#include <string.h>
+#include <math.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include<stdio.h>
+
+int prime_or_not(int num)
+{
+    int i=2;
+    while(i<=num/2)
+    {
+        if(num%2==0)
+            return 1;
+
+        else
+            i++;
+    }
+    return 1;
+}
+int main()
+{
+    int num,output;
+
+    printf(" Input your number : ");
+    scanf("%d",&num);
+    output = prime_or_not(num);
+    if(output==1)
+        printf("THE NUMBER %d IS PRIME\n",num);
+
+    else
+        printf("THE NUMBER %d IS NOT PRIME\n",num);
+
+    return 0;
+}
+
+*****************************************************************************************************
+Write a program in C to get the largest element of an array using the function
+
+#include <stdio.h>
+
+// Function to find the largest element in an array
+int findLargestElement(int arr[], int size) {
+    int max = arr[0]; // Assume the first element as the maximum
+
+    for (int i = 1; i < size; i++) {
+        if (arr[i] > max) {
+            max = arr[i]; // Update max if a larger element is found
+        }
+    }
+
+    return max;
+}
+
+int main() {
+    int size;
+
+    printf("Enter the size of the array: ");
+    scanf("%d", &size);
+
+    int array[size];
+
+    printf("Enter the elements of the array:\n");
+    for (int i = 0; i < size; i++) {
+        scanf("%d", &array[i]);
+    }
+
+    int largest = findLargestElement(array, size);
+    printf("The largest element in the array is: %d\n", largest);
+
+    return 0;
+}
+***********************************************************************
+func ARMSTRONG NUMBER
+#include <string.h>
+#include <math.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include<stdio.h>
+
+int digit_num(int num)
+{
+    int count = 0;
+    while(num != 0)
+    {
+        num /= 10;
+        count++;
+    }
+    return count;
+}
+int armstrong_num(int num)
+{
+    int input = num;
+    int digit= digit_num(num);
+    int sum=0;
+
+    while(input != 0)
+    {
+        int reminder = input %10;
+        sum += pow(reminder,digit);
+        input /=10;
+    }
+    if(sum==num)
+        return 1;
+    else
+        return 0;
+}
+int main()
+{
+    int num ;
+
+        printf("ENTER YOUR NUMBER YA USER: ");
+        scanf("%d",&num);
+
+        int q = armstrong_num(num);
+        if(q==1)
+            printf("YOUR NUMBER %d IS ARMSTRONG",num);
+
+        else
+            printf("YOUR NUMBER %d IS NOT ARMSTRONG",num);
+    return 0;
+}
+
+*********************************************************************************************
+
+how to count digts of numbers
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdio.h>
+
+int main()
+{
+    long long num;
+    int count = 0;
+    printf("Enter any number: ");
+    scanf("%lld", &num);
+    do
+    {
+        count++;
+        num /= 10;
+    } while(num != 0);
+
+    printf("Total digits: %d", count);
+
+    return 0;
+}
+**********************************************************************************************
+first and last digit in number
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdio.h>
+
+int main()
+{   int num,first_digit,last_digit,digit;
+
+    printf("ENTER YOUR NUMBER YA USER: ");
+    fflush(stdin);
+    scanf("%d",&num);
+
+    last_digit = num % 10;
+    digit = (int)log10(num);
+    first_digit = (int)(num / pow(10,digit));
+
+    printf("FIRST DIGIT = %d\n",first_digit);
+    printf("LAST DIGIT = %d\n",last_digit);
+    return 0;
+}
+**************************************************************************************************
+
+C program to swap first and last digit of a number
+
+#include <stdio.h>
+
+int swapFirstLastDigit(int number) {
+    int lastDigit = number % 10;
+    int numDigits = 0;
+    int temp = number;
+  
+    while (temp != 0) {
+        temp /= 10;
+        numDigits++;
+    }
+  
+    int firstDigit = number / pow(10, numDigits - 1);
+  
+    int modifiedNumber = lastDigit * pow(10, numDigits - 1);
+    modifiedNumber += number % (int)pow(10, numDigits - 1);
+    modifiedNumber -= lastDigit;
+    modifiedNumber += firstDigit;
+  
+    return modifiedNumber;
+}
+
+int main() {
+    int number;
+    printf("Enter a number: ");
+    scanf("%d", &number);
+
+    int swappedNumber = swapFirstLastDigit(number);
+
+    printf("Number after swapping first and last digit: %d\n", swappedNumber);
+
+    return 0;
+}
+
+**********************************************************************************
+sum of digit number
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdio.h>
+
+int main()
+{   int num,sum=0;
+
+    printf("ENTER YOUR NUMBER YA USER: ");
+    scanf("%d",&num);
+
+
+
+    while(num !=0)
+    {
+        sum += num%10;
+        num = num/10;
+    }
+
+    printf("COUNT OF YOUR ENTERED NUMBER IS = %d\n",sum);
+    return 0;
+}
+****************************************************************************************
+reverse number
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdio.h>
+
+int main()
+{   int num,reverse=0;
+
+    printf("ENTER YOUR NUMBER YA USER: ");
+    scanf("%d",&num);
+
+
+
+    while(num !=0)
+    {
+        reverse = (reverse * 10)+(num%10);
+        num = num/10;
+    }
+
+    printf("COUNT OF YOUR ENTERED NUMBER IS = %d\n",reverse);
+    return 0;
+}
+
+*************************************************************************************************************
+plaindrome number like 121,1001,252........................etc
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdio.h>
+
+int main()
+{   int num,reverse=0,n;
+
+    printf("ENTER YOUR NUMBER YA USER: ");
+    scanf("%d",&num);
+
+    n = num;
+
+    while(num !=0)
+    {
+        reverse = (reverse * 10)+(num%10);
+        num = num/10;
+    }
+    if(reverse == n)
+        printf("YOUR ENTERD NUMBER IS PLAINDROM = %d\n",n);
+
+    else
+        printf("YOUR ENTERD NUMBER IS NOT PLAINDROM = %d\n",n);
+
+    //printf("COUNT OF YOUR ENTERED NUMBER IS = %d\n",reverse);
+    return 0;
+}
+*******************************************************************************************************
+factors of number يعني الاعداد اللتي تقبل القسمه ع الرقم الذي ادخلته
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdio.h>
+
+int main()
+{
+    int num,i,c=0;
+    printf("ENTER YOUR NUMBER: ");
+    fflush(stdin);
+    scanf("%d",&num);
+
+    for(i=1;i<=num;i++)
+    {      
+        if(num%i==0)
+            printf("%d\n",i);
+    }
+    return 0;
+}
+********************************************************************************
+
+prime number
+
+#include <stdio.h>
+#include <stdlib.h>
+int is_prime_num(int num)
+{
+    int i,flag=1;
+    for(i = 2;i<=num/2;i++)
+    {
+        if(num%i==0)
+        {
+            flag=0;
+            break;
+        }
+    }
+    if(flag)
+    {
+        printf("YOUR ENTERED NUMBER %d IS PRIME\n",num);
+    }else
+        printf("YOUR ENTERD NUMBER %d IS NOT PRIME\n",num);
+}
+int main()
+{
+   int num;
+   printf("ENTER ANY NUMBER YA USER : ");
+   scanf("%d",&num);
+
+   is_prime_num(num);
+   //printf("YOUR NUMBER IS %d ",func);
+    return 0;
+}
+******************************************************************************************
+C program to print all prime numbers between 1 to n
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+     int num,i,count,n;
+    printf("Enter max range: ");
+    scanf("%d",&n);
+
+    for(num = 1;num<=n;num++){
+
+         count = 0;
+
+         for(i=2;i<=num/2;i++){
+             if(num%i==0){
+                 count++;
+                 break;
+             }
+        }
+
+         if(count==0 && num!= 1)
+             printf("%d\t\t ",num);
+    }
+
+
+    return 0;
+}
+**************************************************************************************************
+check if armstrong number or not
+
+#include <stdio.h>
+#include <stdlib.h>
+//armstrong number like := 371 = 3*3*3 + 7*7*7 + 1*1*1
+int main()
+{
+     int num,temp,result,sum=0;
+     printf("ENTER YOUR NUMBER TO CHECK IF ARMSTRONG OR NO: ");
+    // fflush(stdout);
+     scanf("%d",&num);
+
+     temp = num;
+     while(num>0)
+     {
+         result = num%10;
+         sum = sum+(result*result*result);
+         num =num/10;
+     }
+     if(temp==sum)
+        printf("YOUR ENTERED NUMBER IS ARMSTRONG NUMBER");
+
+     else
+        printf("YOUR ENTERED NUMBER IS NOT ARMSTRONG NUMBER");
+
+
+
+    return 0;
+}
+****************************************************************************************************************
+C program to find ones complement of a binary number
+
+/**
+ * C program to find 1s complement of a binary number
+ */
+
+#include <stdio.h>
+
+#define SIZE 8
+
+int main()
+{
+    char binary[SIZE + 1], onesComp[SIZE + 1];
+    int i, error=0;
+
+    printf("Enter %d bit binary value: ", SIZE);
+    
+    /* Input binary string from user */
+    gets(binary);
+
+    /* Store all inverted bits of binary value to onesComp */
+    for(i=0; i<SIZE; i++)
+    {
+        if(binary[i] == '1')
+        {
+            onesComp[i] = '0';
+        }
+        else if(binary[i] == '0')
+        {
+            onesComp[i] = '1';
+        }
+        else
+        {
+            printf("Invalid Input");
+            error = 1;
+
+            /* Exits from loop */
+            break;
+        }
+    }
+
+    /* Marks the end of onesComp string */
+    onesComp[SIZE] = '\0';
+
+    /* Check if there are binary string contains no error */
+    if(error == 0)
+    {
+        printf("Original binary = %s\n", binary);
+        printf("Ones complement = %s", onesComp);
+    }
+
+    return 0;
+}
+****************************************************************************************************************
+C program to find twos complement of a binary number
+
+/**
+ * C program to find twos complement of a binary number
+ */
+
+#include <stdio.h>
+
+#define SIZE 8
+
+int main()
+{
+    char binary[SIZE + 1], onesComp[SIZE + 1], twosComp[SIZE + 1];
+    int i, carry=1;
+
+    printf("Enter %d bit binary value: ", SIZE);
+    
+    /* Input 8-bit binary string */
+    gets(binary);
+
+    /* Find ones complement of the binary number */
+    for(i=0; i<SIZE; i++)
+    {
+        if(binary[i] == '1')
+        {
+            onesComp[i] = '0';
+        }
+        else if(binary[i] == '0')
+        {
+            onesComp[i] = '1';
+        }
+    }
+    onesComp[SIZE] = '\0';
+
+    /*
+     * Add 1 to the ones complement
+     */
+    for(i=SIZE-1; i>=0; i--)
+    {
+        if(onesComp[i] == '1' && carry == 1)
+        {
+            twosComp[i] = '0';
+        }
+        else if(onesComp[i] == '0' && carry == 1)
+        {
+            twosComp[i] = '1';
+            carry = 0;
+        }
+        else
+        {
+            twosComp[i] = onesComp[i];
+        }
+    }
+    twosComp[SIZE] = '\0';
+
+    printf("Original binary = %s\n", binary);
+    printf("Ones complement = %s\n", onesComp);
+    printf("Twos complement = %s\n", twosComp);
+
+    return 0;
+}
+*********************************************************************************************
+binary to decimal
+
+/**
+ * C program to convert binary number system to decimal number system
+ */
+
+#include <stdio.h>
+#include <math.h>
+
+#define BASE 2
+
+int main()
+{
+    long long binary, decimal=0, tempBinary;
+    int N=0;
+
+    printf("Enter any binary number: ");
+    scanf("%lld", &binary);
+
+    tempBinary = binary;
+
+    while(tempBinary!=0)
+    {
+        /* If current binary digit is 1 */
+        if(tempBinary % 10 == 1)
+        {
+            decimal += pow(BASE, N);
+        }
+
+        N++;
+        tempBinary /= 10;
+    }
+
+    printf("Binary number = %lld\n", binary);
+    printf("Decimal number= %lld", decimal);
+
+    return 0;
+}
+*********************************************************************************************
+Pascal Triangle
+
+#include <stdio.h>
+
+int main() {
+    int rows, coefficient = 1;
+
+    printf("Enter the number of rows: ");
+    scanf("%d", &rows);
+
+    for (int i = 0; i < rows; i++) {
+        for (int space = 1; space <= rows - i; space++) {
+            printf("  ");
+        }
+
+        for (int j = 0; j <= i; j++) {
+            if (j == 0 || i == 0) {
+                coefficient = 1;
+            } else {
+                coefficient = coefficient * (i - j + 1) / j;
+            }
+
+            printf("%4d", coefficient);
+        }
+
+        printf("\n");
+    }
+
+    return 0;
+}
+*****************************************************************************************************
+
+

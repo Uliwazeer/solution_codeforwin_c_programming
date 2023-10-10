@@ -1,0 +1,145 @@
+/**
+ * C program to find maximum between two numbers using switch case
+ */
+
+#include <stdio.h>
+
+int main()
+{
+    int num1, num2;
+
+    /* Input two numbers from user */
+    printf("Enter two numbers to find maximum: ");
+    scanf("%d%d", &num1, &num2);
+
+    /* Expression (num1 > num2) will return either 0 or 1 */
+    switch(num1 > num2)
+    {   
+        /* If condition (num1>num2) is false */
+        case 0: 
+            printf("%d is maximum", num2);
+            break;
+
+        /* If condition (num1>num2) is true */
+        case 1: 
+            printf("%d is maximum", num1);
+            break;
+    }
+
+    return 0;
+}
+**********************************************************************************************************
+/**
+ * C program to check Even or Odd number using switch case
+ */
+
+#include <stdio.h>
+
+int main()
+{
+    int num;
+
+    /* Input a number from user */
+    printf("Enter any number to check even or odd: ");
+    scanf("%d", &num);
+
+    switch(num % 2)
+    {
+        /* If n%2 == 0 */
+        case 0: 
+            printf("Number is Even");
+            break;
+
+        /* Else if n%2 == 1 */
+        case 1: 
+            printf("Number is Odd");
+            break;
+    }
+
+    return 0;
+}
+*******************************************************************************************************
+/**
+ * C program to check positive negative or zero using switch case
+ */ 
+#include <stdio.h>
+
+int main()
+{
+    int num;
+
+    printf("Enter any number: ");
+    scanf("%d", &num);
+
+    switch (num > 0)
+    {
+        // Num is positive
+        case 1:
+            printf("%d is positive.", num);
+        break;
+
+        // Num is either negative or zero
+        case 0:
+            switch (num < 0)
+            {
+                case 1: 
+                    printf("%d is negative.", num);
+                    break;
+                case 0:
+                    printf("%d is zero.", num);
+                    break;
+            }
+        break;
+    }
+
+    return 0;
+}
+****************************************************************************************************************
+/**
+ * C program to create Simple Calculator using switch case
+ */
+
+#include <stdio.h>
+
+int main()
+{
+    char op;
+    float num1, num2, result=0.0f;
+
+    /* Print welcome message */
+    printf("WELCOME TO SIMPLE CALCULATOR\n");
+    printf("----------------------------\n");
+    printf("Enter [number 1] [+ - * /] [number 2]\n");
+
+    /* Input two number and operator from user */
+    scanf("%f %c %f", &num1, &op, &num2);
+
+    /* Switch the value and perform action based on operator*/
+    switch(op)
+    {
+        case '+': 
+            result = num1 + num2;
+            break;
+
+        case '-': 
+            result = num1 - num2;
+            break;
+
+        case '*': 
+            result = num1 * num2;
+            break;
+
+        case '/': 
+            result = num1 / num2;
+            break;
+
+        default: 
+            printf("Invalid operator");
+    }
+
+    /* Prints the result */
+    printf("%.2f %c %.2f = %.2f", num1, op, num2, result);
+
+    return 0;
+}
+**********************************************************************************************************

@@ -1,0 +1,575 @@
+LSB LEAST SIGNIFICANT BIT
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdio.h>
+
+
+int main(void)
+{
+    int num;
+
+    printf("ENTER YOUR NUMBER YA USER: ");
+    scanf(" %d",&num);
+
+ if(num & 1)
+    printf("YOUR ENTERED NUMBER LSB IS %d IS SET[1]",num);
+  else
+    printf("YOUR ENTERED NUMBER LSB IS %d IS USET[0]",num);
+
+    return 0;
+}
+********************************************************************************************************
+MSB MOST SIGNIFICANT BIT
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdio.h>
+
+#define bit sizeof(int)*8
+int main(void)
+{
+    int num,MSB;
+
+    printf("ENTER YOUR NUMBER YA USER: ");
+    scanf(" %d",&num);
+
+    MSB = 1<<(bit-1);
+ if(num & MSB)
+    printf("YOUR ENTERED NUMBER MSB IS %d IS SET[1]",num);
+  else
+    printf("YOUR ENTERED NUMBER MSB IS %d IS USET[0]",num);
+
+    return 0;
+}
+*************************************************************************************************
+C program to get nth bit of a number user input any number to check position of bit if 0 or 1
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdio.h>
+
+
+int main(void)
+{
+    int num,bit,bit_status;
+
+    printf("ENTER YOUR NUMBER YA USER: ");
+    scanf(" %d",&num);
+
+     printf("ENTER YOUR NUMBER OF NTH POSITION FROM[0-31] YA USER: ");
+    scanf(" %d",&bit);
+    bit_status = (num >> bit)&1;
+
+    printf("YOUR ENTERED NUMBER IS %d\n AND YOUR ENTERED BIT IS %d\n AND NTH IS %d\n",num,bit,bit_status);
+
+    return 0;
+}
+********************************************************************************************************
+C program to set nth bit of a number
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdio.h>
+
+
+int main(void)
+{
+    int num,bit,bit_status;
+
+    printf("ENTER YOUR NUMBER YA USER: ");
+    scanf(" %d",&num);
+
+     printf("ENTER YOUR NUMBER OF NTH POSITION FROM[0-31] YA USER: ");
+    scanf(" %d",&bit);
+    bit_status = (1 << bit)|num;
+
+    printf("YOUR ENTERED NUMBER IS %d\n AND YOUR ENTERED BIT IS %d\n AND NEW NUMBER SET IS %d\n",num,bit,bit_status);
+
+    return 0;
+}
+***************************************************************************************************
+C program to clear nth bit of a number 
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdio.h>
+
+
+int main(void)
+{
+    int num,bit,bit_status;
+
+    printf("ENTER YOUR NUMBER YA USER: ");
+    scanf(" %d",&num);
+
+     printf("ENTER YOUR NUMBER OF NTH POSITION FROM[0-31] YA USER: ");
+    scanf(" %d",&bit);
+    bit_status = num & (~(1 << bit));
+
+    printf("YOUR ENTERED NUMBER IS %d\nAND YOUR ENTERED BIT IS %d\nAND NEW NUMBER CLEAR IS %d\n",num,bit,bit_status);
+
+    return 0;
+}
+************************************************************************************************************
+toggle bit
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdio.h>
+
+
+int main(void)
+{
+    int num,bit,bit_status;
+
+    printf("ENTER YOUR NUMBER YA USER: ");
+    scanf(" %d",&num);
+
+     printf("ENTER YOUR NUMBER OF NTH POSITION FROM[0-31] YA USER: ");
+    scanf(" %d",&bit);
+    bit_status = num ^ (1 << bit);
+
+    printf("YOUR ENTERED NUMBER IS %d\nAND YOUR ENTERED BIT IS %d\nAND NEW NUMBER TOGGLE IS %d\n",num,bit,bit_status);
+
+    return 0;
+}
+*******************************************************************************************************
+C program to get highest order set bit of a number
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdio.h>
+#define int_size sizeof(int)*8
+
+int main(void)
+{
+    int num,bit,i,order =-1;
+
+    printf("ENTER YOUR NUMBER YA USER: ");
+    scanf(" %d",&num);
+
+    for(i=0;i<int_size;i++)
+    {
+        if((num>>i)&1)
+            order = i;
+    }
+    if(order != -1)
+        printf("YOUR HIGHEST ORDER SET BIT IN NUMBER %d IT IS INDEX IN BINARY IS %d",num,order);
+    else
+        printf("NO HIGHEST ORDER ENTERED");
+
+    return 0;
+}
+********************************************************************************************************
+C program to get lowest order or first set bit of a number
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdio.h>
+#define int_size sizeof(int)*8
+
+int main(void)
+{
+    int num,i,order;
+
+    printf("ENTER YOUR NUMBER YA USER: ");
+    scanf(" %d",&num);
+
+    order = int_size -1;
+    for(i=0; i<int_size; i++)
+    {
+        if((num>>i)&1)
+        {
+            order = i;
+            break;
+        }
+    }
+
+    printf("YOUR LOWEST ORDER SET BIT IN NUMBER %d IT IS INDEX IN BINARY IS %d",num,order);
+
+
+    return 0;
+}
+****************************************************************************************************
+C program to count trailing zeros in a binary number 
+Count number of zeros on right side
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdio.h>
+#define int_size sizeof(int)*8
+
+int main(void)
+{
+    int num,i,count=0;
+
+    printf("ENTER YOUR NUMBER YA USER: ");
+    scanf(" %d",&num);
+
+    for(i=0; i<int_size; i++)
+    {
+        if((num>>i)&1)
+        {
+            break;
+        }
+        count++;
+    }
+
+    printf("TRAILLING NUMBER OF TOTAL ZERO IN NUMBER %d IT IS INDEX IN BINARY IS %d",num,count);
+
+
+    return 0;
+}
+*****************************************************************************************************************
+C program to flip all bits of a binary number 
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdio.h>
+#define int_size sizeof(int)*8
+
+int main(void)
+{
+    int num,i,flip_num;
+
+    printf("ENTER YOUR NUMBER YA USER: ");
+    scanf(" %d",&num);
+
+    flip_num = ~num;
+
+    printf("YOUR ENTERED NUMBER %d FLIPPED IS OR ONE FIRST COMPLEMENT IS %d",num,flip_num);
+
+
+    return 0;
+}
+******************************************************************************************************************  
+C program to count zeros and ones in a binary number 
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdio.h>
+#define int_size sizeof(int)*8
+
+int main(void)
+{
+    int num,i,ones=0,zeros=0;
+
+    printf("ENTER YOUR NUMBER YA USER: ");
+    scanf(" %d",&num);
+
+
+    for(i=0; i<int_size; i++)
+    {
+        if(num & 1)
+            ones++;
+        else
+            zeros++;
+        num >>=1;
+    }
+
+  printf("YOUR TOTAL ZEROS IN NUMBER %d ARE %d\n",num,32-zeros);
+  printf("YOUR TOTAL ONES IN NUMBER %d ARE %d\n",num,ones);
+
+    return 0;
+}
+****************************************************************************************************************
+C program to convert decimal to binary number system using bitwise operator
+
+/**
+ * C program to convert decimal to binary number system
+ */
+
+#include <stdio.h>
+#define INT_SIZE sizeof(int) * 8 /* Size of int in bits */
+
+int main()
+{
+    int num, index, i;
+    int bin[INT_SIZE];
+
+    /* Input number from user */
+    printf("Enter any number: ");
+    scanf("%d", &num);
+
+    index = INT_SIZE - 1;
+
+    while(index >= 0)
+    {
+        /* Store LSB of num to bin */
+        bin[index] = num & 1;
+
+        /* Decrement index */
+        index--;
+
+        /* Right Shift num by 1 */
+        num >>= 1;
+    }
+
+    /* Print converted binary */
+    printf("Converted binary: ");
+    for(i=0; i<INT_SIZE; i++)
+    {
+        printf("%d", bin[i]);
+    }
+
+    return 0;
+}
+**************************************************************************************************************
+C program to swap two numbers using bitwise operator
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdio.h>
+//print two numbers without using temp varaibles or new variables
+//we use xor operator
+
+int main(void)
+{
+
+    int num1,num2;
+    printf("ENTER YOUR FIRST NUMBER YA USER: ");
+    scanf(" %d",&num1);
+    printf("ENTER YOUR SECOND NUMBER YA USER: ");
+    scanf(" %d",&num2);
+
+
+    num1 ^= num2;
+    num2 ^= num1;
+    num1 ^= num2;
+
+    printf("NUM1 IS SWAPPED WITH NUM2 %d\n",num1);
+    printf("NUM2 IS SWAPPED WITH NUM1 %d\n",num2);
+
+
+    return 0;
+}
+****************************************************************************************************************
+C program to check even or odd using bitwise operator
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdio.h>
+//print two numbers without using temp varaibles or new variables
+//we use xor operator
+
+int main(void)
+{
+int num;
+
+    /* Input number from user */
+    printf("Enter any number: ");
+    scanf("%d", &num);
+
+    if(num & 1)
+    {
+        printf("%d is odd.", num);
+    }
+    else
+    {
+        printf("%d is even.", num);
+
+    return 0;
+}
+/////////////////////////////////OR//////////////////////////////////
+/**
+ * C program to check whether a number is even or odd using bitwise operator
+ */
+
+#include <stdio.h>
+
+int main()
+{
+    int num;
+
+    /* Input number from user */
+    printf("Enter any number: ");
+    scanf("%d", &num);
+
+    (num & 1) 
+        ? printf("%d is odd.", num) 
+        : printf("%d is even.", num);
+
+    return 0;
+}
+*************************************************************************************************************
+count number of zero on left side of binary number
+
+/**
+ * C program to count leading zeros in a binary number using bitwise operator
+ */
+
+#include <stdio.h>
+#define INT_SIZE sizeof(int) * 8
+
+int main()
+{
+    int num, count, msb, i;
+
+    /* Input number from user */
+    printf("Enter any number: ");
+    scanf("%d", &num);
+
+    // Equivalent to
+    // 10000000 00000000 00000000 00000000
+    msb = 1 << (INT_SIZE - 1);
+
+    count = 0;
+
+    /* Iterate over each bit */
+    for(i=0; i<INT_SIZE; i++)
+    {
+        /* If leading set bit is found */
+        if((num << i) & msb)
+        {
+            /* Terminate the loop */
+            break;
+        }
+
+        count++;
+    }
+
+    printf("Total number of leading zeros in %d is %d", num, count);
+
+    return 0;
+}
+****************************************************************************************************************
+C program to rotate bits of a number
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdio.h>
+
+
+int main(void)
+{
+    int num,rotate_num;
+    int size = sizeof(int) *8;
+
+    printf("ENTER YOUR NUMBER YA USER: ");
+    fflush(stdin);
+    scanf("%d",&num);
+
+
+     printf("ENTER YOUR NUMBER OF ROTATE YA USER: ");
+    fflush(stdin);
+    scanf("%d",&rotate_num);
+
+
+    //LEFT ROTATE FOR BITS
+    int left_rotate= (num << rotate_num) | (num >> (size- rotate_num));
+    printf("LEFT ROTATE IS %d\n",left_rotate);
+
+
+    //RIGHT ROTATE FOR BITS
+    int right_rotate=(num >> rotate_num) | (num << (size- rotate_num));
+    printf("RIGHT ROTATE IS %d\n",right_rotate);
+
+
+
+
+    return 0;
+}
+//////////////////////////////////////OR//////////////////////////////////////////
+/**
+ * C program to rotate bits of a number.
+ */
+
+
+#include <stdio.h>
+
+#define INT_SIZE sizeof(int)        // Size of int in bytes
+#define INT_BITS INT_SIZE * 8 - 1   // Size of int in bits - 1
+
+
+/* Function declarations */
+int rotateLeft(int num, unsigned int rotation);
+int rotateRight(int num, unsigned int rotation);
+
+
+int main()
+{
+    int num;
+    unsigned int rotation;
+
+    /* Input number from user */
+    printf("Enter a number: ");
+    scanf("%d", &num);
+
+    /* Input number of rotation */
+    printf("Enter number of rotation: ");
+    scanf("%u", &rotation);
+
+
+    /* Print rotated number */
+    printf("%d left rotated %u times = %d\n\n",  num, rotation, rotateLeft(num, rotation));
+    printf("%d right rotated %u times = %d\n", num, rotation, rotateRight(num, rotation));
+
+
+    return 0;
+}
+
+
+
+/**
+ * Function to rotate bits of a number to left.
+ *
+ * @num         Number to rotate.
+ * @rotation    Number of times to rotate left.
+ */
+int rotateLeft(int num, unsigned int rotation)
+{
+    int DROPPED_MSB;
+
+    // The effective rotation
+    rotation %= INT_BITS;
+
+
+    // Loop till rotation becomes 0
+    while(rotation--)
+    {
+        // Get MSB of num before it gets dropped
+        DROPPED_MSB = (num >> INT_BITS) & 1; 
+
+        // Left rotate num by 1 and 
+        // Set its dropped MSB as new LSB
+        num = (num << 1) | DROPPED_MSB;
+    }
+
+    return num;
+}
+
+
+
+/**
+ * Function to rotate bits of a number to right.
+ *
+ * @num         Number to rotate.
+ * @rotation    Number of times to rotate right.
+ */
+int rotateRight(int num, unsigned int rotation)
+{
+    int DROPPED_LSB;
+
+    // The effective rotation
+    rotation %= INT_BITS;
+
+
+    // Loop till rotation becomes 0
+    while(rotation--)
+    {
+        // Get LSB of num before it gets dropped
+        DROPPED_LSB = num & 1;
+
+        // Right shift num by 1 and 
+        // Clear its MSB
+        num = (num >> 1) & (~(1 << INT_BITS));
+
+        // Set its dropped LSB as new MSB
+        num = num | (DROPPED_LSB << INT_BITS);
+    }
+
+    return num;
+}
+*****************************************************************************************
+

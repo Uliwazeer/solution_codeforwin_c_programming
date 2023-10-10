@@ -1,0 +1,164 @@
+المصفوفة عبارة عن بنية بيانات خطية تحتوي على مجموعة متسلسلة محدودة من البيانات المتجانسة. يمكننا تخزين مجموعة من القيم في مصفوفة.
+
+يستخدم المصفوفة فهرس قيمة عدد صحيح للوصول إلى عنصر معين. يبدأ الفهرس من 0 ويستمر حتى N-1 (حيث N هو حجم المصفوفة).
+
+
+
+In C, there are several ways to write an array. Here are three common approaches:
+
+1-Explicit Initialization:
+This method involves explicitly specifying the values of each element in the array during its declaration. Here's an example:
+int numbers[] = {1, 2, 3, 4, 5};
+```
+
+In this case, an integer array named "numbers" is declared and initialized with the values 1, 2, 3, 4, and 5.
+
+
+
+2-Using a Loop for Initialization:
+If you want to populate an array with a large number of elements or compute the values dynamically, you can use a loop to initialize the array. Here's an example:
+int numbers[10];
+int i;
+
+for (i = 0; i < 10; i++) {
+    numbers[i] = i + 1;
+}
+```
+
+In this example, an integer array named "numbers" is declared with a size of 10. The loop is used to assign the values 1 to 10 to each element of the array.
+
+3-Partial Initialization:
+If you want to initialize only some elements of an array explicitly, you can specify the values for those elements and let the rest be automatically initialized to zero. Here's an example:
+int numbers[5] = {1, 2};  // The remaining elements are initialized to 0
+```
+
+In this case, an integer array named "numbers" is declared with a size of 5. The first two elements are explicitly initialized with the values 1 and 2, while the remaining elements are automatically initialized to zero.
+
+
+
+************************************************************************************TYPES OF ARRAY*********************************************************************
+
+1-One-Dimensional Arrays:
+One-dimensional arrays, also known as linear arrays, are the simplest type of arrays. 
+They consist of a single row or a single column of elements. 
+Each element in the array is accessed using a single index. For example:
+int numbers[5];  // One-dimensional integer array
+float prices[10];  // One-dimensional float array
+char characters[26];  // One-dimensional character array
+```
+
+
+2-Multi-Dimensional Arrays:
+Multi-dimensional arrays are arrays with more than one dimension. They are often used to represent matrices, tables, or grids. 
+The elements in a multi-dimensional array are accessed using multiple indices. For example:
+int matrix[3][3];  // Two-dimensional integer array
+float table[4][2];  // Two-dimensional float array
+char grid[5][5];  // Two-dimensional character array
+```
+
+You can have arrays with more than two dimensions as well, such as three-dimensional arrays, four-dimensional arrays, and so on.
+
+
+
+3-Jagged Arrays:
+Jagged arrays, also known as ragged arrays or arrays of arrays, are arrays in which each element is an array itself. 
+The sub-arrays can have different lengths, allowing for irregular or jagged structures. For example:
+int jaggedArray[3][];
+jaggedArray[0] = (int[]){1, 2, 3};
+jaggedArray[1] = (int[]){4, 5};
+jaggedArray[2] = (int[]){6, 7, 8, 9};
+```
+
+In this example, `jaggedArray` is a two-dimensional array where each row is a separate one-dimensional array of varying lengths.
+
+
+4-Static Arrays:
+Static arrays are those whose size is determined at compile-time and remains fixed throughout the program execution. 
+They are typically declared with a constant size. For example:
+int staticArray[10];  // Static array with a size of 10
+```
+
+
+
+5-Dynamic Arrays:
+Dynamic arrays are created and resized dynamically at runtime using memory allocation functions like malloc() and realloc(). 
+They allow for flexibility in terms of size, but require manual memory management. For example:
+int* dynamicArray = malloc(5 * sizeof(int));  // Dynamic array with an initial size of 5
+```
+
+Dynamic arrays are particularly useful when you need to change the size of the array during program execution.
+*****************************************************************************************
+DIFFERENT BETWEEN SWAP NUM & SWAP POINTER
+ SWAP POINTERS
+#include <stdio.h>
+
+void SwapPointers(int **apPtr1, int **apPtr2);
+
+int main() {
+
+	int temp1 = 30;
+
+	int temp2 = 60;
+
+	int *ptr1 = &temp1;
+
+	int *ptr2 = &temp2;
+
+	printf("ptr1 hold address = %X\n", ptr1);
+	printf("ptr2 hold address = %X\n", ptr2);
+
+	SwapPointers(&ptr1, &ptr2);
+
+	printf("ptr1 hold address = %X\n", ptr1);
+	printf("ptr2 hold address = %X\n", ptr2);
+
+	printf("first = %d\n", *ptr1);
+	printf("Second = %d\n", *ptr2);
+
+    return 0;
+}
+
+void SwapPointers(int **apPtr1, int **apPtr2)
+{
+	int *ltempPtr = NULL;
+
+	ltempPtr = *apPtr1;
+	*apPtr1  = *apPtr2;
+	*apPtr2  = ltempPtr;
+}
+/*
+SWAP NUM
+include<stdio.h>
+
+void swap(int*, int*);
+
+int main()
+{
+    int a, b;
+
+    printf("Enter values for a and b\n");
+    scanf("%d%d", &a, &b);
+
+    printf("\n\nBefore swapping: a = %d and b = %d\n", a, b);
+
+    swap(&a, &b);
+
+    printf("\nAfter swapping: a = %d and b = %d\n", a, b);
+
+    return 0;
+}
+
+void swap(int *x, int *y)
+{
+    int temp;
+
+    temp = *x;
+    *x   = *y;
+    *y   = temp;
+}
+
+*/
+********************************************************************************************
+
+
+

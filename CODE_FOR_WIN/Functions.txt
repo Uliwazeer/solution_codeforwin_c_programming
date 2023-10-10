@@ -1,0 +1,378 @@
+max and min number 
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdio.h>
+int max_func(int n1,int n2)
+{
+    return (n1>n2)?n1:n2;
+}
+int min_func(int n1,int n2)
+{
+    return (n1>n2)?n2:n1;
+}
+int main()
+{
+
+        int num1,num2,max,min;
+        printf("ENTER YOUR TWO NUMBERS: ");
+        scanf(" %d    %d",&num1,&num2);
+        max = max_func(num1,num2);
+        printf("MAX OF %d AND %d IS %d\n",num1,num2,max);
+        min = min_func(num1,num2);
+         printf("MIN OF %d AND %d IS %d\n",num1,num2,min);
+
+
+    return 0;
+}
+********************************************************************************************************
+func to check num if is even or odd
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdio.h>
+int is_even(int num)
+{
+    return !(num &1);
+}
+int main()
+{
+
+        int num;
+        
+        printf("ENTER ANY NUMBER YA USER: ");
+        scanf(" %d",&num);
+
+        if(is_even(num))
+            printf("YOUR ENTERED NUMBER IS EVEN");
+
+        else
+            printf("YOUR ENTERED NUMBER IS ODD");
+
+
+
+    return 0;
+}
+**********************************************************************************************
+func to check if number is armstrong or perfect or prime
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdio.h>
+int is_prime(int num)
+{
+     int i;
+
+    for(i=2; i<=num/2; i++)
+    {
+        if(num%i == 0)
+        {
+            return 0;
+        }
+    }
+
+    return 1;
+}
+int is_armstrong(int num)
+{
+     int lastDigit, sum=0, originalNum, digits;
+
+    originalNum = num;
+
+    digits = (int) log10(num) + 1;
+    while(num > 0)
+    {
+        lastDigit = num % 10;
+        sum = sum + round(pow(lastDigit, digits));
+        num = num / 10;
+    }
+
+    return (originalNum == sum);
+}
+int is_perfect(int num)
+{
+     int i, sum, n;
+    sum = 0;
+    n = num;
+
+    for(i=1; i<n; i++)
+    {
+        if(n%i == 0)
+        {
+            sum += i;
+        }
+    }
+
+    return (num == sum);
+}
+int main()
+{        int num;
+
+        printf("ENTER YOUR NUMBER YA USER: ");
+        scanf(" %d",&num);
+
+        //call is_prime func
+        if(is_prime(num))
+            printf("YOUR ENTERD NUMBER %d IS PRIME\n",num);
+         else
+            printf("YOUR ENTERD NUMBER %d IS NOT PRIME\n",num);
+
+        //call is_armstrong func
+        if(is_armstrong(num))
+            printf("YOUR ENTERD NUMBER %d IS ARMSTRONG\n",num);
+         else
+            printf("YOUR ENTERD NUMBER %d IS NOT ARMSTRONG\n",num);
+
+
+      //call is_perfect func
+        if(is_perfect(num))
+            printf("YOUR ENTERD NUMBER %d IS PERFECT\n",num);
+         else
+            printf("YOUR ENTERD NUMBER %d IS NOT PERFECT\n",num);
+
+
+
+    return 0;
+}
+*********************************************************************
+Program to find power of a number using recursion
+
+double pow(double base, int expo)
+{
+    if(expo == 0)
+        return 1;
+    else if(expo > 0)
+        return base * pow(base, expo - 1);
+    else
+        return 1 / pow(base, -expo);
+}
+int main()
+{
+    double base, power;
+    int expo;
+  
+    printf("Enter base: ");
+    scanf("%lf", &base);
+    printf("Enter exponent: ");
+    scanf("%d", &expo);
+    power = pow(base, expo); 
+    
+    printf("%.2lf ^ %d = %f", base, expo, power);
+    
+    return 0;
+}
+***************************************************************************************
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^RECERISVE FUNCTION^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+power of number
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdio.h>
+
+double pow_recurisve(int base, int expo)
+{
+    if(expo == 0)
+        return 1;
+    else if(expo > 0)
+        return base * pow_recurisve(base,expo-1);
+
+    else
+        return (1/pow_recurisve(base,-expo));
+}
+int main(void)
+{
+    int expo;
+    double base;
+    printf("ENTER YOUR FIRST NUMBER OF BASE YA USER: ");
+    fflush(stdin);
+    scanf("%lf",&base);
+     printf("ENTER YOUR FIRST NUMBER OF EXPO YA USER: ");
+    fflush(stdin);
+    scanf("%d",&expo);
+
+    double x = pow_recurisve(base,expo);
+    printf("%2lf",x);
+    return 0;
+}
+**************************************************************************************************************
+print all number between two numbers
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdio.h>
+
+int printAllNum_between2Num(int lower_limit,int upper_limit)
+{
+    if(lower_limit >= upper_limit)
+        return;
+    printf("%d\t",lower_limit);
+    printAllNum_between2Num(lower_limit + 1,upper_limit);
+}
+int main(void)
+{
+    int lower_limit,upper_limit;
+
+    printf("ENTER YOUR FIRST NUMBER OF BASE YA USER: ");
+    fflush(stdin);
+    scanf("%d",&lower_limit);
+    printf("ENTER YOUR FIRST NUMBER OF EXPO YA USER: ");
+    fflush(stdin);
+    scanf("%d",&upper_limit);
+
+    int x = printAllNum_between2Num(lower_limit,upper_limit);
+    printf("%d\t",x);
+    return 0;
+}
+***************************************************************************************************
+print odd number using func recuirseve
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdio.h>
+
+int print_even_odd(int lower_limit,int upper_limit)
+{
+    if(lower_limit >= upper_limit)
+        return;
+    printf("%d\t",lower_limit);
+    print_even_odd(lower_limit + 2,upper_limit);
+    
+}
+int main(void)
+{
+    int lower_limit,upper_limit;
+
+    printf("ENTER YOUR FIRST NUMBER OF BASE YA USER: ");
+    fflush(stdin);
+    scanf("%d",&lower_limit);
+    printf("ENTER YOUR FIRST NUMBER OF EXPO YA USER: ");
+    fflush(stdin);
+    scanf("%d",&upper_limit);
+
+    int x = print_even_odd(lower_limit,upper_limit);
+    printf("%d\t",x);
+    return 0;
+}
+*****************************************************************************************************
+reverse number in recurseve func
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdio.h>
+
+int reverse(int num)
+{
+int digit = (int)log10(num);
+
+if(num == 0)
+    return 0;
+
+else
+    return ((num%10 )* pow(10,digit) )+( reverse(num/10));
+}
+int main(void)
+{
+    int num;
+
+    printf("ENTER YOUR NUMBER YA USER: ");
+    scanf(" %d",&num);
+
+    int x = reverse(num);
+    printf("YOUR REVERSE NUMBER IS: %d",x);
+    return 0;
+}
+************************************************************************************************************
+plaindrome number like 121, 020
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdio.h>
+
+int reverse(int num)
+{
+    int digit = (int)log10(num);
+
+    if(num == 0)
+        return 0;
+
+    else
+        return ((num%10 )* pow(10,digit) )+( reverse(num/10));
+}
+
+
+int is_plaindrome(int num)
+{
+    if(num == reverse(num))
+        return 1;
+
+    return 0;
+}
+int main(void)
+{
+    int num;
+
+    printf("ENTER YOUR NUMBER YA USER: ");
+    scanf(" %d",&num);
+
+    if(is_plaindrome(num)== 1)
+        printf("YOUR ENTERED NUMBER %d IS PLAINDROME",num);
+
+    else
+        printf("YOUR ENTERED NUMBER %d IS NOT PLAINDROME",num);
+
+    return 0;
+}
+************************************************************************************************************
+sum of digit
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdio.h>
+
+int sum_digit(int num)
+{
+    if(num == 0)
+        return 0;
+    else
+        return ((num%10)+sum_digit(num/10));
+}
+int main(void)
+{
+    int num;
+
+    printf("ENTER YOUR NUMBER YA USER: ");
+    scanf(" %d",&num);
+
+    int sum = sum_digit(num);
+    printf("SUM OF DIGIT IS = %d",sum);
+    return 0;
+}
+************************************************************************************************
+factorial number
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdio.h>
+
+int factorial(int num)
+{
+        if(num == 0)
+            return 1;
+        else
+            return ((num*factorial(num-1)));
+
+}
+
+int main(void)
+{
+    int num;
+
+    printf("ENTER YOUR NUMBER YA USER: ");
+    scanf(" %d",&num);
+
+    int fact=factorial(num);
+    printf("YOUR FACTORIAL OF NUMBER IS %d",fact);
+    return 0;
+}
+***************************************************************************************************
+
