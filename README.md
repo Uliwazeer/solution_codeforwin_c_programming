@@ -1,4 +1,7 @@
-# solution_codeforwin_c_programming
+# solution_codeforwin_c_programming 
+
+codeforwin.org/c-programming-examples-exercises-solutions-beginners
+
 Codeforwin is a website that provides programming tutorials, coding examples,
 and practice exercises in various programming languages, including C. It aims to 
 help beginners and intermediate programmers improve their coding skills and understanding of programming concepts.
