@@ -1,0 +1,99 @@
+
+Data types in C is classified in three broad categories.
+
+Primitive data type
+Derived data type
+User defined data type
+
+
+يعتمد حجم نوع البيانات على الآلة ويختلف من مترجم إلى آخر. ومع ذلك، توجد مواقف في البرمجة عندما نحتاج إلى معرفة إجمالي البايتات التي يشغلها النوع في الذاكرة. للعثور على الحجم الدقيق لنوع ما في برمجة C، نستخدم عامل التشغيل sizeof().
+
+
+Syntax to use sizeof() operator
+sizeof() operator can be used in various way.
+
+sizeof(type)
+sizeof(variable-name)
+sizeof(expression)
+
+Important note: Size and range of data type is compiler dependent which may vary.
+
+
+C supports two styles of constant definition.
+
+Using const keyword
+Using #define directive
+*********************************************************************************************************************************************
+ملاحظة مهمة: العديد من النصوص على الإنترنت تدعو إلى أن إعلان المتغير يخصص الذاكرة. ولكن هذا ليس صحيحا. لم يحدد معيار ANSI C أي شيء يتعلق بتخصيص الذاكرة في وقت إعلان المتغير. إنه المترجم الذي يلعب مع الموقف. المترجمون أذكياء بما يكفي لإنشاء تعليمات برمجية فعالة. قد يخصص ذاكرة للمتغير المعلن أو يمكنه حتى تجاهل المتغير المعلن بالكامل.
+
+
+
+تهيئة المتغير في C
+في وقت تعريف المتغير، يقوم مترجم C بتخصيص كتلة من البايتات في الذاكرة من نوع معين. في البداية تحتوي الذاكرة المخصصة على قيمة البيانات المهملة.
+
+نقول الحالة السابقة (حالة البيانات المهملة) لموقع الذاكرة، التي تركها البرنامج المستخدم في الماضي كقيمة غير مرغوب فيها.
+
+قد تتساءل لماذا لا تتم إعادة تعيين قيمة الذاكرة المخصصة حديثًا إلى 0 أو NULL؟ هذا بسبب مشكلة الأداء. بينما تقوم العديد من لغات البرمجة الأخرى (مثل Java وC# وJavascript وما إلى ذلك) بإعادة تعيين الذاكرة المخصصة حديثًا إلى 0 أو NULL، مما يؤثر على الأداء قليلاً.
+
+تهيئة المتغير تعني تخصيص بعض القيمة له لأول مرة. يجب علينا تجاوز القيمة المهملة، مباشرة بعد إعلان المتغير. ومن ثم، فإنه يعتبر ممارسة برمجة جيدة لتهيئة المتغيرات الخاصة بك مع 0 أو NULL. في لغة C نقوم بتهيئة متغير باستخدام عامل التعيين.
+*********************************************************************************************************************************************
+تعريف الثابت باستخدام #define
+#define هو توجيه ما قبل المعالج يُستخدم لتعريف الثوابت ووحدات الماكرو. فهو يحدد ثابت وقت التجميع ويضمن ثباتًا بنسبة 100٪.
+
+على عكس الكلمة الأساسية const، فهي لا تحدد أي متغير ولا تستهلك الذاكرة. بدلاً من ذلك، أثناء عملية الترجمة، يستبدل المترجم كل تكرار للثابت المحدد بقيمته الحرفية. ومن ثم، يطلق عليه أيضًا اسم ثابت وقت الترجمة.
+Syntax to define constant using #define
+#define <constant-name> <constant-value>
+
+Syntax to define constant using const
+const <data-type> <constant-name> = <constant-value>;
+
+Or
+
+<data-type> const <constant-name> = <constant-value>;
+
+Example to define constant using const
+const float PI = 3.14159f;
+float const e = 2.71828f;
+*********************************************************************************************************************************************
+C supports two types of typecasting –
+
+Implicit typecasting
+Explicit typecasting
+
+Implicit typecasting
+Implicit typecast is automatic type conversion done by the compiler. Compiler automatically handles data type conversion. It converts variables and constants of lower type to higher type whenever required.
+
+The automatic type conversion done by the compiler uses integer promotion rule.
+Integer promotion
+Compilers are smart at optimizing code for better performance. In the process of code optimization, the C compiler will perform integer promotion. The compiler automatically converts all operands to a common type (higher type used in expression). The process of converting a lower type to higher is known as integer promotion.
+
+Integer promotion in C
+Integer promotion in C
+*********************************************************************************************************************************************
+يوفر C ملف رأس stdio.h (إخراج الإدخال القياسي) الذي يحتوي على وظائف الإدخال/الإخراج المختلفة. من أجل تنفيذ أي عملية إدخال/إخراج، يجب عليك إضافة عبارة تضمين في الجزء العلوي من كود C الخاص بك.
+#تشمل <stdio.h>
+إدخال وإخراج الأحرف
+توفر لغة C وظيفتين لإدخال/إخراج الأحرف getchar() وputchar().
+
+أدخل حرفًا باستخدام getchar()
+في لغة C نستخدم وظيفة getchar() لقراءة حرف واحد من لوحة المفاتيح. تقوم الدالة getchar() بإرجاع عدد صحيح، أي قيمة ASCII لحرف الإدخال.
+
+تنتظر وظيفة getchar() الإدخال حتى يضغط المستخدم على أي حرف. فهو يقبل أي حرف كمدخل. لذا كن حذرًا أثناء استخدام getchar(). نظرًا لأن الأحرف غير القابلة للطباعة مثل المساحة الفارغة والأسطر الجديدة وعلامة التبويب وما إلى ذلك تعتبر أيضًا مدخلات إلى getchar().
+
+إخراج حرف باستخدام putchar()
+نستخدم وظيفة putchar() في لغة C لعرض أو إخراج حرف على وحدة التحكم (الشاشة). تأخذ الدالة putchar() وسيطة عدد صحيح (قيمة ASCII للحرف) وتعرض تمثيل الحرف الخاص بها على وحدة التحكم.
+
+يقبل scanf() عنوان الذاكرة المتغير وليس اسم المتغير. ومن ثم، يجب علينا أن نبدأ أسماء المتغيرات بالرمز &.
+
+نستخدم & (عامل العنوان) للحصول على عنوان الذاكرة الفعلي لأي متغير.
+
+*********************************************************************************************************************************************
+Properties of a local variable
+A local variable is allocated on C stack.
+Local variables are uninitialized by default and contains garbage value.
+Lifetime of a local variable is until the function or block. A local variable dies once the program control reaches outside its block.
+Local variable is accessed using block scope access.
+
+
+
+

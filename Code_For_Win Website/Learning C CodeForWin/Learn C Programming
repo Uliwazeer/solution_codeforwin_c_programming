@@ -1,0 +1,195 @@
+"C" is general-purpose procedural programming language developed by Dennis Ritchie at AT&T’s Bell laboratories in 1972.
+C. It is mostly used for the development of Operating systems, Kernels, Compilers, Device drivers, embedded systems, RDBMS packages etc.
+معظم لغات البرمجة الحديثة التي ذكرتها إما مكتوبة بلغة C أو لغة مبنية باستخدام لغة C. يبدو الأمر جنونيًا حقًا.
+ما هو نظام التشغيل الذي تستخدمه حاليا. هل هو Linux أو Mac أو Windows أو Android. حسنًا، معظم الأيام الحديثة لنظام التشغيل OS Kernel مكتوبة كليًا أو جزئيًا بلغة C.
+خوادم الويب، نعم هي التي تستضيف تطبيقاتك على الإنترنت. يتم نشر حوالي 60-70% من تطبيقات الويب على خوادم NGINX أو Apache HTTP. وأنتم تعلمون من أين يأتون. ياه كلاهما مكتوب في C.
+تطبيقات نظام إدارة قواعد البيانات (DBMS) التي تساعد في إدارة بياناتنا. MySQL وOracle وPostgres وما إلى ذلك كلها مكتوبة بالكامل أو جزئيًا بلغة C.
+سمعت عن Git (نظام التحكم في الإصدار)، وهو يُستخدم في جميع المشاريع تقريبًا باسم VCS. ونعم هذا مكتوب أيضًا باللغة C.
+Operating System
+
+Embedded Systems
+
+Database
+
+Compiler Design
+
+Gaming and Animations
+
+File Systems
+
+Web Servers
+*********************************************************************************************************************************************
+لغة C هي لغة برمجة إجرائية ذات أغراض عامة طورها دينيس ريتشي في مختبرات بيل التابعة لشركة AT&T في عام 1972. وهي لغة برمجة عالية المستوى. ومع ذلك، غالبًا ما يشار إليها على أنها لغة برمجة متوسطة المستوى؛ لأنه يوفر دعمًا غنيًا لبنيات البرمجة منخفضة المستوى.
+
+
+بدأ تطوير لغة C لإعادة تطبيق نظام التشغيل UNIX. إنها لغة قوية لدرجة أن معظم أنظمة التشغيل الشائعة مكتوبة كليًا أو جزئيًا بلغة C. وهي تستخدم في الغالب لتطوير أنظمة التشغيل والنواة والمترجمين وبرامج تشغيل الأجهزة والأنظمة المدمجة وحزم RDBMS وما إلى ذلك.
+
+تُسمى لغة C أيضًا بأنها أم جميع لغات البرمجة. لأن معظم لغات برمجة الكمبيوتر الحديثة تأثرت بشكل مباشر أو غير مباشر بلغة C (مثل C++ وJava وC# وPHP وPerl وJavaScript وما إلى ذلك).
+
+تاريخ البرمجة بلغة C
+بدأ ظهور البرمجة بلغة C في أواخر الستينيات من القرن العشرين، وكانت لها جذور عميقة في تطوير نظام التشغيل UNIX. UNIX هو نظام تشغيل شبكي شائع يضخ قلب الإنترنت الحديث.
+
+في أواخر الستينيات، طور كين طومسون ودينيس ريتشي لغة تسمى B. يستخدم الإصدار السابق من UNIX لغة البرمجة B. إنه يرث العديد من ميزاته من BCPL (لغة البرمجة الأساسية المدمجة).
+
+في وقت لاحق من أوائل السبعينيات، نشأت الحاجة إلى نظام تشغيل محمول ولغة برمجة. بل تطوير البرامج ونظام التشغيل لجهاز معين. ظهرت الحاجة إلى نظام تشغيل محمول. كانت هذه هي الفترة التي بدأ فيها تطوير لغة البرمجة C.
+
+خلال الفترة من 1969 إلى 1972، قام دينيس ريتشي في مختبرات بيل بتطوير لغة C. وفي عام 1972، أصبح الإصدار الأول من برمجة C علنيًا رسميًا. ورثت لغة C العديد من الميزات من ALGOL وBCPL وB. وهي لغة قوية لدرجة أن نظام التشغيل UNIX مكتوب بالكامل تقريبًا بلغة C.
+
+وفي عام 1978، اكتسب شعبية كبيرة من مختبرات بيل إلى قلب كل مبرمج. نشر برين كيرنيغان مع دينيس ريتشي أول كتاب عن لغة البرمجة C بعنوان "لغة البرمجة C". يُعرف الكتاب أيضًا باسم "كتاب K&R C".
+*********************************************************************************************************************************************
+معايير                                                                                                                                  C Standard
+أدت الشعبية الهائلة لبرمجة C إلى تطوير إصداراتها. ومع ذلك، كانت كل نسخة مشابهة للنسخة الأصلية ولكنها غير متوافقة في كثير من الأحيان. لضمان مستوى C في كل إصدار، بدأ المعهد الأمريكي الوطني للمعايير (ANSI) العمل على معايير C.
+
+في عام 1989، قامت ANSI بوضع الأساس لجميع تطبيقات مترجمات لغة C ونشرت أول معيار للغة C. يُعرف معيار لغة C الأول شعبيًا باسم C89. يُشار إلى معيار C الحالي عادةً باسم C11.
+*********************************************************************************************************************************************
+There are many C compilers available such as GCC C, Borland Turbo C, Visual C, Quick C etc. In this entire series of C tutorial, I will work with GCC C compiler.
+
+GCC C compiler is reliable, efficient and popular C/C++ compiler among developers. It is open source and available to download for all most all operating systems. It is pre-installed C compiler in all UNIX based operating systems.
+*********************************************************************************************************************************************
+#include هو توجيه ما قبل المعالج يستخدم للقيام ببعض المعالجة قبل عملية الترجمة. يقوم توجيه التضمين المسبق للمعالج بإدراج كافة محتويات ملف stdio.h في بداية الكود الخاص بنا.
+
+لماذا يتم استخدامه هنا؟ يحتوي الملف stdio.h على وظائف إخراج الإدخال المختلفة. لقد استخدمت وظيفة printf() لطباعة النص الموجود في ملف الرأس stdio.h. ومن ثم، يجب أن أخبر مترجم لغة C صراحةً بربط وظيفة printf() ببرنامجنا.
+********************************************************************************************************************************************
+main() is a special function in C programming language. Reasons that make it special are –
+
+It defines starting point of the program.
+main is the first executed function.
+It controls all other child functions.
+Behaves as both user-defined and pre-defined function.
+Every software written in C must have a main function.
+C is a popular programming language. There exist many compilers and standards for C. So exists many variants of main function declaration. In this post we will learn various declarations of main one by one. Later we will see the standard definition of the main function in C.
+*********************************************************************************************************************************************
+Various main() function declarations
+main()
+main(int argc, char * argv[])
+main(int argc, char ** argv)
+int main()
+int main(void)
+int main(int argc, char * argv[])
+int main(int argc, char ** argv)
+int main(int argc, char * argv[], char *envp[])
+int main(int argc, char ** argv, char ** envp)
+void main()
+void main(void)
+void main(int argc, char * argv[])
+void main(int argc, char ** argv)
+*********************************************************************************************************************************************
+1-main()
+Some of the older C compilers supports a feature 
+This definition of the main function accepts no parameters and returns an integer. 
+need a return statement to return the integer value.
+not support c standard
+Note: New compilers may not supports this declaration.
+
+2-main(int argc, char * argv[]) Or main(int argc, char ** argv)
+Optionally it accepts command line arguments from the user. 
+It also returns an integer value by default.
+Here the first parameter argc is total number of command line arguments passed.
+argv is an array of string containing all command line arguments passed to the program.
+
+3-int main()
+This is one of the standard main function declaration used across various compilers. 
+It may or may not accept any parameter and returns an integer value at the end of program. 
+Unlike upper two definitions, we must use return keyword to return an integer value at the end of program. 
+Returning zero specifies that the program completed all desired operation and terminated successfully. 
+A non-zero value specifies that the program terminated without completing all desired operations.
+Note: This definition of main is not qualified standard definition and not used in real life projects. 
+It is superseded by the below definition.
+
+4-int main(void)
+int main(void) is qualified definition of main function. 
+It looks similar to int main(). However, there is little difference between both.
+int main() may or may not accept any arguments. Whereas int main(void) will never accept an argument. 
+The void keyword restricts it to accept any arguments.
+Important note: Arguments passed to the int main(void) are ignored.
+
+5-int main(int argc, char * argv[]) int main(int * argc, char ** argv)
+The above two declarations convey same meaning. 
+These two declarations are also a part of the current C standard. 
+We use this when we need to pass command line arguments to the main function.
+It accepts two parameters argc and argv and returns an integer.
+The parameter argc is total number of arguments passed to the main.
+Whereas argv is an array of string, containing all command line arguments passed.
+
+6-int main(int argc, char * argv[], char * envp[]) int main(int argc, char ** argv, char ** envp)
+This is less known declaration of main in C. 
+It accepts three parameters and like other standard main definitions, returns an integer.
+The parameter argc specifies total command line arguments passed.
+The first array of string argv contains all command line arguments passed.
+The second array of string envp contains list of all environment variables.
+This declaration of main can be handy when we need access to the environment variables locally.
+
+7-void main()
+This is a non-standard way to declare main function. 
+Yet, many beginner C programmers uses this due to its easiness. 
+Modern C compilers may not support this declaration.
+It may or may not take any argument and returns void. 
+Returning void to the operating system is considered as poor programming practice. 
+As nobody could ever know whether the program terminated successfully or not.
+
+8-void main(void)
+This declaration of main is similar to the previous definition except in the terms of parameters. 
+As like the previous definition of main, it returns nothing at the end of the program. 
+In addition it ensures that, it does not accepts any parameter.
+
+9-void main(int argc, char * argv[]) void main(int argc, char ** argv)
+This is also a non-standard way to declare main function. 
+You may use this definition to receive command line arguments from user. 
+It returns nothing but takes two parameters argc and argv.
+The parameter argc contains the total command lines arguments.
+The parameter argv is an array of string. It contains all command line arguments passed.
+*********************************************************************************************************************************************
+gcc -save-temps compilation.c -o compilation
+
+What are Keywords?
+Keywords are the reserved words whose meaning is predefined by the programming language specification. 
+They convey some special meaning in programming and we must not use them for other purposes.
+For example – int is a C keyword that defines integer data type. You must not use int for other purposes.
+There are total 32 keywords in C as per ANSI standards.
+
+Note: Apart from the 32 standard C keyword, different compilers can have more number of keywords.
+
+What are Identifiers?
+Identifiers are the names given to various programming elements. Such as name given to a variable, function, user defined type etc.
+In real life, you may think name given to a person or object as an identifier. 
+In programming, we use identifiers to identify a programming element uniquely.
+
+C is a case sensitive language hence you must be careful while naming an identifier. For example – num, NUM, Num all are different.
+
+Bitwise operators work with integer type. They do not support float or real types.
+
+
+Prefix vs Postfix
+Both prefix and postfix does same task of incrementing/decrementing the value by 1. However, there is a slight difference in order of evaluation.
+Prefix first increment/decrements its value then returns the result. Whereas postfix first returns the result then increment/decrement the value.
+
+Conditional operator is a ternary operator used to evaluate an expression based on some condition. It is a replacement of short if…else statement.
+
+Syntax of conditional operator
+<conditional-expression> ? <true-expression> : <false-expression>
+
+Operator associativity can either be left-to-right or right-to-left. Means if an expression contains two or more operators of same precedence. Then they are evaluated in either left to right or right to left order.
+
+Consider the below expression
+int x = 5 * 4 / 4 % 3;
+
+Important note: Operators with same precedence have same associativity.
+*********************************************************************************************************************************************
+There are four types of literals in C programming.
+
+Integer literal
+Float or real literal
+Character literal
+String literal
+*********************************************************************************************************************************************
+String literals
+String literal is a sequence of characters enclosed within double quotes. String constant occupies (total count of characters + 1) byte space in memory. The additional 1 byte is used for \0 (NULL) character. A NULL value is added explicitly at the end of the string to specify termination of the string. You can also concatenate string literals using + operator.
+
+Examples of some valid string constants
+"I love programming!"
+I love Codeforwin.\n" + "I love India.
+
+Important note: ‘A’ and “A” both looks similar but in real both are different. ‘A’ is a character constant occupying 1 byte space in memory. Whereas “A” is a string constant and occupies 2 byte space in memory.
+*********************************************************************************************************************************************
+
+

@@ -1,0 +1,264 @@
+نموذج البرمجة هو طريقة لتصنيف لغات البرمجة وفقًا لأسلوب البرمجة الخاص بها والميزات التي تقدمها. هناك العديد من الميزات التي تحدد نموذج البرمجة مثل النمطية أو الكائنات أو المقاطعات أو الأحداث أو تدفق التحكم وما إلى ذلك. يمكن أن تكون لغة البرمجة نموذجًا واحدًا أو نماذج متعددة.
+
+ومع الانتشار الواسع للبرمجة، ظهرت نماذج برمجة مختلفة إلى الوجود. بعض نماذج البرمجة الشائعة هي:
+
+البرمجة الحتمية
+البرمجة الحتمية هي أقدم نموذج ولا تزال قيد التنفيذ. إنه النموذج الممارس على نطاق واسع في البرمجة اليومية. وهو يركز بشكل أساسي على الخطوات التي يجب القيام بها ويعمل على منطق "افعل هذا أولاً ثم افعل ذلك". فهو يحدد سلسلة من البيانات التي يجب أن تتم العمليات بالترتيب. في البرمجة الحتمية، يكون تدفق التحكم واضحًا ويعتمد على مجموعة عبارات GOTO. البرمجة الحتمية تفتقر إلى دعم النمطية.
+
+من أمثلة لغات البرمجة الحتمية – Assembly وC وC++ وJava وما إلى ذلك.
+
+
+فيما يلي نهج البرمجة الحتمي لإدراج الاسم الأول والأخير للطلاب من قائمة الطلاب الذين تزيد درجاتهم عن 90.
+*********************************************************************************************************************************************
+اللغة منخفضة المستوى والمختصرة بـ LLL، هي لغات قريبة من مجموعة تعليمات مستوى الآلة. أنها توفر تجريدًا أقل أو معدومة من الأجهزة. تتفاعل لغة برمجة منخفضة المستوى مباشرة مع السجلات والذاكرة. نظرًا لأن التعليمات المكتوبة بلغات منخفضة المستوى تعتمد على الآلة. البرامج التي تم تطويرها باستخدام لغات منخفضة المستوى تعتمد على الآلة وليست محمولة.
+
+
+لا تتطلب اللغة ذات المستوى المنخفض أي مترجم أو مترجم فوري لترجمة المصدر إلى كود الآلة. قد يقوم المجمع بترجمة كود المصدر المكتوب بلغة منخفضة المستوى إلى كود الآلة.
+
+البرامج المكتوبة بلغات منخفضة المستوى سريعة وفعالة في الذاكرة. ومع ذلك، فمن الكابوس بالنسبة للمبرمجين كتابة البرامج ذات المستوى المنخفض وتصحيح أخطائها وصيانتها. يتم استخدامها في الغالب لتطوير أنظمة التشغيل وبرامج تشغيل الأجهزة وقواعد البيانات والتطبيقات التي تتطلب الوصول المباشر إلى الأجهزة.
+
+يتم تصنيف اللغات منخفضة المستوى أيضًا إلى فئتين أخريين – لغة الآلة ولغة التجميع.
+*********************************************************************************************************************************************
+مميزات اللغات ذات المستوى المنخفض
+البرامج التي تم تطويرها باستخدام لغات منخفضة المستوى سريعة وفعالة في الذاكرة.
+يمكن للمبرمجين الاستفادة من المعالج والذاكرة بطريقة أفضل باستخدام لغة منخفضة المستوى.
+ليست هناك حاجة لأي مترجم أو مترجمين فوريين لترجمة المصدر إلى كود الآلة. وبالتالي، يختصر وقت التجميع والترجمة.
+توفر اللغات ذات المستوى المنخفض معالجة مباشرة لسجلات الكمبيوتر وتخزينه.
+يمكنه التواصل مباشرة مع الأجهزة.
+*********************************************************************************************************************************************
+Disadvantages of High level language
+It takes additional translation times to translate the source to machine code.
+High level programs are comparatively slower than low level programs.
+Compared to low level programs, they are generally less memory efficient.
+Cannot communicate directly with the hardware.
+Low level languages – advantages and disadvantages
+********************************************************************************************************
+Advantages of High level language
+High level languages are programmer friendly. They are easy to write, debug and maintain.
+It provide higher level of abstraction from machine languages.
+It is machine independent language.
+Easy to learn.
+Less error prone, easy to find and debug errors.
+High level programming results in better programming productivity.
+*********************************************************************************************************
+يتم اختصار اللغة عالية المستوى كـ HLL. اللغات عالية المستوى تشبه اللغة البشرية. على عكس اللغات ذات المستوى المنخفض، تعد اللغات عالية المستوى صديقة للمبرمجين، وسهلة البرمجة والتصحيح والصيانة.
+
+توفر اللغة عالية المستوى مستوى أعلى من التجريد من لغة الآلة. أنها لا تتفاعل مباشرة مع الأجهزة. وبدلاً من ذلك، يركزون أكثر على العمليات الحسابية المعقدة وكفاءة البرنامج المثلى وسهولة البرمجة.
+
+
+تستخدم البرمجة ذات المستوى المنخفض لغة صديقة للآلة. يكتب المبرمجون التعليمات البرمجية إما باللغة الثنائية أو لغة التجميع. تعد كتابة البرامج بالنظام الثنائي عملية معقدة ومرهقة. وبالتالي، لجعل البرمجة أكثر ودية للمبرمجين. تتم كتابة البرامج باللغة عالية المستوى باستخدام عبارات اللغة الإنجليزية.
+
+تتطلب البرامج عالية المستوى مترجمين/مترجمين فوريين لترجمة كود المصدر إلى لغة الآلة. يمكننا تجميع كود المصدر المكتوب بلغة عالية المستوى إلى لغات الآلة المتعددة. وبالتالي، فهي لغة مستقلة عن الآلة.
+
+اليوم يتم تطوير جميع البرامج تقريبًا باستخدام لغة برمجة عالية المستوى. يمكننا تطوير مجموعة متنوعة من التطبيقات باستخدام لغة عالية المستوى. يتم استخدامها لتطوير تطبيقات سطح المكتب ومواقع الويب وبرامج النظام وبرامج المرافق وغيرها الكثير.
+
+يتم تجميع اللغات عالية المستوى في فئتين بناءً على نموذج التنفيذ – اللغات المجمعة أو المفسرة.
+*********************************************************************************************************************************************
+سرعة البرنامج
+تتم كتابة البرامج ذات اللغة منخفضة المستوى إما باللغة الثنائية أو لغة التجميع. أنها لا تتطلب أي تجميع أو تفسير. تتفاعل مباشرة مع السجلات والذاكرة. وبالتالي، فهي أسرع نسبيًا من اللغات عالية المستوى.
+
+تستخدم اللغة عالية المستوى عبارات اللغة الإنجليزية لكتابة البرامج. ومن ثم، فهم يحتاجون إلى مترجمين أو مترجمين فوريين لترجمة المصدر إلى لغة الآلة. أنها لا تتفاعل مباشرة مع الأجهزة. وبالتالي فهي أبطأ من اللغات ذات المستوى المنخفض.
+*********************************************************************************************************************************************
+كفاءة الذاكرة
+اللغات ذات المستوى المنخفض فعالة في الذاكرة. وهي تستهلك بشكل عام ذاكرة أقل.
+
+اللغات عالية المستوى ليست ذات كفاءة في الذاكرة. يتم تشغيلها بشكل عام داخل بيئة تشغيل محددة. كما أن هناك عدة برامج أخرى تعمل بشكل متزامن لزيادة الكفاءة المثلى للبرنامج الذي يستهلك الذاكرة. وبالتالي، فإن استهلاك الذاكرة الإجمالي للغة عالية المستوى أكبر نسبيًا من اللغة منخفضة المستوى.
+*********************************************************************************************************************************************
+سهولة
+اللغات ذات المستوى المنخفض هي لغات صديقة للآلة. لكتابة برنامج بلغة منخفضة المستوى، يجب أن نعرف الثنائيات أو أساليب الإستذكار لمجموعات التعليمات ذات المستوى المنخفض. إن تذكر مجموعات التعليمات المختلفة للبنى المختلفة يكاد يكون مستحيلاً. وبالتالي، يصعب تعلم البرمجة ذات المستوى المنخفض. يتطلب تعلم اللغات ذات المستوى المنخفض معرفة وخبرة إضافية حول بنية الآلة المحددة.
+
+اللغات عالية المستوى هي لغة صديقة للمبرمجين. تتم كتابة البرامج ذات اللغة عالية المستوى باستخدام عبارات اللغة الإنجليزية. وهو أمر أسهل بكثير في التذكر من الثنائيات أو أساليب تقوية الذاكرة ذات المستوى المنخفض. وبالتالي، فإن البرمجة عالية المستوى سهلة التعلم.
+
+قابلية التنقل
+لغة منخفضة المستوى تحتوي على مجموعة تعليمات حاسوبية منخفضة المستوى. تعتمد هذه التعليمات على الآلة وتختلف باختلاف البنيات. ومن ثم، فإن البرامج التي تم تطويرها تعتمد أيضًا على الآلة وليست محمولة.
+
+تستخدم اللغات عالية المستوى عبارات اللغة الإنجليزية لكتابة البرامج. ويتم ترجمتها أيضًا إلى لغة الآلة باستخدام مترجم أو مترجم. يوجد مترجم أو مترجم منفصل لبنيات الآلة المختلفة. وهذا يترجم المصدر إلى لغة آلة محددة. ومن ثم، فإن اللغات عالية المستوى مستقلة عن الآلة ومحمولة.
+
+مستوى التجريد
+توفر اللغة ذات المستوى المنخفض تجريدًا أقل أو معدومة من الأجهزة. إنها اللغة الأقرب إلى الأجهزة. أنها تتفاعل مباشرة مع تسجيل أجهزة الكمبيوتر والذاكرة.
+
+توفر اللغة عالية المستوى مستوى عالٍ من التجريد من الأجهزة. أنها تعمل على رأس لغة الآلة. أنها لا تتفاعل مباشرة مع تسجيل أجهزة الكمبيوتر والذاكرة. هناك طبقة من نظام التشغيل والبرامج الأخرى التي تتفاعل من خلالها مع الأجهزة.
+
+تصحيح الأخطاء والصيانة
+اللغات ذات المستوى المنخفض أكثر عرضة للخطأ. من الأخطاء النحوية الصغيرة إلى تسرب الذاكرة الكبيرة. يعد اكتشاف الأخطاء وصيانتها عملية شاقة وتستغرق وقتًا طويلاً.
+
+اللغات عالية المستوى أقل عرضة للخطأ. يتم تحديد جميع الأخطاء النحوية تقريبًا باستخدام المترجمين أو المترجمين الفوريين. فهي سهلة التصحيح والصيانة بشكل عام.
+
+المعرفة والخبرة الإضافية
+اللغات ذات المستوى المنخفض تعتمد على الآلة. أنها تتطلب معرفة مسبقة بهندسة الكمبيوتر معينة. قبل أن يتمكن المرء فعليًا من كتابة برنامج لهذا الكمبيوتر.
+
+اللغات عالية المستوى مستقلة عن الآلة. أنها لا تتطلب أي معرفة مسبقة بهندسة الكمبيوتر.
+
+التطبيقات
+تتفاعل اللغات ذات المستوى المنخفض مباشرة مع الأجهزة. أنها توفر قدرًا أقل جدًا من المعرفة من الأجهزة أو لا توفرها على الإطلاق. لكنها تشتعل بسرعة كبيرة بالمقارنة مع اللغات عالية المستوى. وبالتالي، يتم استخدامها بشكل عام لتطوير أنظمة التشغيل والأنظمة المدمجة.
+
+توفر اللغات عالية المستوى مستوى أعلى من التجريد من الأجهزة. في الوقت الحاضر، يتم تطوير جميع البرامج تقريبًا باستخدام لغة عالية المستوى. يتم استخدامه لتطوير مجموعة متنوعة من التطبيقات مثل - تطبيقات سطح المكتب ومواقع الويب وبرامج المرافق وتطبيقات الهاتف المحمول وما إلى ذلك.
+*********************************************************************************************************************************************
+Low level language									High level language
+They are faster than high level language.						They are comparatively slower.
+Low level languages are memory efficient.						High level languages are not memory efficient.
+Low level languages are difficult to learn.						High level languages are easy to learn.
+Programming in low level requires additional knowledge of the computer architecture.	 
+Programming in high level do not require any additional knowledge of the computer architecture.
+They are machine dependent and are not portable.					 They are machine independent and portable.
+They provide less or no abstraction from the hardware.					 They provide high abstraction from the hardware.
+They are more error prone.								 They are less error prone.
+Debugging and maintenance is difficult.							 Debugging and maintenance is comparatively easier.
+They are generally used for developing system software’s (Operating systems) and embedded applications.
+They are used to develop a variety of applications such as – desktop applications, websites, mobile software’s etc.
+********************************************************************************************************************************************
+المترجم هو برنامج أو مجموعة من البرامج التي تقوم بتحويل كود المصدر المكتوب بلغة عالية المستوى إلى لغة منخفضة المستوى (لغة التجميع أو لغة الآلة). يمكن أن تحتوي لغة البرمجة على العديد من المترجمين. على سبيل المثال – تعد دول مجلس التعاون الخليجي C، وTurbo C، وQuick C وما إلى ذلك من المترجمين المختلفين للغة البرمجة C.
+
+Language		Compilers			Developed By
+C			GCC C				GNU Project
+			Borland Turbo C			Embarcadero
+			Quick C				Microsoft
+******************************************
+Language		Compilers			Developed By
+C++			GCC				GNU Project
+			Borland C++			Borland
+			Visual C++			Microsoft
+********************************************************************************************************************************************
+Compiler and interpreter both are tools to translate source code from high-level language to machine language. Both does the same task of translation. But the working mechanism of compiler is different from interpreter. Below are some differences between compilers and interpreters
+
+
+Translation mechanism
+Compiler reads entire source code and translates to machine language at once. If any error is generated during compilation, it terminates the entire process without executing single instruction.
+
+Whereas interpreters translate instruction-by-instruction. It reads single instruction at a time. Translates it to machine language and executes it. This process continues till the last instruction. If any error is generated during the interpretation, it terminates the execution of further instructions.
+
+Translation time
+Compilers reads entire source code at once. It pre-processes, parses, analyses the source code and translates it to machine code at once. Hence, it requires more translation time than interpreters.
+
+Interpreters reads single instruction of source code at a time. Unlike compilers, it doesn’t translate entire source code to machine code at once. Rather it translates the source code, instruction by instruction. Hence, requires less translation time.
+
+Program speed
+Compilers translate entire source code at once. After the compilation process, it generates an executable file containing complete instruction set of the program in binary language. Hence, it doesn’t require any further translation which enhances the program execution speed.
+
+Interpreters translate the source code instruction by instruction. It translates single instruction then executes it. Each time before executing an instruction, it must first translate it to machine language. Which increases the overhead of interpretation, hence decreases the program execution speed.
+
+Memory consumption
+Compilers usually generate an intermediate code called object code, during the compilation process. Hence it requires more memory than interpreters.
+
+Unlike compilers, interpreters do not generate any intermediate code, during the interpretation process. Thus, interpreters are memory efficient.
+
+Debugging
+Compilers continues to process entire source code also if it contains errors. It generates list of all error messages (if any) at the end of the compilation process. Which makes debugging a little difficult.
+
+Interpreters stops the interpretation process if an error is encountered. It generates the error message as the error is met during the interpretation process.
+
+Deployment
+Compilers generate an executable file of the source code. This executable file is deployed instead of source code. Which increases the security, by hiding the source code from others.
+
+Interpreters do not generate any executable file of the source code. Therefore, in the case of interpreter’s entire source code needs to be deployed. Causing a security concern as the source code is visible to everyone.
+********************************************************************************************************************************************
+Compiler								Interpreter
+It translates entire program to machine code at once.			It translates single instruction of a program at a time.
+It requires more translation time.					It requires less translation time.
+Program execution is faster than interpreted languages.			Program execution is slower than compiled languages.
+It usually generates additional intermediate code.			It doesn’t generate additional intermediate code.
+It requires more memory as it generates extra object code.	     It requires less memory as it does not generate any intermediate code.
+Errors are displayed at the end of the compilation process.	     Errors are displayed as they met.
+Executable code needs to be deployed.	                 		Source code needs to be deployed.
+Example of compiled languages – C, C++, Java etc.  			Example of interpreted languages – Ruby, Python, Shell script etc.
+********************************************************************************************************************************************
+
+Syntax Errors:
+Syntax errors occur when you violate the rules of the C language syntax. These errors are detected by the compiler during the compilation process.
+Example:
+int x = 10;
+printf("The value of x is %d\n", x)  // Missing semicolon at the end of the statement
+
+
+Semantic Errors:
+Semantic errors occur when the code is grammatically correct but does not behave as intended. These errors can be challenging to detect because they do not cause compilation errors. Instead, they lead to incorrect program behavior or unexpected results.
+Example:
+int x = 5;
+int y = 0;
+int result = x / y;  // Division by zero
+
+
+Runtime Errors:
+Runtime errors occur during the execution of a program. These errors may cause the program to terminate abruptly or produce incorrect results. Common runtime errors include division by zero, accessing invalid memory locations, and stack overflow.
+Example:
+int arr[5];
+arr[10] = 42;  // Accessing an out-of-bounds array element
+
+
+Logical Errors:
+Logical errors occur when there is a flaw in the program logic, leading to incorrect output or undesired behavior. These errors are not detected by the compiler or runtime system because the code is syntactically correct.
+Example:
+int x = 5;
+int y = 10;
+if (x < y) {
+    printf("x is greater than y\n");  // Logical error, should be "x is less than y"
+}
+
+
+********************************************************************************************************************************************
+There are five types of tokens.
+
+Keyword
+Identifier
+Operator
+Separator
+Literal
+
+********************************************************************************************************************************************
+						Various programming paradigms
+نموذج البرمجة هو طريقة لتصنيف لغات البرمجة وفقًا لأسلوب البرمجة الخاص بها والميزات التي تقدمها. هناك العديد من الميزات التي تحدد نموذج البرمجة مثل النمطية أو الكائنات أو المقاطعات أو الأحداث أو تدفق التحكم وما إلى ذلك. يمكن أن تكون لغة البرمجة نموذجًا واحدًا أو نماذج متعددة.
+
+ومع الانتشار الواسع للبرمجة، ظهرت نماذج برمجة مختلفة إلى الوجود. بعض نماذج البرمجة الشائعة هي:
+						1-Imparetive Programming
+						2-Declartive Programming
+						3-Structured Programming
+						4-Procedurls Programming
+						5-OOP        Programming
+						6-Functional Programming
+*****************************************************************************************************************************************
+اللغة منخفضة المستوى والمختصرة بـ LLL، هي لغات قريبة من مجموعة تعليمات مستوى الآلة. أنها توفر تجريدًا أقل أو معدومة من الأجهزة. تتفاعل لغة برمجة منخفضة المستوى مباشرة مع السجلات والذاكرة. نظرًا لأن التعليمات المكتوبة بلغات منخفضة المستوى تعتمد على الآلة. البرامج التي تم تطويرها باستخدام لغات منخفضة المستوى تعتمد على الآلة وليست محمولة.
+
+
+لا تتطلب اللغة ذات المستوى المنخفض أي مترجم أو مترجم فوري لترجمة المصدر إلى كود الآلة. قد يقوم المجمع بترجمة كود المصدر المكتوب بلغة منخفضة المستوى إلى كود الآلة.
+
+البرامج المكتوبة بلغات منخفضة المستوى سريعة وفعالة في الذاكرة. ومع ذلك، فمن الكابوس بالنسبة للمبرمجين كتابة البرامج ذات المستوى المنخفض وتصحيح أخطائها وصيانتها. يتم استخدامها في الغالب لتطوير أنظمة التشغيل وبرامج تشغيل الأجهزة وقواعد البيانات والتطبيقات التي تتطلب الوصول المباشر إلى الأجهزة.
+
+يتم تصنيف اللغات منخفضة المستوى أيضًا إلى فئتين أخريين – لغة الآلة ولغة التجميع.
+******************************************************************************************************************************************
+لغة الآلة
+لغة الآلة هي اللغة الأقرب إلى الأجهزة. وتتكون من مجموعة من التعليمات التي يتم تنفيذها مباشرة بواسطة الكمبيوتر. هذه التعليمات عبارة عن سلسلة من البتات الثنائية. تؤدي كل تعليمات مهمة محددة وصغيرة جدًا. التعليمات المكتوبة بلغة الآلة تعتمد على الآلة وتختلف من كمبيوتر إلى آخر.
+
+مثال: SUB AX, BX = 00001011 00000001 00100010 عبارة عن مجموعة تعليمات لطرح قيم مسجلين AX وBX.
+
+في الأيام الأولى للبرمجة، كان البرنامج يُكتب بلغة الآلة فقط. تمت كتابة كل البرامج كسلسلة من الثنائيات.
+
+يجب أن يكون لدى المبرمج معرفة إضافية حول بنية جهاز معين، قبل البرمجة بلغة الآلة. يعد تطوير البرامج باستخدام لغة الآلة مهمة شاقة. نظرًا لأنه من الصعب جدًا تذكر تسلسل الثنائيات لمختلف بنيات الكمبيوتر. ولذلك، في الوقت الحاضر ليس كثيرا في الممارسة العملية.
+
+لغة التجميع
+لغة التجميع هي تحسين على لغة الآلة. كما هو الحال مع لغة الآلة، تتفاعل لغة التجميع أيضًا بشكل مباشر مع الأجهزة. بدلاً من استخدام التسلسل الثنائي الخام لتمثيل مجموعة التعليمات، تستخدم لغة التجميع فن الإستذكار.
+
+فن الإستذكار عبارة عن كلمات إنجليزية قصيرة ومختصرة تستخدم لتحديد تعليمات الكمبيوتر. كل تعليمات في النظام الثنائي لها تذكير محدد. إنها تعتمد على الهندسة المعمارية وهناك قائمة من أساليب الإستذكار المنفصلة لمختلف بنيات الكمبيوتر.
+
+من أمثلة فن الإستذكار – ADD، MOV، SUB وما إلى ذلك.
+
+أعطت أساليب تقوية الذاكرة راحة للمبرمجين من تذكر التسلسل الثنائي للحصول على تعليمات محددة. نظرًا لأنه من السهل تذكر الكلمات الإنجليزية مثل ADD وMOV وSUB، مقارنةً بالتسلسل الثنائي 10001011. ومع ذلك، لا يزال يتعين على المبرمج أن يتذكر العديد من أساليب الإستذكار لمختلف بنيات الكمبيوتر.
+
+تستخدم لغة التجميع برنامجًا خاصًا يسمى المجمع. يقوم المجمع بترجمة أساليب الإستذكار إلى رمز جهاز محدد.
+
+لغة التجميع لا تزال قيد الاستخدام. يتم استخدامه لتطوير أنظمة التشغيل وبرامج تشغيل الأجهزة والمترجمين والبرامج الأخرى التي تتطلب الوصول المباشر إلى الأجهزة.
+******************************************************************************************************************************************
+Advantages of low level languages
+Programs developed using low level languages are fast and memory efficient.
+Programmers can utilize processor and memory in better way using a low level language.
+There is no need of any compiler or interpreters to translate the source to machine code. Thus, cuts the compilation and interpretation time.
+Low level languages provide direct manipulation of computer registers and storage.
+It can directly communicate with hardware devices.
+
+Disadvantages of low level languages
+Programs developed using low level languages are machine dependent and are not portable.
+It is difficult to develop, debug and maintain.
+Low level programs are more error prone.
+Low level programming usually results in poor programming productivity.
+Programmer must have additional knowledge of the computer architecture of particular machine, for programming in low level language.
+********************************************************************************************************************************************
+
