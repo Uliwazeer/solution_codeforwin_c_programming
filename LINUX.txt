@@ -1,0 +1,51 @@
+LINUX PROGRAMMING
+https://www.youtube.com/@Reda_Maher/playlists
+
+BUILDROOT
+
+https://www.youtube.com/watch?v=9vsu67uMcko&list=PLEBQazB0HUyTpoJoZecRK6PpDG31Y7RPB&index=1
+
+
+YOCTO PROJECT [33 VIDEOS]
+https://www.youtube.com/watch?v=5fj05BWryhM&list=PLwqS94HTEwpQmgL1UsSwNk_2tQdzq3eVJ
+
+BEST YOCTO TOTORIAL EVER [6 VIDEOS]
+https://www.youtube.com/watch?v=XPnmB-THjiY&list=PLFp__VNK_gyiOK6K2hFmJafQP1W-bxWc9
+
+CHANNEL YOCTO PROJECT
+https://www.youtube.com/@TheYoctoProject/playlists
+https://www.youtube.com/@kickstartembedded2690/playlists
+https://www.youtube.com/@bopv9398/search?query=yocto
+
+
+BASH SCRIPTING [ARABIC 20 VIDEOS]
+https://www.youtube.com/playlist?list=PLqi7yZF-SFcYzox4VgUSkaksGAAIhya7B
+https://www.youtube.com/watch?v=CSs22qXxLKc&list=PLF8OvnCBlEY3RgonBk3TUkEGn8f1fDoNP&pp=iAQB
+
+
+SHELL SCRIPTING
+https://www.youtube.com/watch?v=cQepf9fY6cE&list=PLS1QulWo1RIYmaxcEqw5JhK3b-6rgdWO_
+
+LINUX CRASH COURSE [59 VIDEOS]
+https://www.youtube.com/watch?v=p8QOnty6rSU&list=PLT98CRl2KxKHKd_tH3ssq0HPrThx2hESW
+
+
+CMake [7 videos]
+https://www.youtube.com/watch?v=ffwB60oKr-w&list=PL8i3OhJb4FNV10aIZ8oF0AA46HgA2ed8g
+https://www.youtube.com/watch?v=kekw7eGb8Mw&list=PLsCsQorDHC9Wism5Xlp8ZKtKeGBeCJJ72
+https://www.youtube.com/watch?v=nlKcXPUJGwA&list=PLalVdRk2RC6o5GHu618ARWh0VO0bFlif4
+https://www.youtube.com/watch?v=_yFPO1ofyF0&list=PLK6MXr8gasrGmIiSuVQXpfFuE1uPT615s&pp=iAQB
+
+
+CHANNEL LINUX
+https://www.youtube.com/@fluidiccolours8091/playlists
+https://www.youtube.com/@shakomakotech/playlists
+
+LINUX PROGRAMING
+https://www.youtube.com/watch?v=jz1Lb9SZ6i8&list=PLlrqp8hxLforzuRlBAEc5J01R8EIn9NUa
+
+
+DEVICE DRIVER
+https://www.youtube.com/watch?v=HFMI-hDL5kQ&list=PLlrqp8hxLfoqSIQFrGbAM5lv5uAnZBB61&pp=iAQB
+https://www.youtube.com/playlist?list=PLArwqFvBIlwHq8WMKgsXSQdqIvymrEz9k
+https://www.youtube.com/watch?v=e6gNeje3ljA&list=PLArwqFvBIlwHq8WMKgsXSQdqIvymrEz9k&index=7
