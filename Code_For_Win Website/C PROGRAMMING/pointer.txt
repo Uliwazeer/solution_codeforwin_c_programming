@@ -1,0 +1,933 @@
+A pointer is a variable that stores memory address. If it is a variable, it must have a valid C data type. Yes, every pointer variable has a data type associated with it. Which means an integer pointer can hold only integer variable addresses.
+
+
+
+فيما يلي بعض مزايا المؤشرات.
+
+تعد المؤشرات أكثر كفاءة في التعامل مع المصفوفات والهياكل.
+تُستخدم المؤشرات لإرجاع قيم متعددة من دالة.
+نستخدم المؤشرات للحصول على مرجع لمتغير أو وظيفة.
+يسمح المؤشر بتخصيص الذاكرة الديناميكية (إنشاء المتغيرات في وقت التشغيل) في لغة C. وهو بلا شك أكبر ميزة للمؤشرات.
+المؤشرات تزيد من سرعة تنفيذ البرنامج.
+
+ترتبط المؤشرات ارتباطًا وثيقًا بعمليات الذاكرة ذات المستوى المنخفض. ومن ثم، دعونا أولاً نفهم الذاكرة على النقيض من برمجة C.
+
+فهم الذاكرة
+ذاكرة الكمبيوتر (RAM) عبارة عن مجموعة من وحدات البايت المتجاورة. حيث تسمى الكتلة الفردية بالخلية (خلية الذاكرة). تحتوي كل خلية على عنوان رقمي فريد (يُعرف أيضًا باسم عنوان الذاكرة الفعلية) مرتبط بها. تبدأ هذه العناوين من الصفر وتصل إلى الحد الأقصى لحجم الذاكرة (بالبايت).
+
+على سبيل المثال، يبدأ موقع الذاكرة لذاكرة الوصول العشوائي (RAM) سعة 64 كيلو بايت من 0 وينتهي إلى 65536 (أو 0x10000) بايت.
+
+
+ملحوظة: لا نقول أبدًا أن المؤشر يخزن أو يحتفظ بموقع في الذاكرة. بدلاً من ذلك، نقول أن المؤشر يشير إلى موقع في الذاكرة. لذلك من الآن استخدم دائمًا مؤشر اللغة الذي يشير إلى موقع الذاكرة.
+
+المشغل المرجعي &     ADRESS OPERATOR OR REFERENCE OPERATOR
+لأننا نتعامل مع عناوين الذاكرة، يجب أن نعرف كيفية الحصول على عنوان الذاكرة للمتغير. نستخدم العامل الأحادي & (المرجعي) للحصول على عنوان ذاكرة المتغير. يُعرف المشغل المرجعي أيضًا باسم عنوان المشغل.
+
+
+Dereference operator *
+Once you have a memory address, you must be willing to get value stored at that memory address, for that we need to dereference the memory address.
+
+Dereferencing is the process of retrieving value at memory location pointed by a pointer. We use unary * dereference operator to get value pointed by a memory address. Dereference operator is also known as indirection operator.
+
+Syntax to use dereference operator
+*memory-address-or-pointer-variable;
+/**
+ * C program to use dereference operator
+ */
+
+#include <stdio.h>
+
+int main()
+{
+    int num = 10;
+
+    printf("Value of num   = %d\n", num);
+
+    /* &num gets the address of num. */
+    printf("Address of num = %d\n", &num);
+
+    /*
+     * &num gets the address of num
+     * and (*(&num)) gets value pointed by (&num)
+     */
+    printf("Value of num   = %d\n", *(&num));
+
+    return 0;
+}
+
+
+
+How to initialize pointer variable
+There are two ways to initialize a pointer variable. You can use reference operator & to get memory location of a variable or you can also directly assign one pointer variable to other pointer variable.
+
+Examples to initialize pointer variable
+int num   = 10;
+int *ptr  = &num;   // Assign address of num to ptr
+
+// You can also assign a pointer variable to another 
+int *ptr1 = ptr;    // Initialize pointer using another pointer
+
+
+/**
+ * C program to demonstrate use of pointers
+ */
+
+#include <stdio.h>
+
+int main()
+{
+    int num = 1;
+    int *ptr = &num;   // ptr points to num
+    
+    printf("Value of num   = %d \n", num);
+    printf("Address of num = %x \n\n", &num);
+
+
+    printf("Value of ptr         = %x \n", ptr);
+    printf("Address of ptr       = %x \n", &ptr);
+    printf("Value pointed by ptr = %d \n\n", *ptr);
+
+
+    /* Change the value of num directly */
+    num = 10;
+    printf("After changing value of num directly. \n");
+    printf("Value of num         = %d \n", num);
+    printf("Value pointed by ptr = %d \n\n", *ptr);
+
+
+    /* Assigns 100 at the address pointed by ptr */
+    *ptr = 100;
+    printf("After changing value pointed by ptr. \n");
+    printf("Value of num         = %d \n", num);
+    printf("Value pointed by ptr = %d \n", *ptr);
+
+    return 0;
+}
+
+
+
+
+/**
+ * C program to perform all arithmetic operations using pointers
+ */
+
+#include <stdio.h>
+
+int main()
+{
+    float num1, num2;    // Normal variables
+    float *ptr1, *ptr2;  // Pointer variables
+
+    float sum, diff, mult, div;
+
+    ptr1 = &num1; // ptr1 stores the address of num1
+    ptr2 = &num2; // ptr2 stores the address of num2
+
+    /* User input through pointer */
+    printf("Enter any two real numbers: ");
+    scanf("%f%f", ptr1, ptr2);
+
+    /* Perform arithmetic operation */
+    sum  = (*ptr1) + (*ptr2);
+    diff = (*ptr1) - (*ptr2);
+    mult = (*ptr1) * (*ptr2);
+    div  = (*ptr1) / (*ptr2);
+
+    /* Print the results */
+    printf("Sum = %.2f\n", sum);
+    printf("Difference = %.2f\n", diff);
+    printf("Product = %.2f\n", mult);
+    printf("Quotient = %.2f\n", div);
+
+    return 0;
+}
+
+/**
+ * C program to swap two number using call by reference
+ */
+
+#include <stdio.h>
+
+/* Swap function declaration */
+void swap(int * num1, int * num2);
+
+int main()
+{
+    int num1, num2;
+
+    /* Input numbers */
+    printf("Enter two numbers: ");
+    scanf("%d%d", &num1, &num2);
+
+    /* Print original values of num1 and num2 */
+    printf("Before swapping in main n");
+    printf("Value of num1 = %d \n", num1);
+    printf("Value of num2 = %d \n\n", num2);
+
+    /* Pass the addresses of num1 and num2 */
+    swap(&num1, &num2);
+
+    /* Print the swapped values of num1 and num2 */
+    printf("After swapping in main n");
+    printf("Value of num1 = %d \n", num1);
+    printf("Value of num2 = %d \n\n", num2);
+
+    return 0;
+}
+
+
+/**
+ * Function to swap two numbers
+ */
+void swap(int * num1, int * num2)
+{
+    int temp;
+
+    // Copy the value of num1 to some temp variable
+    temp = *num1;
+
+    // Copy the value of num2 to num1
+    *num1= *num2;
+
+    // Copy the value of num1 stored in temp to num2
+    *num2= temp;
+
+    printf("After swapping in swap function n");
+    printf("Value of num1 = %d \n", *num1);
+    printf("Value of num2 = %d \n\n", *num2);
+}
+
+*********************************************************************************************************************************************
+int num = 5;   // Suppose address of num = 0x1230
+int *ptr;      // Pointer variable
+
+ptr = &num;    // ptr points to 0x1230 or ptr points to num
+ptr++;         // ptr now points to 0x1234, since integer size is 4 bytes
+ptr--;         // ptr now points to 0x1230
+
+
+Note: Increment operation increments pointer address by the size of pointer data type.
+
+If an integer pointer ptr pointing at 0x1230, after ptr++ it will point at 0x1234 (assuming integer size is 4 bytes).
+
+If a character pointer cptr pointing at 0x1250, after cptr++ it will point at 0x1251 (since character occupies 1 byte).
+
+
+#include <stdio.h>
+#define SIZE 5
+
+int main()
+{
+    int arr[SIZE] = {10, 20, 30, 40, 50};
+    int *ptr;
+    int count;
+
+    ptr = &arr[0]; // ptr points to arr[0]
+
+    count = 0;
+
+    printf("Accessing array elements using pointer \n");
+    while(count < SIZE)
+    {
+        printf("arr[%d] = %d \n", count, *ptr);
+
+        // Move pointer to next array element
+        ptr++;
+
+        count++;
+    }
+
+    return 0;
+}
+
+pointer addition and subtraction
+
+#include <stdio.h>
+#define SIZE 5
+
+int main()
+{
+    int arr[SIZE] = {10, 20, 30, 40, 50};
+    int *ptr;
+    int count;
+
+    ptr = &arr[0]; // ptr points to arr[0]
+
+    count = 0;
+
+    printf("Accessing array elements using pointer \n");
+    while(count < SIZE)
+    {
+        printf("arr[%d] = %d \n", count, *(ptr + count));
+
+        count++;
+    }
+
+    return 0;
+}
+
+ملاحظة: تقارن مقارنة المؤشر بين عنواني المؤشر اللذين يشيران إليهما، بدلاً من مقارنة قيمهما.
+
+تكون مقارنات المؤشر أقل استخدامًا عند مقارنتها بحساب المؤشر. ومع ذلك، كثيرًا ما أستخدم مقارنة المؤشر عند التعامل مع المصفوفات.
+
+مقارنات المؤشر مفيدة،
+
+int main()
+{
+    int num = 10;
+    int *ptr1 = &num;    // ptr1 points to num
+    int *ptr2 = &num;    // ptr2 also points to num
+
+    if(ptr1 == ptr2)
+    {
+        // Both pointers points to same memory location
+        // Do some task 
+    }
+
+    return 0;
+}
+Another Program
+int main()
+{
+    int arr[5] = {10, 20, 30, 40, 50};
+    int *ptr = &arr[0];  // ptr points to arr[0]
+
+    while(ptr <= &arr[4])
+    {
+        // ptr will always point within the array
+        // Do some task
+
+        // Move ptr to next array element
+        ptr++;
+    }
+ 
+    return 0;
+}
+pointer comparision
+#include <stdio.h>
+#define SIZE 5
+
+int main()
+{
+    int arr[SIZE] = {10, 20, 30, 40, 50};
+    int *ptr = &arr[0]; // ptr points to arr[0]
+
+    printf("Accessing array elements using pointer \n");
+    while(ptr < &arr[SIZE])
+    {
+        printf("%d \n", *ptr);
+
+        // Move to next array element
+        ptr++; 
+    }
+
+    return 0;
+}
+
+addition and substraction
+int arr[] = {10, 20, 30, 40, 50};
+
+int *ptr1 = &arr[0];
+int *ptr2 = &arr[4];
+
+int *ptr3 = ptr2 - ptr1; // ERROR -> (ptr2 - ptr1) evaluates to integer not integer pointer
+
+
+EX2
+int arr[] = {10, 20, 30, 40, 50};
+
+int *ptr = &arr[0];
+
+ptr = (ptr + 2);  // ptr will now point to arr[2]
+
+
+
+Valid and invalid examples of pointer arithmetic
+
+
+int num=10, k=2;                  // Integer variable
+int *ptr1, *ptr2, *ptr3;          // Integer pointers
+
+ptr1 = ptr1 – 2;                  // Valid
+ptr1 = ptr1 – k;                  // Valid
+
+ptr3 = ptr2 – ptr1;               // Invalid, non-portable pointer conversion. 
+                                  // Missing cast. See rule 1.
+ptr3 = (int *) (ptr2 – ptr1)	  // Valid
+
+ptr3 = ptr2 – ptr1 - k;	          // Invalid, non-portable pointer conversion. 
+                                  // Missing cast. See rule 1.
+ptr3 = (int *)(ptr2 – ptr1) + k;  // Valid
+
+ptr1 = ptr1 + 2;                  // Valid
+ptr1 = ptr1 + k;                  // Valid
+
+ptr3 = ptr1 + ptr2;               // Invalid, non-portable pointer conversion. 
+                                  // Missing cast. See rule 1.
+ptr3 = (int *) (ptr1 + ptr2)	  // Valid
+
+ptr3 = ptr1 + ptr2 + k;	          // Invalid, non-portable pointer conversion. 
+                                  // Missing cast. See rule 1.
+ptr3 = (int *)(ptr1 + ptr2) + k;  // Valid
+
+ptr1 = ptr1 * 2;                  // Invalid, illegal use of pointer. See rule 3.
+ptr1 = ptr1 * k;                  // Invalid, illegal use of pointer. See rule 3.
+ptr3 = ptr2 * ptr1;               // Invalid, illegal use of pointer. See rule 3.
+ptr1 = ptr1 / 2;                  // Invalid, illegal use of pointer. See rule 3.
+ptr1 = ptr1 / k;                  // Invalid, illegal use of pointer. See rule 3.
+ptr3 = ptr2 / ptr1;               // Invalid, illegal use of pointer. See rule 3.
+
+*********************************************************************************************************************************************
+If a pointer points to a pointer of same type, we call it as pointer to a pointer.refer pointer to pointer as double pointer, since two pointers are involved.
+
+Note: Pointer to pointer will always store address of a pointer of same type.
+
+How to declare pointer to pointer (double pointer)
+Pointer to a pointer declaration follows same declaration syntax as normal pointer declaration. The only thing you must care is it contains two * asterisks.
+
+In general increase number of * asterisks during pointer declaration to increase pointer level.
+
+Syntax to declare pointer to pointer
+data-type ** pointer-variable-name;
+Here double ** specifies it as pointer to pointer (double pointer). Increase number of * asterisk with increase in pointing levels. Means for pointer to pointer to pointer use ***.
+
+Example to initialize pointer to a pointer
+int num    = 10;    // Integer variable
+int *ptr   = &num;  // Pointer to integer
+
+int **dPtr = &ptr;  // Pointer to integer pointer
+
+
+How to access pointer to a pointer
+We use dereference * operator, to access value stored at memory location pointed by a pointer. However, single dereference will not work when dealing with pointer to a pointer. In order to access value pointed by pointer to a pointer we use double dereference ** (indirection) operator.
+
+Example to access pointer to a pointer
+int num = 10;        // Declare an integer variable
+int *ptr   = &num;   // Pointer to integer
+int **dPtr = &ptr;   // Pointer to integer pointer
+
+printf("Value of dPtr = %d \n", dPtr);   // Print value of dPtr, i.e address of ptr
+printf("Value of ptr = %d \n", *dPtr);   // Print value of ptr, i.e. address of num
+printf("Value of num = %d \n", **dPtr);  // Print value of num
+
+
+
+/**
+ * C program to demonstrate use of pointer to a pointer
+ */
+
+#include <stdio.h>
+
+int main()
+{
+    int num; // Integer variable
+
+    int *ptr   = &num;  // Pointer to integer
+    int **dPtr = &ptr;  // Pointer to integer pointer
+
+    /* Change the value of num directly */
+    num = 10;
+    printf("Value of num   = %d \n", num);
+    printf("Value pointed by ptr  = %d \n", *ptr);
+    printf("Value pointed by dPtr = %d \n\n", **dPtr);
+
+
+    /* Assigns 100 using pointer to integer */
+    *ptr = 100;
+    printf("Value of num   = %d \n", num);
+    printf("Value pointed by ptr  = %d \n", *ptr);
+    printf("Value pointed by dPtr = %d \n\n", **dPtr);
+
+
+    /* Assigns 1000 using pointer to integer pointer */
+    **dPtr = 1000;
+    printf("Value of num   = %d \n", num);
+    printf("Value pointed by ptr  = %d \n", *ptr);
+    printf("Value pointed by dPtr = %d \n\n", **dPtr);
+
+    return 0;
+}
+*********************************************************************************************************************************************
+To access any element of the given array we use array index notation. For example to access zeroth element we use arr[0], similarly to access fifth element we use arr[4].
+
+Let us transform things in the context of pointers.
+
+int * ptr = &arr[0];
+
+Which means both of the below statements are equivalent.
+You can also use array name as a pointer pointing at zeroth element. In context of array and pointer, all of the following statements are valid.
+
+int * ptr = &arr[0];
+int * ptr = arr;
+
+
+int arr[5];
+int * ptr = arr;
+
+arr[0] = 10;    // Stores 10 at 0th element of array
+ptr[1] = 20;    // Stores 20 at 1st element of array
+
+ptr    = arr;   // ptr and arr both points to 0th element of array
+*ptr   = 100;   // Stores 100 at 0th element of array (Since ptr points at arr[0])
+*arr   = 100;   // Stores 100 at 0th element of array
+
+				/////////////////////////////////////////////////////////////
+
+int arr[5];
+int * ptr = arr;        // Integer pointer pointing at arr[0]
+
+ptr[0] = 10;            // Assigns 10 to arr[0]
+ptr++;                  // ptr now points at arr[1]
+ptr--;                  // ptr now points back at arr[0]
+
+*(ptr + 4) = 100;       // Assigns 100 to arr[4].
+                        // Note, ptr currently pointing at arr[0] not arr[1].
+                        // Hence (ptr + 4) will point at arr[4]
+
+*(arr + 0) = 10;        // Assigns 10 to arr[0]
+
+
+/**
+ * C program to read and print array elements using pointer
+ */
+
+#include <stdio.h>
+
+#define SIZE 10     // Maximum array size
+
+int main()
+{
+    int arr[SIZE];  // Declare an array of size 10
+    int *ptr = arr; // Pointer to first element of integer array
+    int i;
+
+    /* Input number from user in array */
+    printf("Enter %d array elements: ", SIZE);
+    while(ptr < &arr[SIZE])
+    {
+        // Input in array using pointer
+        scanf("%d", ptr);
+
+        // Move pointer to next array element
+        ptr++;
+    }
+
+    // Make sure pointer point back to 0th element
+    ptr = arr;
+
+    // Print all elements using pointer
+    printf("Elements in array are: ");
+    for(i=0; i < SIZE; i++)
+    {
+        printf("%d, ", *(ptr + i));
+    }
+
+    return 0;
+}
+
+
+
+int main()
+{
+    int arr[] = {10, 20, 30, 40, 50};  // Integer array
+    int *ptr = arr;  // Pointer to 0th element of array
+
+    /*
+     * If arr behaves as a constant pointer then compiler
+     * must complain about arr++. Since arr++ is equivalent to 
+     * arr = arr + 1 which is not permitted.
+     */
+     arr++; // Error
+
+     // No error
+     ptr++;
+
+    return 0;
+}
+On compilation of the above program, it produces following compilation errors. Which is a proof that the array name (as a pointer) is not modifiable.
+
+parrname.c: In function 'main':
+parrname.c:10:9: error: lvalue required as increment operand
+      arr++; // Error
+However, the above proof is not adequate to say array name is a constant pointer to zeroth element of array. If it is a constant pointer then sizeof(arr) must return size of constant integer pointer, but it doesn’t.
+
+sizeof(arr) returns total bytes occupied by array i.e. number-of-elements * array-data-type-size.
+//////////////////////////////////////////////////////////////////////////////////////////////
+
+I have read text of many authors, calling name of array as constant pointer to zeroth array element. However, the statement is not true.
+
+Array name when used directly behaves as a constant pointer but it is not a constant pointer. Pointer and array both are different concepts though interlinked.
+
+A note on array index
+The behaviour of array as a pointer lets you do several magical things. Let us discuss another important behaviour of array as a pointer in C programming. Consider the below integer array.
+
+int arr[] = {10, 20, 30, 40, 50};
+As I spoke earlier, we can use array name as a pointer pointing to zeroth element. The array dereferencing operator [ ] internally converts array indexed accessing, in the context of pointers. For example,
+
+arr[0];  // Equivalent to *(arr + 0)
+arr[4];  // Equivalent to *(arr + 4)
+We can also write the statement *(arr + 0) as *(0 + arr), since additions are associative in nature. Which in array indexed format can be written as 0[arr].
+
+Let us collect it all together.
+
+arr[0]        =>  *(arr + 0)
+*(arr + 0)    =>  *(0 + arr)  // Since additions are associative
+
+*(arr + 0)    =>  arr[0]
+*(0 + arr)    =>  0[arr]
+arr[0]        =>  0[arr]      // Both are equivalent
+Conclusion: You can interchangeably use arr[0] as 0[arr]. Both convey the same meaning in C programming.
+
+*********************************************************************************************************************************************
+ما هو المؤشر الثابت؟
+لفهم المؤشر الثابت، دعونا نتذكر تعريف المتغير الثابت. المتغير الثابت هو متغير لا يمكن تغيير قيمته خلال البرنامج.
+
+وبالمثل، المؤشر الثابت هو متغير مؤشر لا يمكن تغيير قيمته خلال البرنامج. لا يسمح بتعديل قيمته، ولكن يمكنك تعديل القيمة التي يشير إليها المؤشر.
+
+بمعنى آخر، المؤشر الثابت هو مؤشر يمكنه الإشارة فقط إلى كائن واحد في جميع أنحاء البرنامج.
+
+
+Syntax to declare constant pointer
+<pointer-type> * const <pointer-name> = <memory-address>;
+Note: You must initialize a constant pointer at the time of its declaration.
+
+Example to declare constant pointer
+int num;
+int * const constant_pointer = &num;    // Constant pointer to num
+Note: We use const keyword to declare a constant pointer.
+
+The compiler will generate compilation error on failure of any of the two conditions.
+
+You must initialize a constant pointer during its declaration.
+A constant pointer must not be re-assigned.
+/**
+ * C program to demonstrate constant pointer
+ */
+
+#include <stdio.h>
+
+int main()	
+{
+    int num1, num2;
+
+    // Constant pointer to num1
+    int * const const_ptr = &num1; 
+
+    // Assign 10 to num1 using pointer
+    // Modification of value pointed by pointer is allowed
+    *const_ptr = 10;
+
+    // Re-assignment of constant pointer
+    // Modification of pointer value is not allowed
+    const_ptr = &num2; // Error
+
+    printf("Num1 = %d\n", num1);
+    printf("Num1 = %d\n", *const_ptr);
+
+    return 0;
+}
+ما هو المؤشر إلى ثابت؟
+المؤشر إلى الثابت هو مؤشر يقيد تعديل القيمة التي يشير إليها المؤشر. يمكنك تعديل قيمة المؤشر، لكن لا يمكنك تعديل القيمة التي يشير إليها المؤشر.
+
+ملحوظة: هناك فرق بسيط بين المؤشر الثابت والمؤشر إلى الثابت. يمكن للمؤشر الثابت أن يشير فقط إلى كائن واحد خلال البرنامج. يمكنك تغيير القيمة التي يشير إليها المؤشر، لكن لا يمكنك تغيير قيمة المؤشر.
+
+في حين أن المؤشر إلى الثابت لا يمكنه تعديل القيمة التي يشير إليها المؤشر، ولكن يمكنه تغيير قيمتها.
+
+Syntax to declare pointer to constant
+const <pointer-type> * <pointer-name>;
+Example to declare pointer to constant
+int num = 10;
+const int * ptr_to_const = &num;    // Pointer to constant
+
+/**
+ * C program to demonstrate pointer to constant
+ */
+
+#include <stdio.h>
+
+int main()
+{
+    int num = 10;
+
+    // Pointer to constant
+    const int * ptr_const;
+
+
+    // Modification of pointer value is allowed
+    ptr_const = &num;        // ptr_const points to num
+
+    // Direct modification on num is allowed
+    num = 20;
+
+    // Assign value to num
+    // Modification of value pointed by pointer is not allowed
+    *ptr_const = 100;       // Error
+
+    printf("Num = %d\n", num);
+    printf("Num = %d\n", *ptr_const);
+
+    return 0;
+}
+ملحوظة: المؤشر إلى الثابت يقيد تعديل القيمة التي يشير إليها المؤشر. ومع ذلك، لا أعتقد أن مترجم C يحول المتغير الذي يشير إليه المؤشر كمتغير ثابت.
+
+لا يسمح لك المؤشر إلى الثابت بتعديل القيمة المدببة باستخدام المؤشر. ومع ذلك، يمكنك إجراء التعديل مباشرة على المتغير (دون استخدام المؤشر).
+على سبيل المثال،
+
+int num = 10;
+const int * ptr = &num;
+
+// Modification of pointed value 
+// using pointer is not allowed
+*ptr = 20;    // Error
+
+// You can still modify the pointed value directly
+num = 20;     // Works
+
+
+
+ما هو المؤشر الثابت إلى ثابت؟
+المؤشر الثابت إلى الثابت هو مزيج من المؤشر الثابت والمؤشر إلى الثابت. وهو مؤشر لا يسمح بتعديل قيمة المؤشر وكذلك القيمة التي يشير إليها المؤشر.
+
+بناء الجملة للإعلان عن مؤشر ثابت إلى ثابت
+const <pointer-type> * const <pointer-name> = <memory-address>;
+مثال للإعلان عن مؤشر ثابت إلى ثابت
+عدد صحيح = 10؛
+
+// مؤشر ثابت إلى ثابت
+const int * const ptr = &num;
+
+
+/**
+ * C program to demonstrate constant pointer to constant
+ */
+
+#include <stdio.h>
+
+int main()
+{
+    int num1 = 10;
+    int num2 = 20;
+
+    // Declare constant pointer pointing at num1
+    const int * const ptr = &num1;
+
+    // Modification of constant pointer value is not allowed
+    // Re-assignment of memory address to ptr
+    ptr = &num2;    // Error
+
+    // Modification of value pointed by pointer is also not allowed
+    // Re-assignment of value to ptr
+    *ptr = 100;     // Error
+
+    printf("Num1 = %d\n", num1);
+    printf("Num1 = %d\n", *ptr);
+
+    return 0;
+}
+The above program generates two compilation error. First in the statement ptr = &num2; since we tried to assign value to a constant pointer. Second in the statement *ptr = 100; since we tried to assign value pointed by a pointer to constant.
+
+constantpointerconstant.c: In function 'main':
+constantpointerconstant.c:14:9: error: assignment of read-only variable 'ptr'
+     ptr = &num2;    // Error
+         ^
+constantpointerconstant.c:17:10: error: assignment of read-only location '*ptr'
+     *ptr = 100;     // Error
+          ^
+          
+********************************************************************************************************************************************
+Pointer is a variable pointing at a memory location of specific type. Type defines many important properties related to the pointer. Such as valid memory addresses it can point, pointer arithmetic, etc.
+
+As per C programming semantics, you must specify pointer type during its declaration. Also, it is illegal to point pointer of one type to object of another type. For example, int pointer cannot point to a float variable.
+
+
+Type specific pointers are beneficial in different ways. However, in programming there happens situation when you need to go typeless. For example, suppose you are required to design a function that can accept any type value as argument, process data and return results. For such situation, you need a pointer that must work with all types.
+
+What is a void pointer?
+A void pointer is a special pointer that can point to object of any type. A void pointer is typeless pointer also known as generic pointer. void pointer is an approach towards generic functions and generic programming in C.
+
+
+Syntax to declare void pointer
+void * pointer-name;
+Example to declare void pointer
+void * vPtr;
+
+
+How to dereference a void pointer
+Dereferencing is the process of retrieving data from memory location pointed by a pointer. It converts block of raw memory bytes to a meaningful data (data is meaningful if type is associated).
+
+While dereferencing a void pointer, the C compiler does not have any clue about type of value pointed by the void pointer. Hence, dereferencing a void pointer is illegal in C. But, a pointer will become useless if you cannot dereference it back.
+
+To dereference a void pointer you must typecast it to a valid pointer type.
+
+
+Example to dereference a void pointer
+int num = 10;
+void * vPtr = &num;  // void pointer pointing at num
+
+int value = *((int *) vPtr); // Dereferencing void pointer
+
+
+/////////////////////////////////////////////////////////
+void pointer arithmetic
+void pointer arithmetic is illegal in C programming, due to the absence of type. However, some compiler supports void pointer arithmetic by assuming it as a char pointer.
+
+
+Example of void pointer arithmetic
+int arr[] = {10, 20, 30, 40, 50};
+void * vPtr = &arr;  // void pointer pointing at arr
+
+vPtr = ((int *) vPtr + 1);  // add 1 to void pointer
+
+/**
+ * C program to demonstrate void pointer
+ */
+
+#include <stdio.h>
+#define SIZE 10
+
+
+/* Function declaration */
+void printArray(void * vPtr, int size, int type);
+
+
+int main()
+{
+    int num[SIZE] = {10, 20, 30, 40, 50, 60, 70, 80, 90, 100};
+    float fractional[SIZE] = {1.1f, 1.2f, 1.3f, 1.4f, 1.5f, 1.6f, 1.7f, 1.8f, 1.9f, 2.0f};
+    char characters[SIZE] = {'C', 'o', 'd', 'e', 'f', 'o', 'r', 'w', 'i', 'n'};
+
+    printf("\nElements of integer array: ");
+    printArray(&num, SIZE, 1);
+
+    printf("\nElements of float array: ");
+    printArray(&fractional, SIZE, 2);
+
+    printf("\nElements of character array: ");
+    printArray(&characters, SIZE, 3);
+
+    return 0;
+}
+
+
+
+/**
+ * Function to print array of different types.
+ *
+ * @vPtr  Pointer to an array
+ * @size  Size of the array
+ * @type  Integer value specifying type of array. 
+ *        1 - Integer, 
+ *        2 - Float, 
+ *        3 - Character
+ */
+void printArray(void * vPtr, int size, int type)
+{
+    int i;
+    
+    for(i=0; i<size; i++)
+    {
+        // Print array elements based on their type
+        switch(type)
+        {
+            case 1: 
+                /* Typecast void pointer to integer then print */
+                printf("%d, ", *((int *)vPtr + i));
+            break;
+
+            case 2: 
+                /* Typecast void pointer to float then print */
+                printf("%f, ", *((float *)vPtr + i));
+            break;
+
+            case 3: 
+                /* Typecast void pointer to char then print */
+                printf("%c, ", *((char *)vPtr + i));
+            break;
+        }
+    }
+}
+
+********************************************************************************************************************************************
+POINTER TO FUNCTION
+
+
+What is function pointer?
+Function pointer is a special pointer that points to a function. Yes a pointer can point to any object in C. Instead pointing at variable, a function pointer points at executable code.
+
+We use function pointer to call a function or to pass reference of a function to another function. Which means you can pass a function to another function (using function pointers).
+
+
+Syntax to declare function pointer
+return-type (* function_pointer_name) (parameter_list_type);
+
+
+ملاحظة: يحدد تعريف مؤشر الوظيفة النموذج الأولي للوظائف التي يمكنه الإشارة إليها. حيث يجب أن يتطابق نوع إرجاع مؤشر الدالة مع نوع إرجاع الدالة الذي سيشير إليه. وبالمثل، يجب أن يتطابق نوع المعلمة مع قائمة أنواع المعلمات الخاصة بالوظيفة التي سيشير إليها.
+
+How to declare function pointer?
+int (* arith)(int, int);
+
+How to initialize function pointer?
+Function pointer points to a function, means it accepts address of a function. To get address of any object in C we use address & operator. Similarly, you can also use & operator to get the address of a function.
+
+int add(int num1, int num2)
+{
+    return (num1 + num2);
+}
+
+int main()
+{
+    int (* arith)(int, int);	// Function pointer declaration
+
+    arith = &add; 			   // Function pointer initialization
+
+    return 0;
+}
+
+
+ملاحظة: يجب أن يتطابق توقيع الوظيفة مع توقيع مؤشر الوظيفة. في حالتنا، توقيع الوظيفة هو int (int، int) وتوقيع مؤشر الوظيفة هو int (int، int).
+
+يمكنك أيضًا استخدام اسم الوظيفة مباشرةً للحصول على عنوان ذاكرة الوظيفة. ومن هنا جاءت العبارة arith = &add; يعادل arith = add;
+
+كيفية استدعاء وظيفة باستخدام مؤشر الوظيفة؟
+إن استدعاء دالة أو استدعائها باستخدام مؤشر الوظيفة يشبه قيمة الوصول التي يشير إليها المؤشر. للوصول إلى القيمة التي يشير إليها المؤشر، نستخدم عامل إلغاء الإشارة *.
+Syntax to call a function using function pointer
+(* function-pointer)(function-parameters);
+Example to call a function using function pointer
+(* arith)(10, 20);
+When calling a function using function pointer use of dereferencing * operator is optional. Hence (* arith)(10, 20); is equivalent to arith(10, 20);
+
+PROGRAMM FUNCTION POINTER
+#include <stdio.h>
+
+/* Function declarations */
+int add(int, int);
+int sub(int, int);
+
+int main()
+{
+    int sum, diff;
+    int (* arith)(int, int);    // Function pointer declaration
+
+    arith = add;                // Function pointer arith points to add()
+    sum   = arith(10, 20);      // Call add() using function pointer
+
+    arith = sub;                // Function pointer arith points to sub()
+    diff  = arith(100, 30);     // Call sub() using function pointer
+ 
+    printf("10+20  => %d\n", sum);
+    printf("100-30 => %d\n", diff);
+
+    return 0;
+}
+
+/* Function definition */
+int add(int num1, int num2)
+{
+    return (num1 + num2);
+}
+
+int sub(int num1, int num2)
+{
+    return (num1 - num2);
+}
+********************************************************************************************************************************************

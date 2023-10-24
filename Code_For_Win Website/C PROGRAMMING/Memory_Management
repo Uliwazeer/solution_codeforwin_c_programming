@@ -1,0 +1,395 @@
+أنواع تخصيص الذاكرة في C
+تدعم برمجة C أو أي لغة برمجة أخرى بشكل أساسي نوعين من تخصيص الذاكرة.
+
+تجميع تخصيص الذاكرة الوقت
+تخصيص الذاكرة في وقت التشغيل
+أول شيء يجب أن تعرفه، أنا هنا لا أتحدث عن فئات التخزين. تحدد فئات التخزين الموقع/المنطقة، والعمر، والنطاق، والقيمة الافتراضية وما إلى ذلك من البايتات المراد تخصيصها. أنا أكتب عن وقت تخصيص الذاكرة، سواء تم تخصيصها أثناء عملية الترجمة أو وقت التشغيل.
+
+ترجمة الوقت أو تخصيص الذاكرة الثابتة
+تخصيص ذاكرة وقت الترجمة يعني حجز الذاكرة للمتغيرات والثوابت أثناء عملية الترجمة. لذلك يجب أن تعرف بالضبط عدد البايتات التي تحتاجها؟ تشير العديد من النصوص أيضًا إلى تخصيص ذاكرة وقت الترجمة كتخصيص ذاكرة ثابتة أو مكدسة.
+
+أي متغير، ثابت تم الإعلان عنه إما على النطاق العام (خارج الدالة main()) أو ثابت أو كمتغير خارجي سوف يشغل الذاكرة في وقت الترجمة.
+
+أكبر عيب في تخصيص ذاكرة وقت الترجمة هو عدم قدرتنا على التحكم في الذاكرة المخصصة. لا يمكنك زيادة الذاكرة أو تقليلها أو تحريرها، فالمترجم يعتني بإدارة الذاكرة.
+
+على سبيل المثال، إذا كنت بحاجة إلى الإعلان عن متغير لتخزين علامات N من الطلاب، ففي هذه الحالة يكون N غير محدد في مرحلة التجميع. ولذلك سوف ينتهي بك الأمر مع الإعلان التالي
+
+Types of memory allocation in C
+C programming or any other programming language basically support two types of memory allocation.
+
+Compile time memory allocation
+Runtime memory allocation
+
+
+int marks[100];
+Above declaration will occupy memory for 100 students (reserved memory bytes will be 100 * sizeof(int)). Now, there are few issues with above declaration.
+
+compile time memory allocation
+
+#include <stdio.h>
+
+// Will occupy memory at compile time
+// Global scope allocation
+int a;
+
+void foo()
+{
+    // Will occupy memory at compile time
+    // static allocation
+    static int c = 10;
+
+    c++;
+
+    printf("c = %d\n", c);
+}
+
+
+int main()
+{
+    // Will occupy the memory at compile time
+    // Automatic allocation
+    int b; 
+
+    // assigning value to test/print
+    a=10;
+    b=20;
+
+    // Print values
+    printf("a = %d\n", a);
+    printf("b = %d\n", b);
+
+    foo();
+    foo();
+
+    return 0;
+}
+
+وقت التشغيل أو تخصيص الذاكرة الديناميكية
+الذاكرة المخصصة في وقت التشغيل إما من خلال malloc()، calloc() أو realloc() تسمى تخصيص ذاكرة وقت التشغيل. يمكنك أيضًا الإشارة إلى تخصيص الذاكرة في وقت التشغيل كتخصيص ذاكرة ديناميكي أو كومة الذاكرة المؤقتة.
+
+يفضل المبرمجون المحترفون تخصيص الذاكرة الديناميكية أكثر من تخصيص الذاكرة الثابتة. منذ ذلك الحين، لدينا السيطرة الكاملة على الذاكرة المخصصة. مما يعني أنه يمكننا تخصيص الذاكرة وإلغاء تخصيصها وإعادة تخصيصها أيضًا عند الحاجة.
+
+
+
+runtime memory allocation
+In this example, we will declare memory (at runtime) for N integer, take input from user and print the elements.
+
+
+#include <stdio.h>
+#include <stdlib.h>     // To use dynamic memory allocation functions
+
+
+int main()
+{
+    // int pointer to store address of dynamic declared memory
+    int *parr;
+
+    // n - To get the limit
+    // i - Loop counter
+    int n, i;
+
+    printf("Enter limit: ");
+    scanf("%d", &n);
+
+    // Allocate memory for n elements at runtime
+    parr = malloc(n * sizeof(int));
+
+    // check memory allocation error like overflow
+    if (parr == NULL)
+    {
+        printf("Insufficient Memory!!!\n");
+        return 0;
+    }
+
+    // Read n elements
+    printf("Input %d elements:\n", n);
+    for (i = 0; i < n; i++)
+    {
+        printf("Enter element %d: ", i + 1);
+        scanf("%d", (parr + i));
+    }
+
+    // Print array elements
+    printf("Input elements: ");
+    for (i = 0; i < n; i++)
+    {
+        printf("%d ", *(parr + i));
+    }
+
+    // Release memory occupied by dynamically allocated array
+    free(parr);
+
+    return 0;
+}
+
+ملاحظة: إذا كنت تعلن عن الذاكرة في وقت التشغيل باستخدام وظائف تخصيص الذاكرة الديناميكية، فيرجى عدم نسيان تحرير الذاكرة. في المثال أعلاه، استخدمت الدالة free(parr) لتحرير الذاكرة التي يشغلها parr.
+
+DYNAMIC MEMORY ALLOCATION
+يشير تخصيص الذاكرة الديناميكية إلى عملية إدارة الذاكرة اليدوية (التخصيص وإلغاء التخصيص). يتم تنفيذ التخصيص الديناميكي للذاكرة في لغة C عبر مجموعة من الوظائف المضمنة malloc() وcalloc() وrealloc() وfree(). تشير بعض النصوص أيضًا إلى تخصيص الذاكرة الديناميكية على أنه تخصيص ذاكرة وقت التشغيل.
+
+
+Functions for Dynamic Memory Allocation in C
+malloc()
+calloc()
+realloc()
+free()
+To use these function, you must include stdlib.h header file.
+
+
+
+malloc() function
+malloc() allocates N bytes in memory and return pointer to allocated memory. The returned pointer contains link/handle to the allocated memory. Using that you can access the memory allocated.
+
+Syntax
+void * malloc(number_of_bytes);
+It returns void pointer (generic pointer). Which means we can easily typecast it to any other pointer types.
+It accepts an integer number_of_bytes, i.e. total bytes to allocate in memory.
+Note: malloc() returns NULL pointer on failure.
+
+Example
+int N = 10; // Number of bytes to allocate
+int *ptr;   // Pointer variable to store address
+
+ptr = (int *) malloc(N * sizeof(int));  // Allocate 10 * 4 bytes in memory
+The above statement will allocate 10 * 4 bytes (if size of integer is 4 bytes).
+
+
+ptr is a pointer to integer to store address of the allocated memory.
+(int *) is typecast required. As, I mentioned above that malloc() return void *. Hence, to work with void pointer we must typecast it to suitable type.
+N * sizeof(int) – Since size of int is not fixed on all compilers. Hence, to get size of integer on current compiler I have used sizeof() operator.
+Some more examples to allocate memory using malloc() function.
+
+
+// Allocate memory for N integers
+int N = 10;
+int *ptr;
+ptr = (int *) malloc (N * sizeof(int));
+
+// Allocate memory for 50 characters or string of length 50
+char *name;
+name = (char *) malloc(50 * sizeof(char));
+
+// Allocate memory for 10 records of student structure type
+struct student *stdList;
+stdList = (struct student *) malloc(10 * sizeof(struct student));
+Program to demonstrate malloc() function
+Write a program to read and print integer array. The program should input total number of elements (limit) and elements in array from user. Use dynamic memory allocation to allocate and deallocate array memory.
+
+
+/**
+ * C program to demonstrate malloc() and free() function.
+ */
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    int i, max;
+    int *ptr;
+
+    // Input maximum elements of array
+    printf("Enter total number of elements: ");
+    scanf("%d", &max);
+    
+    // Allocate memory for 'max' integer elements 
+    ptr = (int *) malloc(max * sizeof(int));
+    
+    // If memory not allocated
+    if(ptr == NULL)
+    {
+        printf("Memory is not created!!!");
+        exit(0); // Exit from the program
+    }
+    
+    // Input elements from user
+    printf("Enter %d elements: \n", max);
+    for (i = 0; i < max; i++)
+        scanf("%d", (ptr + i));
+    
+    // Print all elements 
+    printf("\nArray elements are:\n");
+    for (i = 0; i < max; i++)
+        printf("%d ", *(ptr + i));
+    
+    // Release allocated memory
+    free(ptr);
+    
+    return 0;
+}
+
+
+
+calloc() function
+calloc() function allocates memory contiguously. It allocates multiple memory blocks and initializes all blocks with 0 (NULL).
+
+Note: malloc() allocates uninitialized memory blocks.
+
+Syntax
+void* calloc(number_of_blocks, number_of_bytes);
+Here,
+
+Similar to malloc() it returns void pointer.
+It accepts two parameters number_of_blocks i.e. total blocks to allocate and number_of_bytes i.e. bytes to allocate per block.
+Therefore, you can say that calloc() will allocate total (number_of_blocks * number_of_bytes) bytes. Each block initialized with 0 (NULL).
+
+Example
+Similar to malloc() function, we can also use calloc() to reserve memory for N integers.
+
+
+int *ptr;
+ptr = (int *) calloc(N, sizeof(int));
+Here, all memory blocks are initialized with 0.
+Program to demonstrate calloc() function
+Write a C program to read and print integer array. The program should input total number of elements (limit) and elements in array from user. The program must manage memory allocation and deallocation dynamically.
+
+Note: Below program is same as malloc() function program. Only the way to allocate memory is different for calloc() i.e. ptr = (int*) calloc(max, sizeof(int));.
+
+
+/**
+ * C program to demonstrate calloc() and free() function.
+ */
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    int i, max;
+    int *ptr;
+
+    // Input maximum elements of array
+    printf("Enter total number of elements: ");
+    scanf("%d", &max);
+    
+    // Allocate memory for 'max' integer elements 
+    ptr = (int *) calloc(max, sizeof(int));
+    
+    // If memory not allocated
+    if(ptr == NULL)
+    {
+        printf("Memory is not created!!!");
+        exit(0); // Exit from the program
+    }
+    
+    // Input elements from user
+    printf("Enter %d elements: \n", max);
+    for (i = 0; i < max; i++)
+        scanf("%d", (ptr + i));
+    
+    // Print all elements 
+    printf("\nArray elements are:\n");
+    for (i = 0; i < max; i++)
+        printf("%d ", *(ptr + i));
+    
+    // Release allocated memory
+    free(ptr);
+    
+    return 0;
+}
+
+
+
+وظيفة ريلوك ().
+عند العمل مع بيانات ضخمة وإذا كانت الذاكرة المخصصة غير كافية لتخزين البيانات. في هذه الحالة، نحتاج إلى تغيير/تحديث حجم كتل الذاكرة المخصصة الموجودة (والتي تم إنشاؤها بواسطة malloc() أو calloc()).
+
+نحن نستخدم وظيفة realloc() لتغيير/تحديث حجم الخروج من كتل الذاكرة المخصصة. قد تقوم الوظيفة بتغيير حجم كتل الذاكرة المخصصة أو نقلها إلى موقع جديد.
+
+بناء الجملة
+void* realloc(ptr, Update_memory_size);
+كما هو الحال مع جميع الوظائف الأخرى لتخصيص الذاكرة الديناميكية في لغة C، فإنها تقوم بإرجاع مؤشر فارغ. والذي يشير إلى عنوان الذاكرة الموجودة أو المخصصة حديثًا.
+يعد ptr مؤشرًا لكتلة الذاكرة الخاصة بالذاكرة المخصصة مسبقًا.
+update_memory_size هو الحجم الجديد (الموجود + الجديد) لكتلة الذاكرة.
+حقائق عن وظيفة realloc()
+قد تقوم وظيفة realloc() أو لا تقوم بتخصيص كتل ذاكرة جديدة في نفس الموقع.
+ستقوم الوظيفة بنقل البيانات من الموقع القديم إلى الموقع الجديد، إذا تم تخصيص الذاكرة في الموقع الجديد. وبالتالي، فإنه يضمن عدم فقدان البيانات.
+يقوم realloc() بإرجاع مؤشر NULL عند الفشل ويحرر كتل الذاكرة الأصلية.
+Example
+
+// Original memory blocks allocation
+int N = 10;
+int *ptr;
+ptr = (int *) malloc(N * sizeof(int));
+
+// Increase the value of N
+N = 50;
+// Reallocate memory blocks
+ptr = (int *) realloc(ptr, N * sizeof(int));
+
+/**
+ * C program to demonstrate ralloc() and free() function.
+ */
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    int i, max, newSize;
+    int *ptr;
+
+    // Input maximum elements of array
+    printf("Enter total number of elements: ");
+    scanf("%d", &max);
+    
+    // Allocate memory for 'max' integer elements using calloc
+    ptr = (int *) calloc(max, sizeof(int));
+    
+    // If memory not allocated
+    if(ptr == NULL)
+    {
+        printf("Memory is not created!!!");
+        exit(0); // Exit from the program
+    }
+    
+    // Input elements from user
+    printf("Enter %d elements: \n", max);
+    for (i = 0; i < max; i++)
+        scanf("%d", (ptr + i));
+
+    // Reallocate memory 
+    printf("\nEnter new size of the array: ");
+    scanf("%d", &newSize);
+    ptr = (int *) realloc(ptr, (newSize * sizeof(int)));
+
+    
+    // Input elements in newly allocated memory
+    printf("\nEnter %d elements: \n", (newSize - max));
+    for (i = max; i < newSize; i++)
+        scanf("%d", (ptr + i));
+    
+    // Print all elements 
+    printf("\nArray elements are:\n");
+    for (i = 0; i < newSize; i++)
+        printf("%d ", *(ptr + i));
+    
+    // Release allocated memory
+    free(ptr);
+    
+    return 0;
+}
+
+
+
+
+وظيفة مجانية ().
+حتى الآن تعلمنا تخصيص وإعادة تخصيص الذاكرة في لغة C. ولكن علاوة على ذلك، يعد التخصيص، وكيفية مسح الذاكرة المخصصة أمرًا مهمًا.
+
+تحتوي برمجة C على وظيفة مكتبة مدمجة مجانية () لمسح أو تحرير الذاكرة غير المستخدمة.
+
+تقوم الدالة free() بمسح المؤشر (تعيين NULL للمؤشر) لمسح الذاكرة المخصصة ديناميكيًا. إذا كان المؤشر يحتوي على NULL، فإن free() لا يفعل شيئًا (لأن المؤشر لن يشير إلى أي عناوين ذاكرة). إذا كان يحتوي على أي عنوان للذاكرة المخصصة ديناميكيًا، فسيقوم free() بمسح المؤشر عن طريق تعيين NULL.
+
+بناء الجملة
+مجانا(ptr);
+تقبل الدالة مؤشر ptr فارغًا. يشير إلى الذاكرة المخصصة مسبقًا باستخدام أي من وظائف تخصيص الذاكرة الديناميكية في لغة C.
+Example
+
+int N = 10;
+int *ptr;
+
+// Allocate memory using malloc
+ptr = (int *) malloc(N * sizeof(int));
+
+// Free allocated memory
+free(ptr);
+Wrapping up things, we have learned how to manage memory manually in C. We use four functions malloc(), calloc(), realloc() and free() to perform Dynamic Memory Allocation in C programming language. These functions are defined in stdlib.h header file.
+********************************************************************************************************************************************
+
+

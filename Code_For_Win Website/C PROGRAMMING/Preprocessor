@@ -1,0 +1,270 @@
+المعالج المسبق لـ C مقابل المترجم
+يرجى تذكر أن المعالج المسبق للغة C ليس جزءًا من مترجم لغة C. لديها بناء جملة مختلف عن عبارات C العادية التي تم تجميعها بواسطة المترجم، على سبيل المثال:
+
+يبدأ بحرف التجزئة/الجنيه #.
+المعالج المسبق C موجه نحو الخط. تبدأ كل عبارة في سطر منفصل. في حين أنه ليس من الضروري أن تبدأ عبارات C الأخرى في سطر منفصل.
+تنتهي هذه العبارات بسطر جديد. بينما يتم إنهاء العبارات الأخرى بفاصلة منقوطة.
+المعالج المسبق لـ C هو معالج مسبق صغير يقوم بتجميع التعليمات البرمجية قبل التجميع.
+List of all preprocessor directives:
+
+#include preprocessor directive
+#define and #undef preprocessor directive
+Parameterized Macros (Function like Macros)
+#ifdef, #ifndef and #endif preprocessor directive
+#if…#elif…#else…#endif
+Stringize operator (#)
+Token pasting (##)
+#pragma preprocessor directive
+#error preprocessor directive
+#null preprocessor directive
+
+
+
+
+
+
+#include <file.h>
+This variant of including header file, searches header file in the “standard header file directory”. Standard header file directory is the path where all header files are stored.
+Syntax to use
+
+#include <header.h>
+Where header.h is a standard C header file.
+
+#include "file"
+We use this variant of including file when we want to include our own/custom header file. It searches the file in the current directory and then in the standard header file’s directory.
+Syntax to use
+
+#include "path_to_header_file";
+Where path_to_header_file is relative path to the header file.
+
+Example:
+
+#include <stdio.h>
+
+#include "main.h"
+#include "win/display.c"
+Here, file “stdio.h” is a standard header file, “main.h” and “win/display.c” is custom C files.
+
+
+
+#undef توجيه المعالج المسبق
+نستخدم التوجيه #undef لإزالة ماكرو محدد. نقوم بشكل عام بإلغاء تعريف الماكرو، عندما لا نطلبه أو لا نريد إعادة تعريفه. لإعادة تعريف الماكرو، نحتاج إلى إلغاء تعريف الماكرو وإعادة تعريفه.
+Syntax:
+
+#undef MACRO_NAME
+Where MACRO_NAME is the macro to remove.
+
+
+#include <stdio.h>
+
+// Macro definition
+#define TRUE 1
+#define FALSE 0
+
+
+int main()
+{
+    printf("TRUE: %d\n", TRUE);
+    printf("FALSE: %d\n", FALSE);
+
+    // Undefine a previously defined macro
+    #undef TRUE
+    #undef FALSE
+
+    // Re-define macro values
+    #define TRUE 0
+    #define FALSE 1
+
+    printf("\nMacro values are redefinition\n");
+    printf("TRUE: %d\n", TRUE);
+    printf("FALSE: %d\n", FALSE);
+
+    return 0;
+}
+
+وحدات الماكرو ذات المعلمات (تعمل مثل وحدات الماكرو)
+نستخدم وظيفة مثل وحدات الماكرو لإعادة كتابة الوظائف الصغيرة باستخدام وحدات الماكرو لتوفير وقت التنفيذ.
+
+إذا استخدمنا الوظائف، فعند كل استدعاء دالة، سينتقل تنفيذ البرامج بين تعريف الوظيفة والاتصال، مما يستهلك وقتًا.
+
+لتوفير هذا الوقت، يمكننا استخدام وحدات الماكرو ذات المعلمات. سيتم توسيع تعريف الماكرو ليشمل استدعاء الوظيفة أثناء المعالجة المسبقة.
+Syntax:
+
+#define MACRO_NAME(parameters) macro_body
+#include <stdio.h>
+
+// Function to fund sum of two numbers
+int sum (int a, int b)
+{
+    return (a + b);
+}
+
+// Function like Macro for above function 
+#define SUM(a, b) (a + b)
+
+int main()
+{
+    printf("SUM using function: %d\n", sum(100, 200));
+    printf("SUM using macro: %d\n", SUM(100, 200));
+    
+    return 0;
+}
+
+
+#ifdef، #ifndef و #endif توجيهات المعالج المسبق الشرطي
+نستخدم التوجيهات الشرطية للتحقق مما إذا تم تعريف الماكرو أم لا. كل من #ifdef و #ifndef مكملان لبعضهما البعض.
+
+#ifdef conditional directive
+#ifdef will compile all code if a given macro is defined.
+
+Syntax:
+#ifdef MACRO_NAME
+Where MACRO_NAME is our macro to test if defined.
+
+#ifndef conditional directive
+#ifndef is similar to #ifdef just works as a complement. It process block of code if a given macro is not defined.
+
+Syntax:
+#ifndef MACRO_NAME
+Where MACRO_NAME is our macro to test if not defined.
+
+
+#include <stdio.h>
+
+// MACRO definition
+#define COUNTRY "INDIA"
+
+int main()
+{
+    // If COUNTRY is defined, print a message
+    #ifdef COUNTRY
+        printf("Country is defined\n");
+    #endif
+
+    // If STATE is not defined, define it 
+    #ifndef STATE
+        printf("State is not defined. Defining state. \n");
+        #define STATE "PATNA"
+    #endif
+
+    printf("State is: %s\n", STATE);
+
+    return 0;
+}
+
+ملاحظة: التوجيه الشرطي #ifdef أو #ifndef يجب أن ينتهي بـ #endif. #endif يحدد نطاق التوجيه الشرطي.
+
+نستخدم التوجيهات الشرطية لتقييد تحميل الملف عدة مرات.
+
+مثال: إذا كان هناك ملف اسمه myfile.h والذي يحتوي على تعريف لبعض المتغيرات والوظائف. إذا قمنا بتضمين myfile.h في 3 ملفات كود المصدر (.c). سيتم تضمين رمز ملف الرأس 3 مرات في جميع الملفات وقد يؤدي إلى خطأ الإقرار المتعدد.
+
+لتقييد مثل هذه الحالات، يمكننا استخدام هذه التوجيهات كما هو موضح أدناه
+
+خذ بعين الاعتبار الكود:
+الملف : myfile.h
+#ifndef _MY_FILE_
+
+    #define _MY_FILE_
+
+    // Declare other macros
+    // Declare variables and functions
+
+#endif
+
+
+#if, #elif, #else and #endif preprocessor directives
+Syntax:
+
+#if expression
+    // If condition is true
+#elif expression
+    // If else if condition is true
+#else
+    // If no condition is true
+#endif
+
+
+
+
+
+
+#include <stdio.h>
+
+#define IND 1
+#define USA 2
+#define UK  3
+
+#define COUNTRY IND
+
+int main()
+{
+	#if COUNTRY == IND
+		printf("Selected country code is: %d\n", COUNTRY);
+        // Do some task if country is India
+	#elif COUNTRY == USA
+		printf("Selected country code is: %d\n", COUNTRY);
+        // Do some task if country is USA
+	#else
+		printf("Selected country code is: %d\n", COUNTRY);
+        // Do some task if country is UK
+	#endif
+	
+	return 0;
+}
+
+********************************************************************************************************************************************
+
+C programming supports two string manipulation operators.
+
+Stringize operator (#)
+Token pasting operator (##)
+
+
+
+
+Stringize operator (#)
+We use stringize operator in C to convert a token to string. It transforms the macro parameter to string. It causes the macro parameter to enclose in double quoted string.
+
+Syntax:
+
+#define MACRO_NAME(param) #param
+
+#include <stdio.h>
+
+// Macro definition with stringize operator
+#define PRINT(msg) #msg
+
+int main()
+{
+	printf(PRINT(C Programming in Codeforwin));
+	
+	return 0;
+}
+
+
+
+
+Token pasting operator (##)
+Token pasting operator (##) combines or concatenates tokens together. The ## operator concatenates two tokens. During macro expansion parameter next to ## is combined with the parameter before ## and returned as a single token.
+
+
+
+Syntax:
+
+#define MACRO_NAME(param1, param2) param1##param2
+Where MACRO_NAME is an identifier i.e. name of the macro. It accepts two param param1 and param2 and returns concatenation of param1 and param2.
+
+Note: It is not necessary to pass two params to macro for token pasting. You can pass any number of parameter.
+
+#include <stdio.h>
+
+// Macro definition with token pasting
+#define CONCAT(a, b) a##b
+
+int main()
+{
+	printf("CONCAT(10, 20) = %d\n", CONCAT(10, 20));
+	
+	return 0;
+}
+

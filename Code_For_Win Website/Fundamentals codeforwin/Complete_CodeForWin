@@ -261,4 +261,600 @@ Low level programs are more error prone.
 Low level programming usually results in poor programming productivity.
 Programmer must have additional knowledge of the computer architecture of particular machine, for programming in low level language.
 ********************************************************************************************************************************************
+					ARRAY
+المصفوفة عبارة عن بنية بيانات تحتوي على مجموعة متسلسلة محدودة من البيانات المتجانسة.
+
+لتبسيط الأمر، دعونا نكسر الكلمات.
+
+المصفوفة عبارة عن مجموعة - المصفوفة عبارة عن حاوية يمكنها الاحتفاظ بمجموعة من البيانات.
+المصفوفة محدودة – مجموعة البيانات في المصفوفة تكون دائمًا محدودة، ويتم تحديدها قبل استخدامها.
+المصفوفة تسلسلية - تقوم المصفوفة بتخزين مجموعة من البيانات بشكل تسلسلي في الذاكرة.
+يحتوي الصفيف على بيانات متجانسة - يجب أن تشترك مجموعة البيانات في الصفيف في نفس نوع البيانات.
+
+يمكننا تقسيم المصفوفات إلى فئتين.
+
+مصفوفة أحادية البعد (أو مصفوفة أحادية البعد)
+مصفوفة متعددة الأبعاد
+
+
+لماذا نحتاج المصفوفات؟
+دعونا نفهم أهمية المصفوفات من خلال مثال.
+
+لنفترض أنني طلبت منك كتابة برنامج لإدخال 1000 علامة طالب من المستخدم. وأخيرا طباعة متوسط علاماتهم.
+
+لحل المشكلة سوف تعلن 1000 عدد صحيح متغير لعلامات الإدخال. قم باستدعاء وظائف الإدخال/الإخراج لإدخال العلامات في 1000 متغير وأخيرًا ابحث عن المتوسط.
+
+فكر لبعض الوقت في مدى صعوبة البرمجة إذا تم حلها باستخدام الطريقة المذكورة أعلاه. أعلن عن 1000 متغير، وقم بإدخال جميع المتغيرات، ثم ابحث عن المتوسط، وأخيرًا اطبع متوسطه. ما ورد أعلاه يزيد من طول التعليمات البرمجية والتعقيد ويخفض الأداء. إذا كنت لا تصدق، حاول ترميز الحل باستخدام الطريقة المذكورة أعلاه.
+
+لحل المشكلة المذكورة أعلاه بكفاءة نستخدم المصفوفات. المصفوفات جيدة في التعامل مع جمع البيانات (جمع 1000 علامة طالب). ضع في اعتبارك أنه في البرمجة، سنستخدم دائمًا بعض هياكل البيانات (المصفوفة في حالتنا) للتعامل مع مجموعة من البيانات بكفاءة.
+
+
+
+How to initialize an array?
+There are two ways to initialize an array.
+
+Static array initialization – Initializes all elements of array during its declaration.
+Dynamic array initialization – The declared array is initialized some time later during execution of program.
+
+
+Static initialization of array
+We define value of all array elements within a pair of curly braces { and } during its declaration. Values are separated using comma , and must be of same type.
+
+Example of static array initialization
+int marks[5] = {90, 86, 89, 76, 91};
+
+Note: Size of array is optional when declaring and initializing array at once. The C compiler automatically determines array size using number of array elements. Hence, you can write above array initialization as.
+
+int marks[] = {90, 86, 89, 76, 91};
+
+
+
+
+Dynamic initialization of array
+You can assign values to an array element dynamically during execution of program. First declare array with a fixed size. Then use the following syntax to assign values to an element dynamically.
+
+array_name[index] = some_value;
+marks[0] = 90; // Assigns 90 to first element of marks array
+marks[1] = 86; // Assigns 86 to second element of marks array
+...
+...
+...
+marks[4] = 91; // Assigns 91 to fifth element of marks array
+
+Instead of hard-coding marks values, you can ask user to input values to array using scanf() function.
+
+scanf("%d", &marks[0]); // Input an integer from user and assigns to first element of marks
+
+scanf("%d", &marks[4]); // Input an integer from user and assigns to fifth element of marks
+The array index is an integer value, so instead of hard-coding you can wrap array input code inside a loop.
+
+int index;
+
+// Run a loop from 0 to 4
+for(index = 0; index < 5; index++)
+{
+    // Replace the hard-coded index with 'index' variable
+    scanf("%d", &marks[index]);
+}
+The above code will run 5 times from 0 to 4. In each iteration it ask user to input an integer and stores it in successive elements of marks array.
+
+
+
+
+
+
+
+
+
+Multi-dimensional array is an array of array or more precisely collection of array. Unlike one-dimensional array, multi-dimensional array stores collection of array.
+
+Let us revise the concept of dimension.
+
+One-dimensional array : Collection of data/values.
+Two-dimensional array : Collection of one-dimensional array.
+Three-dimensional array : Collection of two-dimensional array.
+N-dimensional array : Collection of N-1 dimensional array.
+
+We can declare array with any dimension. However, two-dimensional array is most popular and widely used to solve many mathematical problems.
+
+Note: Whether it is one, two or N-dimensional array. All array elements are stored sequentially in memory.
+
+
+Syntax to declare two-dimensional array
+type array_name[row-size][col-size];
+type is a valid C data type.
+array_name is a valid C identifier that denotes name of the array.
+row-size is a constant that specifies matrix row size.
+col-size is also a constant that specifies column size. col-size is optional when initializing array during its declaration.
+
+
+How to initialize two-dimensional array
+You can initialize a two-dimensional array in any of the given form.
+
+int matrix[4][3] = {
+                       {10, 20, 30},    // Initializes matrix[0]
+                       {40, 50, 60},    // Initializes matrix[1]
+                       {70, 80, 90},    // Initializes matrix[2]
+                       {100, 110, 120}  // Initializes matrix[3]
+                   };
+If you have mentioned row and column size specifically then curly braces for each row inside array initialization is optional. Hence, you can write the above initialization as.
+
+int matrix[4][3] = {10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120};
+Note: Be cautious while using the above approach to initialize. You must explicitly provide row and column size. Otherwise C compiler will generate compilation errors.
+
+Array column size is optional if specifying individual rows within pair of curly braces.
+int matrix[4][] = {
+                       {10, 20, 30},    // Initializes matrix[0]
+                       {40, 50, 60},    // Initializes matrix[1]
+                       {70, 80, 90},    // Initializes matrix[2]
+                       {100, 110, 120}  // Initializes matrix[3]
+                   };
+There are several ways to initialize a two-dimensional array. It depends on programmers how they initialize. However, the first approach is considered as standard to initialize a two-dimensional array.
+
+
+
+
+
+
+
+Example to access two-dimensional array
+matrix[0][0] = 10;  // Assign 10 to first element of first row
+matrix[0][1] = 20;  // Assign 20 to second element of first row
+matrix[1][2] = 60;  // Assign 60 to third element of second row
+matrix[3][0] = 100; // Assign 100 to first element of fourth row
+Since array indexes are integer value, hence you can also wire a loop to access two-dimensional array. Two-dimensional array needs two index values to access any array element. Therefore you need two loops. One outer loop to access for each row of the matrix, second loop for each column of the matrix.
+
+
+// Runs 4 times iterating through each row
+for(i=0; i<4; i++)
+{
+    // Runs 3 times for each row.
+    for(j=0; j<3; j++)
+    {
+        scanf("%d", &matrix[i][j]);
+    }
+}
+
+/**
+ * C program to input and display three-dimensional array
+ */
+
+#include <stdio.h>
+
+#define SIZE1 2
+#define SIZE2 2
+#define SIZE3 3
+
+int main()
+{
+    int arr[SIZE1][SIZE2][SIZE3];
+    int i, j, k;
+
+    /*
+     * Input elements in array
+     */
+    printf("Enter elements in three-dimensional array of size %dx%dx%d \n", SIZE1, SIZE2, SIZE3);
+    for(i = 0; i < SIZE1; i++)
+    {
+        for(j = 0; j < SIZE2; j++)
+        {
+        	for (k = 0; k < SIZE3; k++)
+        	{
+            	scanf("%d", &arr[i][j][k]);	
+        	}
+        }
+    }
+
+    /*
+     * Print elements of array
+     */
+    printf("\nElements in three-dimensional array are: \n");
+    for(i = 0; i < SIZE1; i++)
+    {
+        for(j = 0; j < SIZE2; j++)
+        {
+        	for (k = 0; k < SIZE3; k++)
+        	{
+            	printf("%d\n", arr[i][j][k]);	
+        	}
+        }
+    }
+
+    return 0;
+}
+*********************************************************************************************************************************************
+							ARRAYS AND FUNCTION IN C
+Array is a data structure to store homogeneous collection of data. Arrays are equally important as functions. In programming we often use arrays and functions together.
+
+
+How to pass single dimensional array to function?
+In C you can pass single dimensional arrays in two ways. You can either pass it directly to a function. Or you can also pass it as a pointer to array.
+
+Let us see both ways to pass single dimensional array to function one after one.
+
+1. Passing array directly to function
+You can pass single dimensional array directly to functions as you pass other variables.
+void printArray(int arr[], int size)
+{
+    int i;
+
+    printf("Array elements are: ");
+    for(i = 0; i < size; i++)
+    {
+        printf("%d, ", arr[i]);
+    }
+}
+
+int main()
+{
+    int arr[5];
+
+    printArray(arr, 5);    // Pass array directly to function printArray
+
+    return 0;
+}
+
+
+
+2. Passing array using pointer
+Since array and pointers are closely related to each other. Hence you can also pass an array to function as pointer.
+
+
+void printArray(int * arr, int size)
+{
+    int i;
+
+    printf("Array elements are: ");
+    for(i = 0; i < size; i++)
+    {
+        printf("%d, ", arr[i]);
+    }
+}
+
+int main()
+{
+    int arr[5];
+
+    printArray(arr, 5);    // Pass array directly to function printArray
+
+    return 0;
+}
+Important Note: Arrays in C are passed as reference not by value. Which means any changes to array within the function will also persist outside the function.
+
+
+
+
+
+
+
+
+
+
+
+كيفية إرجاع مجموعة أحادية البعد من الوظيفة؟
+في لغة C لا يمكنك إرجاع مصفوفة مباشرة من دالة. لكن هذا لا يفرض قيودًا على لغة C. هناك طريقتان لإرجاع مصفوفة بشكل غير مباشر من دالة.
+
+1. Return pointer pointing at array from function
+C does not allow you to return array directly from function. However, you can return a pointer to array from function.
+Let us write a program to initialize and return an array from function using pointer.
+
+
+#include <stdio.h>
+
+/**
+ * Function to return an array using pointers.
+ * @return 	Pointer to array 
+ */ 
+int * getArray()
+{
+    int num[] = {1, 2, 3, 4, 5};
+    int i;
+
+    printf("Array inside function: ");
+    // Print value of each array element
+    for (i = 0; i < 5; ++i)
+    {
+        printf("%d\n", num[i]);
+    }
+
+    return num;
+}
+
+int main()
+{
+    int i;
+
+    // Pointer to store array
+    int * num;
+
+    // Call getArray function to get pointer to array
+    num = getArray();
+
+    printf("Array outside function: \n");
+    // Print value of each array element
+    for (i = 0; i < 5; ++i)
+    {
+        printf("%d\n", num[i]);
+    }
+
+    return 0;
+}
+
+C compiler reports a warning message on compilation of above program.
+
+a.c: In function 'getArray':
+a.c:12:5: warning: function returns address of local variable [-Wreturn-local-addr]
+     return num;
+     ^
+It complains about returning address of a local variable. We can return value of a local variable but it is illegal to return memory location that is allocated within function on stack. Since, after program control is returned from the function all variables allocated on stack within function are freed. Hence, returning a memory location which is already released will point at no man’s land.
+
+But overlooking the compilers warning message let us run the program. On execution it produces following output which is somewhat weird.
+
+Array inside function: 1
+2
+3
+4
+5
+Array outside function: 3043328
+8
+6356668
+4
+6356940 
+It is clear that inside function our array successfully got initialized, but something awful happened after returning it from function.
+
+To overcome this you can either allocate array dynamically using malloc() function. Or declare array within function as static variable. Or you can pass the array to be returned as a parameter to the function.
+
+However the best practice is to either pass array to return as parameter or allocate array dynamically using malloc() function.
+
+
+
+
+
+
+
+
+2. Pass the returned array as parameter
+#include <stdio.h>
+
+#define MAX_SIZE 10
+
+/* Function delcaration to initialize array and return */
+void getArray(int arr[], int size);
+
+int main()
+{
+    int arr[MAX_SIZE];
+    int i;
+
+    // Call function to initialize array.
+    getArray(arr, MAX_SIZE);
+
+    printf("\n\nArray outside function: \n");
+    for (i = 0; i < MAX_SIZE; i++)
+    {
+        printf("%d ", arr[i]);
+    }
+
+    return 0;
+}
+
+/** 
+ * Function to initialize array.
+ *
+ * @arr     Integer array to initialize and return.
+ * @size    Size of the array.
+ */
+void getArray(int arr[], int size)
+{
+    int i;
+
+    printf("Enter elements in array: ");
+    for (i = 0; i < size; i++)
+    {
+        scanf("%d", &arr[i]);
+    }
+
+    printf("\n\nArray inside function: \n");
+    for (i = 0; i < size; i++)
+    {
+        printf("%d ", arr[i]);
+    }
+}
+
+
+How to pass multi-dimensional array to function?
+Multi-dimensional arrays are passed in the same fashion as single dimensional. Which means you can pass multi-dimensional array to a function in two ways.
+
+1. Passing multi-dimensional array directly to function
+This is the simplest way to pass a multi-dimensional array to functions. Pass the array as other variables.
+#include <stdio.h>
+
+#define ROWS 3
+#define COLS 3
+
+/* Function declaration to print two dimensional array */
+void printMatrix(int mat[][COLS]);
+
+int main()
+{
+    int mat[ROWS][COLS] = {
+                            {1, 2, 3}, 
+                            {4, 5, 6},
+                            {7, 8, 9}
+                          };
+
+    // Print elements of matrix using function
+    printMatrix(mat);    
+
+    return 0;
+}
+
+/** 
+ * Function to accept two dimensional array and print
+ * its elements.
+ * 
+ * @mat     Two dimensional integer array to print.
+ */
+void printMatrix(int mat[][COLS])
+{
+    int i, j;
+
+    // Print elements of two dimensional array.
+    printf("Elements in matrix: \n");
+    for (i = 0; i < ROWS; i++)
+    {
+        for (j = 0; j < COLS; j++)
+        {
+            printf("%d ", mat[i][j]);
+        }
+        printf("\n");
+    }
+}
+
+
+
+2. Passing multi-dimensional array to function using pointer
+#include <stdio.h>
+
+#define ROWS 3
+#define COLS 3
+
+/* Function declaration */
+void inputMatrix(int (*mat)[COLS]);
+void printMatrix(int mat[][COLS]);
+
+int main()
+{
+    int mat[ROWS][COLS];
+
+    // Input elements in matrix using function
+    inputMatrix(mat);
+
+    // Print elements of matrix using function
+    printMatrix(mat);    
+
+    return 0;
+}
+
+/**
+ * Function to accept a two dimensional array and input
+ * elements in matrix from user.
+ * 
+ * @mat     Two dimensional integer array to store user input.
+ */
+void inputMatrix(int (*mat)[COLS])
+{
+    int i, j;
+
+    // Input elements in 2D matrix
+    printf("Enter elements in 2D matrix: \n");
+    for (i = 0; i < ROWS; i++)
+    {
+        for (j = 0; j < COLS; j++)
+        {
+            scanf("%d", (*(mat + i) + j));
+        }
+    }
+}
+
+/** 
+ * Function to accept a two dimensional array and print
+ * its elements.
+ * 
+ * @mat     Two dimensional integer array to print.
+ */
+void printMatrix(int (*mat)[COLS])
+{
+    int i, j;
+
+    // Print elements of two dimensional array.
+    printf("Elements in matrix: \n");
+    for (i = 0; i < ROWS; i++)
+    {
+        for (j = 0; j < COLS; j++)
+        {
+            printf("%d ", *(*(mat + i) + j));
+        }
+        printf("\n");
+    }
+}
+
+Important Note: int (*mat)[COLS] and int * mat[COLS] both are different. First is a pointer to array whereas second is array of pointers.
+
+How to return multi-dimensional array from function?
+Returning multi-dimensional array from function is similar as of returning single dimensional array. Which means you can either return a pointer to array or pass the array to return as a function parameter.
+
+#include <stdio.h>
+
+#define ROWS 3
+#define COLS 3
+
+/* Function declaration */
+void matrixAddition(int mat1[][COLS], int mat2[][COLS], int res[][COLS]);
+void printMatrix(int mat[][COLS]);
+
+int main()
+{
+    int mat1[ROWS][COLS] = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
+    int mat2[ROWS][COLS] = {{1, 1, 1}, {2, 2, 2}, {3, 3, 3}};    
+
+    // Resultant matrix which is passed to function. 
+    // Function performs calculation and fills the array
+    int res[ROWS][COLS];
+
+    // Input elements in matrix using function
+    matrixAddition(mat1, mat2, res);
+
+    // Print resultant array
+    printMatrix(res);    
+
+    return 0;
+}
+
+/**
+ * Function to add two matrices and return the resultant matrix.
+ * 
+ * @mat1    First matrix to add.
+ * @mat2    Second matrix to add.
+ * @res     The resultant matrix that will be filled with addition 
+ *          result.
+ */
+void matrixAddition(int mat1[][COLS], int mat2[][COLS], int res[][COLS])
+{
+    int i, j;
+    for(i = 0; i < ROWS; i++)
+    {
+        for(j = 0; j < COLS; j++)
+        {
+            res[i][j] = mat1[i][j] + mat2[i][j];
+        }
+    }
+}
+
+/** 
+ * Function to accept a two dimensional array and print
+ * its elements.
+ * 
+ * @mat     Two dimensional integer array to print.
+ */
+void printMatrix(int mat[][COLS])
+{
+    int i, j;
+
+    // Print elements of two dimensional array.
+    printf("Elements in matrix: \n");
+    for (i = 0; i < ROWS; i++)
+    {
+        for (j = 0; j < COLS; j++)
+        {
+            printf("%d ", mat[i][j]);
+        }
+        printf("\n");
+    }
+}
+
+خاتمة
+لقد تعلمنا تمرير المصفوفة وإرجاع المصفوفة من دالة. إن تمرير مصفوفة إلى وظيفة ليس بالأمر الكبير ويتم تمريره كمتغيرات أخرى. ولكن ضع في اعتبارك دائمًا أن المصفوفات يتم تمريرها حسب المرجع. إن إرجاع مصفوفة من الوظيفة ليس بنفس سهولة تمرير المصفوفة إلى الوظيفة. هناك طريقتان لإرجاع مصفوفة من الوظيفة. لكنني شخصياً أفضل تمرير المصفوفة للعودة كوسيطة وملء المصفوفة الناتجة داخل الوظيفة بالنتيجة المعالجة.
+*********************************************************************************************************************************************
+							
 

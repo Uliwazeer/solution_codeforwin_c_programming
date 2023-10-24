@@ -1,0 +1,157 @@
+على سبيل المثال، إذا كنت بحاجة إلى تخزين سجل 100 طالب يتكون من الاسم والعمر ورقم الهاتف المحمول. لتشفير ذلك، ستقوم بإنشاء 3 متغيرات مصفوفة بحجم 100، أي الاسم [100]، والعمر [100]، والجوال [100]. بالنسبة إلى ثلاثة حقول في سجل الطالب، يبدو الأمر ممكنًا بالنسبة لك. ولكن فكر في مدى صعوبة إدارة سجل الطالب الذي يحتوي على أكثر من 10 حقول، في متغيرات منفصلة لطالب واحد.
+
+للتغلب على هذا نحن بحاجة إلى نوع بيانات يحدده المستخدم. سأشرح في هذا البرنامج التعليمي مدى سهولة التعامل مع هذه المواقف باستخدام الهياكل في لغة البرمجة C.
+
+What is structure in C?
+Structure is a user defined data type. It is a collection of different data type, to create a new data type.
+
+For example, You can define your custom type for storing student record containing name, age and mobile. Creating structure type will allow you to handle all properties (fields) of student with single variable, instead of handling it separately.
+
+How to declare, define and access structure members?
+To declare or define a structure, we use struct keyword. It is a reserved word in the C compiler. You must only use it for structure or its object declaration or definition.
+
+
+SYNTAX
+Example to define a structure
+Let us use our student example and define a structure to store student object.
+
+struct student
+{
+    char name[40];        // Student name
+    int  age;             // Student age
+    unsigned long mobile; // Student mobile number
+};
+
+
+نقاط يجب تذكرها أثناء تعريف الهيكل
+يجب عليك إنهاء تعريف البنية بفاصلة منقوطة؛.
+لا يمكنك تعيين قيمة للأعضاء داخل تعريف البنية، وسوف يتسبب ذلك في حدوث خطأ في الترجمة. نظرًا لأنك تحدد النوع، فإنك لا تربط البيانات.
+على سبيل المثال، ما يلي هو تعريف بنية غير صالح.
+struct student
+{
+    char name[40] = "Raj";
+    int  age      = 26;
+    unsigned long mobile = 9891000033;
+};
+
+
+
+In C programming, there are two ways to declare a structure variable:
+
+Along with structure definition
+After structure definition
+
+
+1-DECLARATION ALONG WITH STRUCTURES DEFINATION
+Syntax:
+struct student
+{
+    char name[40];        // Student name
+    int  age;             // Student age
+    unsigned long mobile; // Student mobile number
+}student1;
+
+
+DECLARATION AFTER STRUCTURE DEFINATION
+struct student
+{
+    char name[40];        // Student name
+    int  age;             // Student age
+    unsigned long mobile; // Student mobile number
+};
+
+// Declare student variable
+struct student student1;
+
+
+
+HOW TO ACCESS STRUCTURES MEMBERS(DATA)....??
+C supports two operators to access structure members, using a structure variable.
+
+Dot/period operator .
+Arrow operator ->
+
+
+
+DOT
+Example:
+
+// Assign age of student1
+student1.age = 26;
+
+ARROW
+Example:
+
+// Student2 is a pointer to student type
+student2->age = 29;
+
+/**
+ * C program to demonstrate structures.
+ */
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+
+// Student type definition
+struct student
+{
+    char name[40];              // Student name
+    int  age;                   // Student age
+    unsigned long long mobile;  // Student mobile number
+};
+
+
+int main()
+{
+    struct student student1;    // Simple structure variable
+    struct student *student2;   // Pointer to student
+    
+
+    // Initialize pointer to student through dynamic memory allocation
+    student2 = (struct student*) malloc(sizeof(struct student));
+    
+    // Input data in structure members using dot operator
+    printf("Enter student name: ");
+    fgets(student1.name, 40, stdin);
+
+    printf("Enter student age: ");
+    scanf("%d", &student1.age);
+
+    printf("Enter student mobile: ");
+    scanf("%llu", &student1.mobile);
+
+    // Eat new line from input buffer
+    getchar();
+
+    printf("\nStudent using simple structure variable.\n");
+    printf("Student name: %s\n",         student1.name);
+    printf("Student age: %d\n",          student1.age);
+    printf("Student mobile: %llu\n\n",   student1.mobile);
+
+
+
+    // Input data in pointer to structure type using arrow operator
+    printf("Enter student name: ");
+    fgets(student2->name, 40, stdin);
+
+    printf("Enter student age: ");
+    scanf("%d", &student2->age);
+
+    printf("Enter student mobile: ");
+    scanf("%llu", &student2->mobile);
+
+    printf("Student using pointer to structure variable.\n");
+    printf("Student name: %s\n",        student2->name);
+    printf("Student age: %d\n",         student2->age);
+    printf("Student mobile: %llu\n",    student2->mobile);
+
+
+    // Clear memory that was alloacted dynamically
+    free(student2);
+    
+    return 0;
+}
+
+********************************************************************************************************************************************
+

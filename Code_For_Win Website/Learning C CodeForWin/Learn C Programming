@@ -191,5 +191,685 @@ I love Codeforwin.\n" + "I love India.
 
 Important note: ‘A’ and “A” both looks similar but in real both are different. ‘A’ is a character constant occupying 1 byte space in memory. Whereas “A” is a string constant and occupies 2 byte space in memory.
 *********************************************************************************************************************************************
+goto عبارة عن عبارة انتقال تُستخدم لنقل التحكم في البرنامج دون قيد أو شرط من جزء من الوظيفة إلى جزء آخر. لقد استخدمت الكلمة دون قيد أو شرط لأنه لا يوجد أي قيود على نقل السيطرة. يمكنك نقل التحكم في البرنامج من موضع واحد إلى أي موضع داخل الوظيفة. يستخدم العديد من المبرمجين goto للحصول على التحكم الكامل في برامجهم.
 
 
+Disaddvantages of Goto
+استخدام goto في البرمجة
+يجعل goto البرنامج أقل قابلية للقراءة وأكثر عرضة للخطأ ويصعب العثور على الأخطاء. بسبب نقل التحكم غير المشروط من جزء إلى جزء آخر من الوظيفة. في مرحلة ما، لا يمكنك كمبرمج معرفة كيف وصل التحكم في البرنامج إلى نقطة معينة في التعليمات البرمجية الخاصة بك. ولذلك فإن معظم المبرمجين يتجنبون استخدام goto.
+
+ملاحظة مهمة: يجب عليك تجنب استخدام goto قدر الإمكان. حاول استبدال عبارات goto بمزيج من عبارات if...else وswitch...case وloopping.
+*********************************************************************************************************************************************
+Infinite Loop
+جميع أنظمة التشغيل في حلقة لا نهائية. يجب ألا يخرج بعد القيام ببعض المهام. ولذلك، فإنه يذهب في حلقة غير محددة. والتي تنتهي عندما يقوم المستخدم بإيقاف تشغيل النظام يدويًا.
+جميع الخوادم في حلقة لا نهائية. يجب أن يستمع الخادم بشكل نشط إلى طلبات العميل إلى أجل غير مسمى ويعطي الاستجابة المناسبة. ولذلك، فإنه يستمر في حلقة لا نهاية لها حتى يقوم مسؤول الشبكة بإيقاف تشغيل الخادم يدويًا.
+جميع محركات اللعبة تضع نفسها في حلقة لا نهائية. يقبل أي محرك لعبة بشكل فعال إدخال المستخدم، وتشغيل الخوارزميات، ورسم الرسومات وتشغيل الصوت بناءً على تفاعل المستخدم إلى أجل غير مسمى، حتى خروج المستخدم من اللعبة.
+قم بتنفيذ حلقة لا نهائية في برنامجك، إذا كان برنامجك يقوم ببعض المهام بشكل متكرر ولم يكن شرط إنهاء الحلقة معروفًا قبل المطور. على سبيل المثال - قبول مدخلات المستخدم، ومعالجة المدخلات وإنشاء بعض المخرجات حتى يقوم المستخدم بإنهاء البرنامج يدويًا.
+
+أمثلة على تعريف الحلقة اللانهائية
+هناك طرق عديدة لكتابة حلقة لا نهائية. أنا هنا أدرج بعض هياكل الحلقة اللانهائية المفضلة العامة. يمكنك استخدام أي من الأساليب التالية لتحديد حلقة لا نهائية.
+
+لحلقة
+حائط اللوب
+افعل أثناء الحلقة
+انتقل إلى البيان
+وحدات الماكرو C
+EX1
+for(;;)
+{
+    // Do your task here
+}
+
+EX2
+while(1)
+{
+   //DO Your Task Here
+}
+
+EX3
+do 
+{
+    // Do your task here
+} while(1); // You can use any non-zero integer
+
+EX4
+infinite_loop:
+    // Do your task here
+goto infinite_loop;
+
+EX5
+#define FOREVER for(;;)
+
+int main()
+{
+    FOREVER
+    {
+        // Do your task here
+    }
+    
+    return 0;
+}
+
+EX6
+while(1)
+{
+    // Do your task here
+    if(condition)
+    {
+        // User chooses to exit 
+        break;
+    }
+}
+
+				SOME INFINTI PROGRAMS 
+				EX1
+				int num = 1;
+
+while(num <= 10); // <-- Semicolon should be removed
+{
+    // Do some task here
+    num++;
+}
+
+
+EX2
+char choice = ‘n’;
+
+while(choice = ‘y’) // <-- = must be replaced by == operator
+{
+    // Do some task here
+}
+
+
+EX3
+int i;
+
+for(i=100; i>=1; i++) // <-- i++ must be replaced by i--
+{
+    // Do your task here
+}
+
+
+EX4
+float num = 0.1f;
+
+while(num != 10.0f) // <-- Runs indefinitely due to floating point error
+{
+    // Do your task here
+
+    // Adds 0.1 to num with some floating point error
+    num = num + 0.1f;
+}
+
+
+EX5
+float num = 0.1f;
+
+while(floor(num) != 10.0f) // <-- Floating point error is rounded 
+{
+    // Do your task here
+
+    // Adds 0.1 to num with some floating point error
+    num = num + 0.1f;
+}
+
+EX6
+int i, j;
+    
+while(1) // Infinite loop
+{
+    for(i=1; i<=10; i++) // Some sample loop
+    {
+        if(i%2 == 0)
+        {
+            break; // <-- break will only terminate the inner loop
+        }
+    }
+}
+
+*********************************************************************************************************************************************
+FUNCTION
+
+Syntax of function declaration
+return_type function_name( parameter_list );
+
+
+Syntax of function definition
+return_type function_name(parameter list)
+{
+    // Function body
+}
+
+
+In C programming you can pass value to a function in two ways.
+
+Call by value
+Call by reference
+
+
+CALL BY VALUE
+/**
+ * C program to swap two numbers using call by value
+ */
+
+#include <stdio.h>
+
+/* Swap function definition */
+void swap(int num1, int num2)
+{
+    int temp;
+
+    printf("In Function values before swapping: %d %d\n", num1, num2);
+
+    temp = num1;
+    num1 = num2;
+    num2 = temp;
+
+    printf("In Function values after swapping: %d %d\n\n", num1, num2);
+}
+
+/* main() function definition */
+int main()
+{
+    int n1, n2;
+
+    /* Input two integers from user */
+    printf("Enter two numbers: ");
+    scanf("%d%d", &n1, &n2);
+
+    /* Print value of n1 and n2 in before swapping */
+    printf("In Main values before swapping: %d %d\n\n", n1, n2);
+
+    /* Function call to swap n1 and n2 */
+    swap(n1, n2);
+    printf("In Main values after swapping: %d %d", n1, n2);
+
+    return 0;
+}
+
+
+
+CALL BY REFERENCE
+/**
+ * C program to swap two numbers using call by reference
+ */
+
+#include <stdio.h>
+
+/**
+ * *num1 - pointer variable to accept memory address
+ * *num2 - pointer variable to accept memory address
+ */
+void swap(int * num1, int * num2)
+{
+    int temp;
+
+    printf("In Function values before swapping: %d %d\n", *num1, *num2);
+
+    temp  = *num1;
+    *num1 = *num2;
+    *num2 = temp;
+
+    printf("In Function values after swapping: %d %d\n\n", *num1, *num2);
+}
+
+/* main() function declaration */
+int main()
+{
+    int n1, n2;
+
+    printf("Enter two numbers: ");
+    scanf("%d%d", &n1, &n2);
+
+    printf("In Main values before swapping: %d %d\n\n", n1, n2);
+
+    /*
+     * &n1 - & evaluate memory address of n1
+     * &n2 - & evaluate memory address of n2
+     */
+    swap(&n1, &n2);
+
+    printf("In Main values after swapping: %d %d", n1, n2);
+
+    return 0;
+}
+
+
+						TYPES OF FUNCTION IN C
+Library function
+User defined function
+
+Library functions [YOU USE FROM READY FUNCTION IN C]
+Function defined by the C distributors and are included with C compilers are known as library functions. These functions are built-in, pre-compiled and ready to use.
+Since the first day of programming, you have used many library functions. Functions such as printf(), scanf(), pow(), sqrt() etc. are part of C standard library functions. These functions are defined in C header files. We include these header files in our program as per our need.
+
+
+User defined functions [YOU CREATE WITH YOURSELF]
+Despite of having hundreds of library function, C allows programmers to define their own function. Functions defined by an end programmer is known as user defined function. A programmer can define any number of function depending on the need.
+
+You can also compile a set of functions as library function and can use them later in another program.
+
+Based on prototype, user defined function are further categorized in four categories.
+
+Function with no return and no argument
+Function with no return but arguments
+Function with return but no argument
+Function with return and arguments
+
+
+EX1
+Syntax to define function with no return no argument
+void function_name()
+{
+    // Function body
+}
+
+
+EX2
+Syntax to define function with no return but with arguments
+void function_name(type arg1, type arg2, ...)
+{
+    // Function body
+}
+
+
+EX3
+Syntax to define function with return but no arguments
+return_type function_name()
+{
+    // Function body
+
+    return some_value;
+}
+
+
+EX4
+Syntax to define function with return and arguments
+return_type function_name(type arg1, type arg2, ...)
+{
+    // Function body
+
+    return some_variable;
+}
+
+
+						ADVANTAGES OF RECURSION
+						
+باستخدام العودية يمكن حل العديد من المسائل الرياضية المعقدة بسهولة.
+باستخدام التكرار، يمكن حل المشكلة بعدد أقل من بناءات البرمجة، مقارنة بنظيرتها التكرارية.
+
+						DISADDVANTAGES OF RECURSION
+						مساوئ التكرار
+نظرًا للاستدعاء الوظيفي المتزايد، فإنه يستهلك ذاكرة أكبر ويستغرق وقتًا أطول من النهج التكراري.
+قد تتعطل البرامج العودية بسبب أخطاء تجاوز سعة المكدسOVERFLOW  (نقص الذاكرة).
+الوظائف العودية معقدة للقراءة والكتابة والفهم.
+من الصعب تتبع الأخطاء الموجودة في الوظيفة العودية وإزالتها.
+على الرغم من أن الدوال العودية معقدة في الكتابة والتصحيح، إلا أنني أوصي باستخدام الدالة العودية إذا كان من الممكن تقسيم مشكلتك إلى مشكلات فرعية. تجنب استخدام العودية إذا كانت الذاكرة تمثل عائقًا كبيرًا.
+*********************************************************************************************************************************************
+
+								LOCAL VARAIBLES
+Properties of a local variable
+A local variable is allocated on C stack.
+Local variables are uninitialized by default and contains garbage value.
+Lifetime of a local variable is until the function or block. A local variable dies once the program control reaches outside its block.
+Local variable is accessed using block scope access.
+
+
+Block scope access
+Block scope states that, variables declared inside a block can be accessed only within same or inner blocks. Block inside a block is called as inner or nested block.
+
+Following are various accessibility rules of a variable defined by block scope
+#include <stdio.h>
+
+int main()
+{
+    int outervariable = 10;
+
+    {
+        printf("I can access outervariable in inner block = %d\n", outervariable);
+    }
+
+    printf("I can also access outervariable in same block = %d", outervariable);
+
+    return 0;
+}
+
+You can declare two or more variables with same name in different blocks. However, you cannot declare more than one variable of same name within same block. For example –
+int main()
+{
+    int num = 10; 
+
+    // I cannot declare num again in same block
+    // int num;
+
+    {
+        // I can declare num again in different block
+        int num = 20;
+    }
+
+    return 0;
+}
+
+
+Inner block shadows outer block variable if both declared with same name. If both inner and outer block variable is declared with same name, then you cannot access outer block variable with same name inside inner block. For example –
+#include <stdio.h>
+
+int main()
+{
+    int num = 10; 
+
+    // Accesses outer block num
+    printf("'num' is accessible within same block = %d\n", num);
+
+    {
+        // Declare num again but in different block.
+        int num = 20;
+
+        // Access inner block num
+        printf("Inner block 'num' shadows outer block 'num' = %d\n", num);
+    }
+
+    return 0;
+}
+
+Variables declared within inner block are not accessible to outer block. For example –
+#include <stdio.h>
+
+int main()
+{
+    int num1 = 10;
+    int num2 = 20; 
+
+    printf("'num1=%d' and 'num2=%d' declared in outer block is accessible within same block.\n", num1, num2);
+
+    {
+        // num1 and num2 are accessible within inner block
+        int sum = num1 + num2;
+
+        printf("sum = %d\n", sum);
+    }
+
+    // sum is declared inside inner block hence is not accessible to outer block
+    // printf("sum = %d\n", sum);
+
+    return 0;
+}
+*********************************************************************************************************************************************
+STATIC VARAIBLES
+
+Syntax to declare static variable
+static data_type variable_name;
+
+
+Properties of a static variable
+Static variables are widely known among C programmer due to its special properties which are –
+
+Static variables are allocated within data segment of the program instead of C stack.
+Memory for static variable is allocated once and remains throughout the program. A static variable persists, even after end of function or block.
+#include <stdio.h>
+
+/* Function declaration */
+void display();
+
+int main()
+{
+    display();
+    display();
+    display();
+
+    return 0;
+}
+
+/* Function definition */
+void display()
+{
+    int n1 = 10;
+    static int n2 = 10;
+
+    printf("Local n1 = %d, Static n2 = %d\n", n1, n2);
+
+    n1++; // Increment local variable 
+    n2++; // Increment static variable
+}
+
+
+
+
+A static variable is initialized with a default value i.e. either 0 or NULL. For example –
+/**
+ * C program to demonstrate static variable
+ */
+#include <stdio.h>
+
+/* Function declaration */
+void display();
+
+int main()
+{
+    display();
+    display();
+    return 0;
+}
+
+/* Function definition */
+void display()
+{
+    int n1; /* Garbage value */
+    static int n2; /* Default zero value */
+    printf("Local n1 = %d, Static n2 = %d\n", n1, n2);
+}
+
+You can access a global variable outside the program. However, you cannot access a global static variable outside the program.
+
+متى تستخدم متغير ثابت؟
+يوفر المتغير الثابت مرونة كبيرة لإعلان المتغير الذي يحتفظ بقيمته بين استدعاءات الوظائف. استخدم متغيرًا ثابتًا، إذا كنت بحاجة إلى متغير يجب أن تستمر قيمته بين استدعاءات الوظائف.
+*********************************************************************************************************************************************
+						GLOBAL VARAIBLES
+Global variables are variables declared outside a function. Unlike local variables and static variables, a global variable is not declared inside a function.
+
+
+Properties of a global variable
+Global variables are allocated within data segment of program instead of C stack.
+Memory for global variable is allocated once and persists throughout the program.
+They are accessible to all function of the same and other programs (using extern).
+Note: Both static and global variables gets their memory within data segment and persists throughout the program. However, a global variable is accessible to all functions of same as well as other program. Whereas, static variables are accessible only to the same function.
+
+Based on scope global variables are categorized in two categories.
+
+Global scope
+Static file scope
+
+
+Global scope
+By default, global variables are of global scope. Which means we can access a global variable everywhere in same as well as other C programs (using extern).
+
+#include <stdio.h>
+
+/* Link global variable declared in global.c to this program */
+extern int num1, num2;
+
+int main()
+{
+    // Access a global scope variable 
+    num1 = 10;
+    num2 = 20;
+
+    printf("num1=%d, num2=%d", num1, num2);
+
+    return 0;
+}
+
+
+
+Static scope
+Global scope variables are accessible to all functions of same as well as other program. In programming, there exists situations when you want to restrict access of a global variable only to all functions of the same program.
+
+Static scope global variables has all properties of a global variable, except they are accessible only to all functions of same program. They are declared with static keyword.
+
+Example program to use static scope global variable
+Let us re-write the above program with little modifications and convert global scope variables to static scope global variables.
+#include <stdio.h>
+
+/* Link global variable declared in global.c to this program */
+extern int num1, num2;
+
+int main()
+{
+    // Access a global scope variable 
+    num1 = 10;
+    num2 = 20;
+
+    printf("num1=%d, num2=%d", num1, num2);
+
+    return 0;
+}
+The C compiler reports errors on compilation of main.c. Since we are binding static scope global variables num1 and num2 to main.c program. Hence, compiler reports errors as,
+
+undefined reference to `num1'
+undefined reference to `num2'
+
+
+
+متى تستخدم المتغير العالمي؟
+يجب أن تحاول تقليل استخدام المتغير العام قدر الإمكان. المتغير العالمي له أعلى نطاق. مما يزيد من مستوى صعوبة تصحيح الأخطاء والحفاظ على التعليمات البرمجية، نظرًا لأن العديد من الوظائف تعدل نفس المتغير.
+
+ومع ذلك، تكون المتغيرات العامة مناسبة بشكل أفضل عندما تشترك معظم وظائفك في متغيرات مشتركة.
+*********************************************************************************************************************************************
+							STORAGE CLASSES IN C
+Storage class in C programming defines scope and lifetime of a variable and function. At the time of variable declaration we define both data type as well as storage class of a variable.
+
+
+C supports four storage classes.
+
+auto
+register
+static
+extern
+
+
+auto storage class
+auto is default storage class for all local variables.
+
+Properties of auto storage class
+Storage – auto variables are stored in memory (RAM).
+Scope – Accessible only within the declared block.
+Lifetime – Until control remains within the declared block.
+Default value – auto variables are not initialized to a value by default. They contain some garbage value.
+Note: auto is a C keyword use to define storage class of local variables. You must not use auto with global variables or functions, otherwise will generate compilation errors.
+
+By default every local variable is declared as auto, hence adding auto keyword is pointless.
+
+Syntax to declare auto variable
+auto data_type variable_name;
+
+int main()
+{
+    auto int num;
+    float amount; // By default every local variable is auto
+
+    return 0;
+}
+
+
+register storage class
+register storage class tells the C compiler to store a variable in register instead of memory.
+
+Since register variable is stored in CPU (register). Hence they do not have a memory location and guarantees a fast performance than other storage classes. In addition, we cannot store all our variables in registers because registers size is comparably very small to that of RAM. Also it is not guaranteed that the C compiler will allocate variables in register. Storing variables in register is hardware and OS dependent.
+
+Many texts advocates that register variable has a faster access than other variables. However, this is not the real scenario. Modern compilers are essentially smart at code optimization for best performance.
+
+Properties of register storage class
+Storage – register variables are supposed to be stored in registers (CPU). However, it is not guaranteed.
+Scope – Accessible only within its declared block.
+Lifetime – Until program control remains within its declared block.
+Default value – register variables are not initialized to a value by default. They contain garbage value as like auto variables.
+Syntax to declare register variable
+register data_type variable_name;
+register int counter;
+register int i;
+
+STATIC STORAGE CLASS
+فئة التخزين الثابتة
+نحن نستخدم كلمة أساسية ثابتة لتحديد المتغيرات والوظائف الثابتة. يوجه مترجم C لتخزين متغير ثابت في الذاكرة حتى نهاية البرنامج. بدلاً من إنشاء متغير وتدميره في كل استدعاء دالة.
+
+يخصص لغة C الذاكرة للمتغير الثابت مرة واحدة خلال البرنامج ويدمرها عند انتهاء البرنامج. بالإضافة إلى ذلك، يتم الحفاظ على قيمة المتغير الثابت حتى بعد انتهاء الوظيفة.
+
+يمكن أيضًا استخدام فئة التخزين الثابتة مع المتغيرات والوظائف العامة. إنه يحد من وصول المتغير العام أو الوظيفة إلى جميع وظائف نفس البرنامج.
+Properties of static storage class
+Storage – Static variables are stored in memory (RAM). They are stored in data segment of program instead of C stack.
+Scope – Accessible only within its declared block.
+Lifetime – Till the end of program.
+Default value – static variables are initialized with zero, if not initialized explicitly.
+Syntax to declare static variable
+static data_type variable_name;
+#include <stdio.h>
+
+/* Function declaration */
+void display();
+
+int main()
+{
+    display();
+    display();
+    return 0;
+}
+
+/* Function definition */
+void display()
+{
+    int n1 = 10;
+
+    /* static variables are declared only once */
+    static int n2 = 10;
+
+    printf("Local n1 = %d, Static n2 = %d\n", n1, n2);
+
+    n1++; // Increment local variable
+    n2++; // Increment static variable
+}
+
+
+extern storage class
+We use extern (external) storage class to define reference to a global variable or function defined in some other C program. The extern modifier declares a link to its original variable or function declaration.
+
+It is common to divide a big C program among various C files for easy maintenance, modularity and debugging. To share variables and functions among all these files we declare variables and functions in one C file, and use them in other C files through extern modifier.
+
+Note: We are not allowed to initialize a variable if declared with extern modifier.
+
+Properties of extern storage class
+Storage – extern variables are stored in memory (RAM).
+Scope – Accessible within its declared block.
+Lifetime – Till the end of program.
+Default value – extern variables are initialized with 0, if not initialized explicitly.
+Syntax to declare extern variable
+extern data_type variable_name;
+FILE1.C
+#include <stdio.h>
+
+// Global variable
+int num;
+
+void display()
+{
+    int i;
+    for(i=1; i<=num; i++)
+    {
+        printf("num = %d\n", i);
+    }
+}
+/* Declare link to variable defined in file1.c */
+extern int num;
+
+/* Declare link to function defined in file1.c */
+extern void display();
+
+int main()
+{
+    // Access external variable
+    num = 5;
+
+    // Access external function
+    display();
+
+    return 0;
+}
