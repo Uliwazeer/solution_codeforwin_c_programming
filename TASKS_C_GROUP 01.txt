@@ -1,0 +1,1133 @@
+									#TASK_01.....LEC 02
+				Importance Of HEXADECIMAL
+It's a system start from [0 1 2 3 4 5 6 7 8 9 A B C D E F].
+Usages Are
+1-Adresses In Memory
+2-Colors Codes
+3-More Readably Than Binary Codes
+4-MCU Programming
+
+***********************************************************
+								1-Compiler  & Interpreter
+								2-Scripting & Programming
+								3-Framework & Library
+***********************************************************
+Interpreter	
+					
+Translates program one statement at a time.			
+Interpreters usually take less amount of time to analyze the source code. However, the overall execution time is comparatively slower than compilers.		
+Generates Object Code which further requires linking, hence requires more memory.
+Programming languages like JavaScript, Python, Ruby use interpreters.	
+***********************************************************
+Compiler
+
+Scans the entire program and translates it as a whole into machine code.
+Compilers usually take a large amount of time to analyze the source code. However, the overall execution time is comparatively faster than interpreters.
+No Object Code is generated, hence are memory efficient.
+Programming languages like C, C++, Java use compilers.
+***********************************************************
+###################################################################################################
+									#TASK_02.....LEC 03
+
+
+			What Happened When You Divide On Zero [/0]...??
+1-Compiler Excuite code and processor find there Divided by 0 and stop this process and make in ifinite loop
+2-craching and Hanging in CPU
+3-most implementations use the IEEE 754 standard, where division by 0 is well defined. 
+4-0 / 0 gives a well defined result of NaN (not-a-number)
+5-x / 0 for x ≠ 0 gives either +Infinity or -Infinity, depending on the sign of x.
+6-In languages like C, C++ etc. division by zero invokes undefined behaviour
+7-Many processors have some kind of built-in "divide" instruction, which will behave differently depending on the processor. 
+On Intel 32bit and 64 bit processors, 
+the "divide" instructions will crash your application when you try to divide by zero. Other processors may behave differently.
+
+If a compiler detects that a division by zero will happen when you execute some code, and the compiler is nice to its users, 
+it will likely give you a warning, and generate a built-in "divide" instruction so that the behaviour is the same.	
+*******************************************************************************************************************
+
+
+PROGRAMM PRINT NUMBER IF ODD OR EVEN WITH 6 WAYS....
+******************************************************************************************************
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+/*  PRINT EVEN AND ODD NUMBER WITH 6 DIFFERENT WAYS*/
+
+
+/*FIRST WAY
+
+    int num;
+    printf("ENTER YOUR NUMBER YA USER: ");
+    fflush(stdin);
+    scanf("%d",&num);
+
+
+    if(num % 2==0)
+        printf("YOUR ENTERED NUMBER %d IS EVEN ",num);
+
+    else
+        printf("YOUR ENTERED NUMBER %d IS ODD ",num);
+        */
+ //**********************************************************************
+ /*SECOND WAY
+         int num;
+    printf("ENTER YOUR NUMBER YA USER: ");
+    fflush(stdin);
+    scanf("%d",&num);
+
+    (num % 2==0)? printf("YOUR ENTERED NUMBER %d IS EVEN ",num) : printf("YOUR ENTERED NUMBER %d IS ODD ",num);
+*/
+
+/*THIRD WAY
+ int num;
+    printf("ENTER YOUR NUMBER YA USER: ");
+    fflush(stdin);
+    scanf("%d",&num);
+
+     if(num == ( num>>1 ) << 1){
+        printf("YOUR ENTERED NUMBER %d IS EVEN ",num);
+     }
+    else{
+        printf("YOUR ENTERED NUMBER %d IS ODD ",num);
+     }
+*/
+
+/*FOURTH WAY
+ int num;
+    printf("ENTER YOUR NUMBER YA USER: ");
+    fflush(stdin);
+    scanf("%d",&num);
+
+     if(num & 1)
+    {
+       printf("YOUR ENTERED NUMBER %d IS ODD ",num);
+    }
+    else
+    {
+        printf("YOUR ENTERED NUMBER %d IS EVEN ",num);
+    }
+    */
+
+    /*FIFTH WAY
+     int num;
+    printf("ENTER YOUR NUMBER YA USER: ");
+    fflush(stdin);
+    scanf("%d",&num);
+ if((num & 1) == 0)
+        printf("YOUR ENTERED NUMBER %d IS EVEN ",num);
+ else
+    printf("YOUR ENTERED NUMBER %d IS ODD ",num);
+
+*/
+/*SIXTH WAY
+ int num;
+    printf("ENTER YOUR NUMBER YA USER: ");
+    fflush(stdin);
+    scanf("%d",&num);
+
+      if ( num & 1 == 1 )
+            printf("YOUR ENTERED NUMBER %d IS ODD ",num);
+     else
+        printf("YOUR ENTERED NUMBER %d IS EVEN ",num);
+
+*/
+            return 0;
+
+}
+***********************************************************************************
+PRINT MAX NUM BETWEEN 3 NUMBERS WITH 3 WAYS...
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+//PRINT MAX NUMBER BETWEEN 3 NUMBERS WITH 3 WAYS
+
+/*
+    int num1,num2,num3,max;
+    printf("ENTER YOUR FIRST NUMBER YA USER: ");
+    scanf(" %d",&num1);
+    printf("ENTER YOUR SECOND NUMBER YA USER: ");
+    scanf(" %d",&num2);
+    printf("ENTER YOUR THIRD NUMBER YA USER: ");
+    scanf(" %d",&num3);
+
+    int index=0;	
+    max=num1;
+    if(max<num2){
+        max=num2;
+	index=1;
+	}
+    if(max<num3){
+        max=num3;
+	index=2;
+	}
+
+
+    printf("YOUR MAX NUMBER BETWEEN %d and %d and %d IS %d AND HIS INDEX IS %d.",num1,num2,num3,max,index);
+*/
+
+/*SECOND WAY
+    int num1,num2,num3,max;
+    printf("ENTER YOUR FIRST NUMBER YA USER: ");
+    scanf(" %d",&num1);
+    printf("ENTER YOUR SECOND NUMBER YA USER: ");
+    scanf(" %d",&num2);
+    printf("ENTER YOUR THIRD NUMBER YA USER: ");
+    scanf(" %d",&num3);
+
+    if(num1>num2 && num1>num3)
+       printf("YOUR MAX NUMBER BETWEEN %d and %d and %d IS %d",num1,num2,num3,num1);
+     if(num2>num1 && num2>num3)
+       printf("YOUR MAX NUMBER BETWEEN %d and %d and %d IS %d",num1,num2,num3,num2);
+     if(num3>num2 && num3>num1)
+       printf("YOUR MAX NUMBER BETWEEN %d and %d and %d IS %d",num1,num2,num3,num3);
+
+*/
+
+/*THIRD WAY
+
+    int num1,num2,num3,max;
+    printf("ENTER YOUR FIRST NUMBER YA USER: ");
+    scanf(" %d",&num1);
+    printf("ENTER YOUR SECOND NUMBER YA USER: ");
+    scanf(" %d",&num2);
+    printf("ENTER YOUR THIRD NUMBER YA USER: ");
+    scanf(" %d",&num3);
+
+
+     if (num1>= num2) {
+        if (num1>= num3)
+            printf("YOUR MAX NUMBER BETWEEN %d and %d and %d IS %d",num1,num2,num3,num1);
+        else
+            printf("YOUR MAX NUMBER BETWEEN %d and %d and %d IS %d",num1,num2,num3,num3);
+    }
+    else {
+        if (num2>=num3)
+            printf("YOUR MAX NUMBER BETWEEN %d and %d and %d IS %d",num1,num2,num3,num2);
+        else
+            printf("YOUR MAX NUMBER BETWEEN %d and %d and %d IS %d",num1,num2,num3,num3);
+    }
+
+*/
+
+    return 0;
+
+}
+######################################################################################################
+									#TASK_03.....LEC 04
+PRINT GRADES OF STUDENTS
+
+//FIRST WAY
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+
+    int grade;
+    printf("ENTER YOUR GRADE YA STUDENT: ");
+    fflush(stdin);
+    scanf("%d",&grade);
+
+    if(grade<0 || grade >100)
+        printf("OOPS! WRONG GRADE PLEASE ENTER CORRECT GRADE");
+    if(grade>=0&&grade<50)
+        printf("YOUR GRADE IS %d AND YOU IS FAIL->F.",grade);
+
+    if(grade>=50&&grade<60)
+        printf("YOUR GRADE IS %d AND YOU IS ACCEPTABLE->D.",grade);
+
+    if(grade>=60&&grade<70)
+        printf("YOUR GRADE IS %d AND YOU IS GOOD->C.",grade);
+
+    if(grade>=70&&grade<80)
+        printf("YOUR GRADE IS %d AND YOU IS VERY GOOD->B.",grade);
+
+    if(grade>=80&&grade<100)
+        printf("YOUR GRADE IS %d AND YOU IS EXCELLENT->A.",grade);
+    return 0;
+
+}
+
+
+//SECOND WAY
+
+#include <stdio.h>
+#include <stdlib.h>
+int main()
+{
+    int i, n;
+    float m, sum=0, grade;
+    printf("How many Subject runs in your Colleage ? ");
+    scanf(" %d", &n);
+    printf("\nEnter marks obtained in %d Subjects: ", n);
+    for(i=0; i<n; i++)
+    {
+        scanf("%f", &m);
+        sum = sum+m;
+    }
+    grade = sum/n;
+    printf("\nGRADE = ");
+
+    if(grade<0 || grade >100)
+        printf("OOPS! WRONG GRADE PLEASE ENTER CORRECT GRADE");
+
+    if(grade>=0&&grade<50)
+        printf("YOUR GRADE IS AND YOU IS FAIL->F.");
+
+    if(grade>=50&&grade<60)
+        printf("YOUR GRADE IS AND YOU IS ACCEPTABLE->D.");
+
+    if(grade>=60&&grade<70)
+        printf("YOUR GRADE IS AND YOU IS GOOD->C.");
+
+    if(grade>=70&&grade<80)
+        printf("YOUR GRADE IS AND YOU IS VERY GOOD->B.");
+
+    if(grade>=80&&grade<100)
+        printf("YOUR GRADE IS AND YOU IS EXCELLENT->A.");
+    return 0;
+}
+
+#########################################################################################################
+									#TASK_04.....LEC 05
+print 2 number without using swap value WITH DIFFFERENT 5 WAYS
+
+FIRST WAY
+
+#include <stdio.h>
+#include <stdlib.h>
+int main()
+{
+
+    int num1,num2;
+    printf("ENTER YOUR FIRST NUMBER YOU WANT TO SWAP: ");
+    fflush(stdin);
+    scanf("%d",&num1);
+    printf("ENTER YOUR SECOND NUMBER YOU WANT TO SWAP: ");
+    fflush(stdin);
+    scanf("%d",&num2);
+
+    printf("YOUR FIRST NUMBER IS %d AND SECOND NUMBER IS %d BEFORE SWAP.\n",num1,num2);
+
+    num1 = num1 + num2;
+    num2 = num1 - num2;
+    num1 = num1 - num2;
+
+    printf("YOUR FIRST NUMBER IS %d AND SECOND NUMBER IS %d AFTER SWAP.\n",num1,num2);
+
+
+    return 0;
+}
+******************************************************
+SECOND WAY
+#include <stdio.h>
+#include <stdlib.h>
+int main()
+{
+
+    int num1,num2;
+    printf("ENTER YOUR FIRST NUMBER YOU WANT TO SWAP: ");
+    fflush(stdin);
+    scanf("%d",&num1);
+    printf("ENTER YOUR SECOND NUMBER YOU WANT TO SWAP: ");
+    fflush(stdin);
+    scanf("%d",&num2);
+
+    printf("YOUR FIRST NUMBER IS %d AND SECOND NUMBER IS %d BEFORE SWAP.\n",num1,num2);
+
+   if (num2 == 0) {
+        num2 = num1;
+        num1 = 0;
+    }
+    else if (num1 == 0) {
+        num1 = num2;
+        num2 = 0;
+    }
+    else {
+        num1 = num1 * num2;
+        num2 = num1 / num2;
+        num1 = num1 / num2;
+    }
+
+    printf("YOUR FIRST NUMBER IS %d AND SECOND NUMBER IS %d AFTER SWAP.\n",num1,num2);
+
+
+    return 0;
+}
+**********************************************************************************
+third way XOR
+#include <stdio.h>
+#include <stdlib.h>
+int main()
+{
+
+    int num1,num2;
+    printf("ENTER YOUR FIRST NUMBER YOU WANT TO SWAP: ");
+    fflush(stdin);
+    scanf("%d",&num1);
+    printf("ENTER YOUR SECOND NUMBER YOU WANT TO SWAP: ");
+    fflush(stdin);
+    scanf("%d",&num2);
+
+    printf("YOUR FIRST NUMBER IS %d AND SECOND NUMBER IS %d BEFORE SWAP.\n",num1,num2);
+
+    num1 = num1 ^ num2;
+    num2 = num1 ^ num2;
+    num1 = num1 ^ num2;
+
+    printf("YOUR FIRST NUMBER IS %d AND SECOND NUMBER IS %d AFTER SWAP.\n",num1,num2);
+
+
+    return 0;
+}
+*****************************************************************************************
+FOURTH WAY
+#include <stdio.h>
+#include <stdlib.h>
+int main()
+{
+
+    int num1,num2;
+    printf("ENTER YOUR FIRST NUMBER YOU WANT TO SWAP: ");
+    fflush(stdin);
+    scanf("%d",&num1);
+    printf("ENTER YOUR SECOND NUMBER YOU WANT TO SWAP: ");
+    fflush(stdin);
+    scanf("%d",&num2);
+
+    printf("YOUR FIRST NUMBER IS %d AND SECOND NUMBER IS %d BEFORE SWAP.\n",num1,num2);
+
+  num1 = (num1 * num2) / (num2 = num1);
+    printf("YOUR FIRST NUMBER IS %d AND SECOND NUMBER IS %d AFTER SWAP.\n",num1,num2);
+
+
+    return 0;
+}
+******************************************************************************************
+FIFTH WAY
+#include <stdio.h>
+#include <stdlib.h>
+int main()
+{
+
+    int num1,num2;
+    printf("ENTER YOUR FIRST NUMBER YOU WANT TO SWAP: ");
+    fflush(stdin);
+    scanf("%d",&num1);
+    printf("ENTER YOUR SECOND NUMBER YOU WANT TO SWAP: ");
+    fflush(stdin);
+    scanf("%d",&num2);
+
+    printf("YOUR FIRST NUMBER IS %d AND SECOND NUMBER IS %d BEFORE SWAP.\n",num1,num2);
+    num1 = (num1 & num2) + (num1 | num2);
+    num2 = num1 + (~num2) + 1;
+    num1 = num1 + (~num2) + 1;
+    printf("YOUR FIRST NUMBER IS %d AND SECOND NUMBER IS %d AFTER SWAP.\n",num1,num2);
+
+
+    return 0;
+}
+################################################################################################################
+									#TASK_04.....LEC 07
+// C program to find the prime numbers between 2 numbers
+
+#include <stdlib.h>
+#include <stdio.h>
+
+int main()
+{
+	int num1,num2, i, j, flag;
+	printf("ENTER YOUR FIRST NUMBER AS STARTING NUM: ");
+	scanf("%d", &num1);
+
+	printf("\nENTER YOUR FIRST NUMBER AS ENDING NUM: ");
+	scanf("%d", &num2);
+
+	printf("\nPRIME NUMBERS BETWEEN NUM1 = %d AND NUM2 = %d \n", num1, num2);
+
+	for (i = num1; i <= num2; i++) {
+
+		if (i == 1 || i == 0)
+			continue;
+		flag = 1;
+
+		for (j = 2; j <= i / 2; ++j) {
+			if (i % j == 0) {
+				flag = 0;
+				break;
+			}
+		}
+		if (flag == 1)
+			printf("%d\t", i);
+	}
+
+	return 0;
+}
+##################################################################################################################
+									#TASK_05.....LEC 08
+
+
+   //program to how to swap 0XFF55 USING BITWISE
+//IF YOU WANNA SWAP 2 BYTE WITH 2 BYTE =====>>unsigned short swap_x= (x>>16)(x<<16);
+
+#include <stdlib.h>
+#include <stdio.h>
+
+int main()
+{
+
+   //program to how to swap 0XFF55 USING BITWISE
+
+   unsigned short x= 0xFF55;
+   printf("DATA BEFORE SWAPPING BYTE WITH BYTE : 0X%X\n",x);
+
+   unsigned short swap_x = ((x & 0xFF) << 8) | ((x >> 8) & 0xFF);// OR USING    unsigned short swap_x = (x>>8) | (x<<8);
+
+   printf("\n\nDATA AFTER SWAPPING BYTE WITH BYTE : 0X%X\n",swap_x);
+
+    return 0;
+}
+********************************************************************************************************************
+substract 2 num without using substruct sign just using bitwise 
+
+#include <stdlib.h>
+#include <stdio.h>
+
+int main()
+{
+    //substract 2 num without using substruct sign just using bitwise
+
+    int num1, num2, substract;
+
+    printf("ENTER YOUR FIRST NUMBER YA USER: ");
+    scanf("%d", &num1);
+
+    printf("ENTER YOUR SECOND NUMBER YA USER: ");
+    scanf("%d", &num2);
+
+    substract = num1 + ~num2 + 1; //IF I WANNA SUBSTRACT= num2+(num1^0xffffffff)+1; IF YOU REMOVED () WILL SUM NUM1 WITH NUM2
+
+    printf("\nSUBSTRACTION OF FIRST NUMBER %d AND SECOND NUMBER %d IS %d\n", num1, num2, substract);
+
+    return 0;
+}
+********************************************************************************************************************
+
+##################################################################################################################
+									
+									#TASK_06.....LEC 09
+make var long long and edit byte byte and print all data which exsist in every byte and use hexa once and decimal once 
+
+#include <stdio.h>
+
+int main()
+{
+
+    long long data =0x33eeffccdd5522aa;
+
+    printf("DATA IN DECIMAL = %lld\tDATA IN HEXA = %llX\n",data,data);
+    unsigned char *bytePtr = &data;
+    int i;
+
+    printf("\nDATA IN HEXADECIMAL ARE\n");
+    for (i = 0; i < 8; i++) {
+        printf("%d   %3d    %llX\n",bytePtr,*(bytePtr),*(bytePtr));//OR   printf("%d   %3d    %llX\n",bytePtr,*(bytePtr+i),*(bytePtr+i)); 
+        bytePtr = bytePtr + 1;
+    }
+    printf("\n");
+    printf("\nWHERE POINTER EXIST AFTER ENDING LOOP: %X\n\n",*bytePtr);
+    printf("\n");
+
+    return 0;
+
+}
+***************************************************************************************************************************
+WHAT HAPPEND IF POINTER TO SIGNED  AND OTHER UNSIGNED POINTER TO VARAIBLE POINT TO SAME LOCATION IN MEMORY
+1-When you mix signed and unsigned pointers, you may encounter unexpected behavior due to the difference in interpretation and representation of values.
+#include <stdlib.h>
+#include <stdio.h>
+
+int main()
+{
+    int data = -1;
+    int *signedPtr = &data;
+    unsigned int *unsignedPtr = &data;
+
+    printf("SIGNED POINTER: %d AS HEXA: %X\n", *signedPtr);
+    printf("UNSIGNED POINTER: %u AS HEXA: %X\n", *unsignedPtr);
+    return 0;
+
+}
+******************************************************************************************************************************
+second way
+
+#include <stdlib.h>
+#include <stdio.h>
+
+int main()
+{
+
+    int arr[7] = {10, 20, 30,40,50,60,70};
+    int *signedPtr = arr;
+    unsigned int *unsignedPtr = arr;
+
+    printf("\nSIGNED POINTER: %d AS HEXA: %X\n", *signedPtr);
+    printf("\nUNSIGNED POINTER: %u AS HEXA: %X\n", *unsignedPtr);
+
+
+    int length = sizeof(arr) / sizeof(arr[0]);
+    int i;
+    for(i=0;i<length;i++)
+    {
+        printf("%d  %X  %u   %X\n\n",arr[i],arr[i],arr[i],arr[i]);
+    }
+    signedPtr++;
+    unsignedPtr++;
+
+    printf("\nAFTER INCREMENT SIGNED POINTER: %d AS HEXA: %X\n", *signedPtr);
+    printf("\nAFTER INCREMENT UNSIGNED POINTER: %u AS HEXA: %X\n", *unsignedPtr);
+
+    return 0;
+}
+*******************************************************************************************
+  //program to how to swap 0XFF55 USING POINTER
+
+#include <stdlib.h>
+#include <stdio.h>
+
+int main()
+{
+
+   //program to how to swap 0XFF55
+
+   unsigned short x= 0xFF55;
+   printf("DATA BEFORE SWAPPING BYTE WITH BYTE : 0X%X\n",x);
+
+   unsigned char temp,*p_x=&x;
+   temp = p_x[0];
+   p_x[0]  = p_x[1];
+   p_x[1]  = temp;
+
+   printf("\n\nDATA AFTER SWAPPING BYTE WITH BYTE : 0X%X\n",x);
+
+    return 0;
+}
+*****************************************************************************************************
+
+#########################################################################################################3
+									#TASK_07.....LEC 10
+
+//progrAM swap FFEE5533 TO BE 3355EEFF USING POINTER FIRST WAY
+
+#include <stdio.h>
+
+int main()
+{
+
+    //progrAM swap FFEE5533 TO BE 3355EEFF USING POINTER
+
+    unsigned long long x= 0xFFEE5533;
+    printf("DATA BEFORE SWAPPING BYTE WITH BYTE : 0X%X\n",x);
+
+    unsigned char temp,*p_x=&x;
+    temp = *p_x;
+    *p_x =*(p_x+3);
+ *(p_x+3)= temp;
+    temp =*(p_x+1);
+    *(p_x+1) =*(p_x+2);
+    *(p_x+2)=temp;
+
+    printf("\n\nDATA AFTER SWAPPING BYTE WITH BYTE :  0X%X\n",x);
+
+return 0;
+}
+********************************************************************************************************
+//progrAM swap FFEE5533 TO BE 3355EEFF USING BITWISE  SECOND WAY
+
+#include <stdio.h>
+
+int main()
+{
+
+     unsigned long long x= 0xFFEE5533;
+     printf("DATA BEFORE SWAPPING BYTE WITH BYTE : 0X%X\n",x);
+
+    long n3,n4,n1,n2;
+
+    n3=x>>24;
+    n4=x>>16;
+    n1=x>>8;
+    n2=x&255;
+    n1=n1&255;
+    n4=n4&255;
+
+    printf("\n\nDATA AFTER SWAPPING BYTE WITH BYTE :  0X%X%X%X%X\n",n2,n1,n4,n3);
+
+
+	return 0
+}
+**********************************************************************************************************
+//FUNCTION RETURN PRIME OR NOT PRIME NUMBER
+
+#include <stdlib.h>
+#include <stdio.h>
+
+int prime_number(int number)
+{
+	int i = 2;
+	while (i <= number / 2)
+	{
+		if (number % i == 0)
+			return 0;
+		else
+			i++;
+	}
+	return 1;
+}
+int main()
+{
+	int num,prime;
+	printf("ENTER YOUR NUMBER TO CHECK IF PRIME OR NOT PRIME: ");
+	scanf("%d",&num);
+	prime = prime_number(num);
+
+	if (prime == 1)
+		printf("YOUR ENTERED %d NUMBER IS PRIME.\n", num);
+	else
+		printf("YOUR ENTERED %d NUMBER IS NOT PRIME.\n", num);
+		
+		
+    return 0;
+}
+****************************************************************************************************************
+
+PROGRAM MAKE MODULS USING - NOT %
+#include <stdio.h>
+
+int main() {
+    int dividend;
+    int divisor;
+    printf("ENTER YOUR FIRST NUM AS DIVIDEND: ");
+    scanf("%d",&dividend);
+    printf("ENTER YOUR SECOND NUM AS DIVISOR: ");
+    scanf("%d",&divisor);
+
+
+    int quotient = dividend / divisor;
+    int remainder = dividend - (divisor * quotient);
+
+    printf("YOUR REMINDER NUMBER IS: %d\n", remainder);
+
+    return 0;
+}
+******************************************************************************************************************
+FUNC PRIME NUM OR NOT PRIME
+#include <stdlib.h>
+#include <stdio.h>
+int prime_num(int num)
+{
+    int i;
+    if(num<2)
+    {
+        return 0;
+    }
+    for(i=2;i<num;i++)
+    {
+        if(num%i==0)
+        {
+            return 0;
+        }
+    }
+    return 1;
+}
+
+int main()
+{
+    int i,x,flag;
+
+    while(1)
+    {
+        scanf("%d",&x);
+        if(prime_num(x))
+        {
+            printf("PRIME NUMBER\n");
+        }
+        else
+        {
+            printf("\nNOT PRIME NUMBER\n");
+        }
+    }
+
+    return 0;
+
+}
+****************************************************************************************************
+program will print all prime numbers between x and y
+#include <stdlib.h>
+#include <stdio.h>
+int prime_num(int num)
+{
+    int i;
+    if(num<2)
+    {
+        return 0;
+    }
+    for(i=2;i<num;i++)
+    {
+        if(num%i==0)
+        {
+            return 0;
+        }
+    }
+    return 1;
+}
+
+int main()
+{
+    int i,x,flag,y;
+
+    while(1)
+    {
+        scanf("%d%d",&x,&y);
+        for(i=x;i<=y;i++)
+        {
+            if(prime_num(i))   		//if(prime_num(i)==0) will print all numbers not prime between x and y
+                printf("%d ",i);
+        }
+
+
+    }
+
+    return 0;
+
+}
+**************************************************************************************************************
+FUNC TO GENERATE PRIME FUNC
+#include <stdlib.h>
+#include <stdio.h>
+int prime_num(int num)
+{
+    int i;
+    if(num<2)
+    {
+        return 0;
+    }
+    for(i=2;i<num;i++)
+    {
+        if(num%i==0)
+        {
+            return 0;
+        }
+    }
+    return 1;
+}
+
+void print_prime_between_2num(int num1,int num2)
+{
+    int i;
+    for(i=num1;i<=num2;i++)
+    {
+        if(prime_num(i))
+        {
+            printf("%d  ",i);
+        }
+    }
+}
+void generate_prime_num(int num)
+{
+    int i,count=0;
+    for(i=2;num>0;i++)  //count<num and count++
+    {
+        if(prime_num(i))
+        {
+            printf("%d  ",i);
+            num--;
+        }
+    }
+}
+int main()
+{
+    int i,x,flag,y;
+
+    while(1)
+    {
+        scanf("%d",&x);
+        generate_prime_num(x);
+    }
+
+    return 0;
+
+}
+************************************************************************************************************
+SWAP 2 NUM USEING FUNC SWAP
+void swap_2num(int *n1,int *n2)
+{
+    int temp;
+    temp=*n1;
+    *n1=*n2;
+    *n2=temp;
+}
+int main()
+{
+    int i,x,flag,y;
+
+int n1,n2;
+        scanf("%d%d",&n1,&n2);
+        printf("SWAPPING BEFORE %d  %d\n",n1,n2);
+       swap_2num(&n1,&n2);
+       printf("\nSWAPPING AFTER %d  %d",n1,n2);
+
+
+    return 0;
+
+}
+***************************************************************************************************************
+how to know max num and min num between 2 num without using sign '>' or '<' using 3 way
+FIRST WAY
+
+#include <stdlib.h>
+#include<stdio.h>
+
+int min(int x, int y)
+{
+    return y ^ ((x ^ y) & -(x < y));
+}
+
+int max(int x, int y)
+{
+    return x ^ ((x ^ y) & -(x < y));
+}
+
+int main()
+{
+    int x;
+    int y;
+    printf("ENTER YOUR FIRST NUMBER YA USER: ");
+    scanf("%d",&x);
+    printf("ENTER YOUR SECOND NUMBER YA USER: ");
+    scanf("%d",&y);
+
+    printf("\nMINIMUIM NUMBER BETWEEN FIRST NUMBER %d AND SECOND NUMBER %d IS %d.\n", x, y,min(x,y));
+    printf("\nMAXIMUIM NUMBER BETWEEN FIRST NUMBER %d AND SECOND NUMBER %d IS %d.\n", x, y,max(x,y));
+
+
+    return 0;
+}
+**************************************************SECOND WAY**************************************************************
+#include<stdio.h>
+#define CHAR_BIT 8
+
+
+int min(int x, int y)
+{
+return y + ((x - y) & ((x - y) >>
+			(sizeof(int) * CHAR_BIT - 1)));
+}
+
+int max(int x, int y)
+{
+return x - ((x - y) & ((x - y) >>
+			(sizeof(int) * CHAR_BIT - 1)));
+}
+
+int main()
+{int x;
+    int y;
+    printf("ENTER YOUR FIRST NUMBER YA USER: ");
+    scanf("%d",&x);
+    printf("ENTER YOUR SECOND NUMBER YA USER: ");
+    scanf("%d",&y);
+
+    printf("\nMINIMUIM NUMBER BETWEEN FIRST NUMBER %d AND SECOND NUMBER %d IS %d.\n", x, y,min(x,y));
+    printf("\nMAXIMUIM NUMBER BETWEEN FIRST NUMBER %d AND SECOND NUMBER %d IS %d.\n", x, y,max(x,y));
+
+
+    return 0;
+}
+*****************************************************THIRD WAY*************************************************************
+SMALLEST NUMBER BETWEEN 3 NUMBER WITH 3 WAY
+
+FIRST WAY
+#include <stdio.h>
+
+int min_between_3num(int n1,int n2,int n3)
+{
+    int count;
+    while(n1 && n2 && n3)
+    {
+        n1--;
+        n2--;
+        n3--;
+        count++;
+    }
+    return count;
+}
+
+int main() {
+    int x,y,z;
+
+   printf("ENTER YOUR FIRST NUMBER YA USER: ");
+    scanf("%d",&x);
+    printf("ENTER YOUR SECOND NUMBER YA USER: ");
+    scanf("%d",&y);
+      printf("ENTER YOUR THIRD NUMBER YA USER: ");
+    scanf("%d",&z);
+
+
+  printf("\nMINIMUIM NUMBER BETWEEN FIRST NUMBER %d AND SECOND NUMBER %d AND THIRD NUMBER %d IS %d.\n", x, y,z,min_between_3num(x,y,z));
+
+
+
+    return 0;
+}
+*****************************************************************SECOND WAY***************************************************
+#include <stdio.h>
+
+#define CHAR_BIT 8
+
+int min_num(int x, int y)
+{
+    return y + ((x - y) & ((x - y) >> (sizeof(int) * CHAR_BIT - 1)));
+}
+
+int min_between_3num(int x, int y, int z)
+{
+    return min_num(x, min_num(y, z));
+}
+
+int main()
+{
+    int x,y,z;
+
+    printf("ENTER YOUR FIRST NUMBER YA USER: ");
+    scanf("%d",&x);
+    printf("ENTER YOUR SECOND NUMBER YA USER: ");
+    scanf("%d",&y);
+    printf("ENTER YOUR THIRD NUMBER YA USER: ");
+    scanf("%d",&z);
+
+
+    printf("\nMINIMUIM NUMBER BETWEEN FIRST NUMBER %d AND SECOND NUMBER %d AND THIRD NUMBER %d IS %d.\n", x, y,z,min_between_3num(x,y,z));
+
+
+
+    return 0;
+}
+***************************************////////THIRD WAY////////***************************************
+#include <stdio.h>
+#include <stdlib.h>
+int min_between_3num(int x, int y, int z)
+{
+    if (!(y / x)) // Same as "if (y < x)"
+        return (!(y / z)) ? y : z;
+    return (!(x / z)) ? x : z;
+}
+
+int main()
+{
+    int x,y,z;
+
+    printf("ENTER YOUR FIRST NUMBER YA USER: ");
+    scanf("%d",&x);
+    printf("ENTER YOUR SECOND NUMBER YA USER: ");
+    scanf("%d",&y);
+    printf("ENTER YOUR THIRD NUMBER YA USER: ");
+    scanf("%d",&z);
+
+
+    printf("\nMINIMUIM NUMBER BETWEEN FIRST NUMBER %d AND SECOND NUMBER %d AND THIRD NUMBER %d IS %d.\n", x, y,z,min_between_3num(x,y,z));
+
+
+
+    return 0;
+}
+**************************************************************************************************************
+
+################################################################################################################
+									#TASK_08.....LEC 11
+program take grade student and ~ to int like 90.1 =90  90.5=91 with 2 way
+first way
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    int x,y;
+    float grade,fraction;
+
+
+   while(1)
+   {
+        printf("ENTER YOUR NUMBER YA USER: ");
+        scanf("%f",&grade);
+
+        x=grade;
+        fraction = grade-x;
+        if(fraction>=0.5)
+        {
+            x +=1;
+        }
+
+        printf("\nYOUR ENTERED GRADE AFTER ROUNDED IS %d\n",x);
+   }
+    return 0;
+}
+***********************************************SECOND WAY****************************************
+USING CASTING TO INTERGER
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    int x,y;
+    float grade,fraction;
+
+
+   while(1)
+   {
+        printf("ENTER YOUR NUMBER YA USER: ");
+        scanf("%f",&grade);
+
+        x=grade;
+        fraction = grade-(int)grade;
+        if(fraction>=0.5)
+        {
+            grade++;
+        }
+
+        printf("\nYOUR ENTERED GRADE AFTER ROUNDED IS %d\n",(int)grade);
+   }
+    return 0;
+}
+**************************************************THIRD WAY*****************************************
+NOT USE CONDITION
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    int x,y;
+    float grade,fraction;
+
+
+   while(1)
+   {
+        printf("ENTER YOUR NUMBER YA USER: ");
+        scanf("%f",&grade);
+
+        grade=grade+0.5;
+        printf("\nYOUR ENTERED GRADE AFTER ROUNDED IS %d\n",(int)grade);
+   }
+    return 0;
+}
+********************************************************************************************************
+
+						

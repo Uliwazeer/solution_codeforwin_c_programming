@@ -1,0 +1,30 @@
+types of linkages
+
+External, Internal and None
+
+External Linkage-> means global, non-static variables and functions.
+Internal Linkage-> means static variables and functions with file scope.
+None Linkage-> means Local variables.
+************************************************************************
+
+By default a real number is treated as a DOUBLE
+***********************************************************************
+C data types classification are
+
+Primary data types
+int
+char
+float
+double
+void
+Secondary data types (or) User-defined data type
+Array
+Pointer
+Structure
+Union
+Enum
+**********************************************************************
+-During declaration we tell the datatype of the Variable.
+
+- During definition the value is initialized.
+**********************************************************************
